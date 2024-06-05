@@ -7,30 +7,41 @@ def index(request):
     slides = Slide.objects.all()
     return render(request, 'core/index.html', {"slides": slides})
 
-def about(request):
-    return render(request, 'core/about.html')
+def about_us(request):
+    return render(request, 'core/about-us.html')
 
 
+def blog_single_post(request):
+    return render(request, 'core/blog-single-post.html')
 
 
-def programs(request):
-    return render(request, 'core/programs.html')
+def blog(request):
+    return render(request, 'core/blog.html')
 
-def gallery(request):
-    return render(request, 'core/gallery.html')
 
-def faq(request):
-    return render(request, 'core/faq.html')
+def checkout(request):
+    return render(request, 'core/checkout.html')
 
-def reviews(request):
-    return render(request, 'core/reviews.html')
 
 def contacts(request):
     return render(request, 'core/contacts.html')
 
 
+def index(request):
+    return render(request, 'core/index.html')
+
+
+def privacy(request):
+    return render(request, 'core/privacy.html')
+
+
 def search_results(request):
     return render(request, 'core/search-results.html')
 
-def single_program(request):
-    return render(request, 'core/single-program.html')
+
+def shop(request):
+    return render(request, 'core/shop.html')
+
+
+def single_product(request):
+    return render(request, 'core/single-product.html')

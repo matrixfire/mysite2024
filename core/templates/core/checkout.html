@@ -1,0 +1,187 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<section>
+  <!-- Modern Breadcrumbs-->
+  <div class="parallax-container breadcrumb-modern bg-gray-darkest context-dark" data-parallax-img="{% static 'core/images/background-1-1920x651.jpg' %}">
+    <div class="parallax-content">
+      <div class="bg-overlay-gray-darkest">
+        <div class="container section-34 section-md-50 section-lg-110">
+          <div class="text-extra-big font-accent d-none d-lg-block"><span class="big">Checkout</span></div>
+          <ul class="list-inline list-inline-dashed p offset-top-0">
+            <li class="list-inline-item"><a class="small" href="index.html">Home</a></li>
+            <li class="list-inline-item"><a class="small" href="shop.html">Shop</a></li>
+            <li class="list-inline-item">Checkout
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Shop Checkout-->
+<section class="section-98 section-md-110 novi-background" data-preset='{"title":"Checkout block","category":"content","reload":true,"id":"checkout-block"}'>
+  <div class="container">
+    <div class="rd-material-tabs checkout-tabs">
+      <div class="rd-material-tabs__list">
+        <ul>
+          <li><a href="#">1. Shopping Cart</a></li>
+          <li><a href="#">2. Shipping Info</a></li>
+          <li><a href="#">3. Payment Method</a></li>
+        </ul>
+      </div>
+      <div class="rd-material-tabs__container">
+        <div>
+          <div class="row justify-content-sm-center">
+            <div class="col-md-10 col-xl-8">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Product</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>
+                        <div class="bg-lighter"><a href="single-product.html"><img src="{% static 'core/images/product-03-70x70.png' %}" width="70" height="70" alt=""></a></div>
+                      </th>
+                      <td class="big text-middle"><a href="single-product.html">Castle Art Supplies Acrylic Paint Set Pack of 12 Colors</a></td>
+                      <td class="text-middle">1</td>
+                      <td class="text-middle">$39.00</td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <div class="bg-lighter"><a href="single-product.html"><img src="{% static 'core/images/product-02-70x70.png' %}" width="70" height="70" alt=""></a></div>
+                      </th>
+                      <td class="big text-middle"><a href="single-product.html">Artist Paint Brush Set Nylon Hair Watercolor Acrylic Oil Painting Supplies</a></td>
+                      <td class="text-middle">2</td>
+                      <td class="text-middle">$199.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="offset-top-10 text-right">
+                <p class="font-weight-bold">Cart Subtotal: &nbsp; &nbsp; &nbsp; $238.00</p><a class="btn btn-primary btn-icon btn-icon-right offset-top-41 checkout-step-btn" data-index-to="1" href="#"><span class="icon mdi mdi-chevron-double-right novi-icon"></span>Shipping info</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row justify-content-sm-center">
+            <div class="col-md-8">
+              <form class="text-left" method="post">
+                <div class="row offset-top-0 novi-excluded">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-label form-label-outside form-label-sm" for="shop-shipping-checkout-first-name">First Name</label>
+                      <input class="form-control form-control-impressed input-sm" id="shop-shipping-checkout-first-name" type="text" name="first-name" data-constraints="@Required">
+                    </div>
+                  </div>
+                  <div class="col-md-6 offset-top-0">
+                    <div class="form-group offset-top-24 offset-md-top-0">
+                      <label class="form-label form-label-outside form-label-sm" for="shop-shipping-checkout-last-name">Last Name</label>
+                      <input class="form-control form-control-impressed input-sm" id="shop-shipping-checkout-last-name" type="text" name="last-name" data-constraints="@Required">
+                    </div>
+                  </div>
+                </div>
+                <div class="row offset-top-0">
+                  <div class="col-md-6">
+                    <div class="form-group offset-top-24">
+                      <label class="form-label form-label-outside form-label-sm" for="shop-shipping-checkout-company">Company</label>
+                      <input class="form-control form-control-impressed input-sm" id="shop-shipping-checkout-company" type="text" name="company" data-constraints="@Required">
+                    </div>
+                  </div>
+                  <div class="col-md-6 offset-top-0">
+                    <div class="form-group offset-top-24">
+                      <label class="form-label form-label-outside form-label-sm" for="shop-shipping-checkout-city-town">City / Town</label>
+                      <input class="form-control form-control-impressed input-sm" id="shop-shipping-checkout-city-town" type="text" name="city-town" data-constraints="@Required">
+                    </div>
+                  </div>
+                </div>
+                <div class="row offset-top-0">
+                  <div class="col-md-12">
+                    <div class="form-group offset-top-24">
+                      <label class="form-label form-label-outside form-label-sm" for="shop-shipping-checkout-address-first">Address</label>
+                      <input class="form-control form-control-impressed input-sm" id="shop-shipping-checkout-address-first" type="text" name="address-first" data-constraints="@Required">
+                    </div>
+                  </div>
+                </div>
+                <div class="row offset-top-0">
+                  <div class="col-md-6">
+                    <div class="form-group offset-top-24">
+                      <label class="form-label form-label-outside form-label-sm" for="shop-shipping-checkout-email">E-Mail</label>
+                      <input class="form-control form-control-impressed input-sm" id="shop-shipping-checkout-email" type="email" name="email" data-constraints="@Required @Email">
+                    </div>
+                  </div>
+                  <div class="col-md-6 offset-top-0">
+                    <div class="form-group offset-top-24">
+                      <label class="form-label form-label-outside form-label-sm" for="shop-shipping-checkout-phone">Phone</label>
+                      <input class="form-control form-control-impressed input-sm" id="shop-shipping-checkout-phone" type="text" name="phone" data-constraints="@Required">
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="offset-top-24 text-right">
+                <p><span class="font-weight-bold">Shipping: &nbsp;&nbsp;&nbsp;</span>Free Delivery</p><a class="btn btn-primary btn-icon btn-icon-right offset-top-24 checkout-step-btn" data-index-to="2" href="#"><span class="icon mdi mdi-chevron-double-right novi-icon"></span>Payment Method</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row justify-content-sm-center">
+            <div class="col-md-6 col-xl-4">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Operations</th>
+                      <th>Result</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Cart Subtotal</th>
+                      <td>$238.00</td>
+                    </tr>
+                    <tr>
+                      <th>Shipping</th>
+                      <td>Free Delivery</td>
+                    </tr>
+                    <tr>
+                      <th>Total</th>
+                      <td class="font-weight-bold text-ku-crimson">$238.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <form class="text-left">
+                <div class="custom-control custom-radio offset-top-41 offset-xl-top-24">
+                  <input class="custom-control-input" id="customRadio1" name="shop-checkout-radio" value="radio-2" type="radio">
+                  <label class="custom-control-label font-weight-bold" for="customRadio1">Direct Bank Transfer</label>
+                </div>
+                <div class="custom-control custom-radio offset-top-10">
+                  <input class="custom-control-input" id="customRadio2" name="shop-checkout-radio" value="radio-2" type="radio">
+                  <label class="custom-control-label font-weight-bold" for="customRadio2">Cheque Payment</label>
+                </div>
+                <div class="custom-control custom-radio offset-top-10">
+                  <input class="custom-control-input" id="customRadio3" name="shop-checkout-radio" value="radio-3" type="radio">
+                  <label class="custom-control-label font-weight-bold" for="customRadio3">Paypal</label>
+                </div>
+                <div class="offset-top-34"><a class="btn btn-icon btn-icon-left btn-primary" href="#"><span class="icon mdi mdi-lock novi-icon"></span>Place Order</a></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
