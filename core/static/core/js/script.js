@@ -1,13 +1,12 @@
-/**
- * Global variables
- */
 "use strict";
 
-var userAgent = navigator.userAgent.toLowerCase(),
+// Global variables
+var
+	userAgent = navigator.userAgent.toLowerCase(),
 	initialDate = new Date(),
 
 	$document = $( document ),
-	$window = $(window),
+	$window = $( window ),
 	$html = $( "html" ),
 
 	isDesktop = $html.hasClass( "desktop" ),
@@ -20,205 +19,126 @@ var userAgent = navigator.userAgent.toLowerCase(),
 		rdInputLabel: $( ".form-label" ),
 		rdNavbar: $( ".rd-navbar" ),
 		regula: $( "[data-constraints]" ),
-		photoSwipeGallery: $( "[data-photo-swipe-item]" ),
-		isotope: $( ".isotope" ),
-		customToggle: $( "[data-custom-toggle]" ),
+		stepper: $( "input[type='number']" ),
+		owl: $( ".owl-carousel" ),
+		swiper: $( ".swiper-slider" ),
+		twitterfeed: $( ".twitter" ),
+		progressBar: $( ".progress-linear" ),
+		selectFilter: $( "select" ),
+		productThumb: $( ".product-thumbnails" ),
 		search: $( ".rd-search" ),
 		searchResults: $( '.rd-search-results' ),
 		rdMailForm: $( ".rd-mailform" ),
-		copyrightYear: $( "#copyright-year" ),
+		checkoutRDTabs: $( ".checkout-tabs" ),
 		materialParallax: $( ".parallax-container" ),
+		copyrightYear: $( "#copyright-year" ),
 		maps: $( ".google-map-container" ),
 		lightGallery: $( "[data-lightgallery='group']" ),
 		lightGalleryItem: $( "[data-lightgallery='item']" ),
 		lightDynamicGalleryItem: $( "[data-lightgallery='dynamic']" )
 	};
 
-
-/**
- * @desc Check the element was been scrolled into the view
- * @param {object} elem - jQuery object
- * @return {boolean}
- */
-function isScrolledIntoView ( elem ) {
-	if ( isNoviBuilder ) return true;
-	return elem.offset().top + elem.outerHeight() >= $window.scrollTop() && elem.offset().top <= $window.scrollTop() + $window.height();
-}
-
-/**
- * @desc Calls a function when element has been scrolled into the view
- * @param {object} element - jQuery object
- * @param {function} func - init function
- */
-function lazyInit( element, func ) {
-	var scrollHandler = function () {
-		if ( ( !element.hasClass( 'lazy-loaded' ) && ( isScrolledIntoView( element ) ) ) ) {
-			func.call();
-			element.addClass( 'lazy-loaded' );
-		}
-	};
-
-	scrollHandler();
-	$window.on( 'scroll', scrollHandler );
-}
-/**
- * Initialize All Scripts
- */
+// Initialize All Scripts
 $document.ready( function () {
 	isNoviBuilder = window.xMode;
+	if ( isNoviBuilder ) $html.attr( 'data-x-mode', 'true' );
 
-	
-	
+	/**
+	 * isScrolledIntoView
+	 * @description  check the element whas been scrolled into the view
+	 */
+	function isScrolledIntoView ( elem ) {
+		var $window = $( window );
+		return elem.offset().top + elem.outerHeight() >= $window.scrollTop() && elem.offset().top <= $window.scrollTop() + $window.height();
+	}
+
 	/**
 	 * Google map function for getting latitude and longitude
 	 */
-	function getLatLngObject(str, marker, map, callback) {
+	function getLatLngObject ( str, marker, map, callback ) {
 		var coordinates = {};
 		try {
-			coordinates = JSON.parse(str);
-			callback(new google.maps.LatLng(
+			coordinates = JSON.parse( str );
+			callback( new google.maps.LatLng(
 				coordinates.lat,
 				coordinates.lng
-			), marker, map)
-		} catch (e) {
-			map.geocoder.geocode({'address': str}, function (results, status) {
-				if (status === google.maps.GeocoderStatus.OK) {
-					var latitude = results[0].geometry.location.lat();
-					var longitude = results[0].geometry.location.lng();
+			), marker, map )
+		} catch ( e ) {
+			map.geocoder.geocode( { 'address': str }, function ( results, status ) {
+				if ( status === google.maps.GeocoderStatus.OK ) {
+					var latitude = results[ 0 ].geometry.location.lat();
+					var longitude = results[ 0 ].geometry.location.lng();
 
-					callback(new google.maps.LatLng(
-						parseFloat(latitude),
-						parseFloat(longitude)
-					), marker, map)
+					callback( new google.maps.LatLng(
+						parseFloat( latitude ),
+						parseFloat( longitude )
+					), marker, map )
 				}
-			})
+			} )
 		}
 	}
 
-	function initMaps() {
-		var key;
+	/**
+	 * toggleSwiperInnerVideos
+	 * @description  toggle swiper videos on active slides
+	 // */
+	function toggleSwiperInnerVideos ( swiper ) {
+		var videos;
 
-		for ( var i = 0; i < plugins.maps.length; i++ ) {
-			if ( plugins.maps[i].hasAttribute( "data-key" ) ) {
-				key = plugins.maps[i].getAttribute( "data-key" );
-				break;
+		$.grep( swiper.slides, function ( element, index ) {
+			var $slide = $( element ),
+				video;
+
+			if ( index === swiper.activeIndex ) {
+				videos = $slide.find( "video" );
+				if ( videos.length ) {
+					videos.get( 0 ).play();
+				}
+			} else {
+				$slide.find( "video" ).each( function () {
+					this.pause();
+				} );
 			}
+		} );
+	}
+
+	/**
+	 * toggleSwiperCaptionAnimation
+	 * @description  toggle swiper animations on active slides
+	 */
+	function toggleSwiperCaptionAnimation ( swiper ) {
+		if ( isIE && isIE < 10 ) {
+			return;
 		}
 
-		$.getScript('//maps.google.com/maps/api/js?'+ ( key ? 'key='+ key + '&' : '' ) +'sensor=false&libraries=geometry,places&v=quarterly', function () {
-			var head = document.getElementsByTagName('head')[0],
-				insertBefore = head.insertBefore;
+		var prevSlide = $( swiper.container ),
+			nextSlide = $( swiper.slides[ swiper.activeIndex ] );
 
-			head.insertBefore = function (newElement, referenceElement) {
-				if (newElement.href && newElement.href.indexOf('//fonts.googleapis.com/css?family=Roboto') !== -1 || newElement.innerHTML.indexOf('gm-style') !== -1) {
-					return;
-				}
-				insertBefore.call(head, newElement, referenceElement);
-			};
-			var geocoder = new google.maps.Geocoder;
-			for (var i = 0; i < plugins.maps.length; i++) {
-				var zoom = parseInt(plugins.maps[i].getAttribute("data-zoom"), 10) || 11;
-				var styles = plugins.maps[i].hasAttribute('data-styles') ? JSON.parse(plugins.maps[i].getAttribute("data-styles")) : [];
-				var center = plugins.maps[i].getAttribute("data-center") || "New York";
+		prevSlide
+			.find( "[data-caption-animate]" )
+			.each( function () {
+				var $this = $( this );
+				$this
+					.removeClass( "animated" )
+					.removeClass( $this.attr( "data-caption-animate" ) )
+					.addClass( "not-animated" );
+			} );
 
-				// Initialize map
-				var map = new google.maps.Map(plugins.maps[i].querySelectorAll(".google-map")[0], {
-					zoom: zoom,
-					styles: styles,
-					scrollwheel: false,
-					center: {lat: 0, lng: 0}
-				});
+		nextSlide
+			.find( "[data-caption-animate]" )
+			.each( function () {
+				var $this = $( this ),
+					delay = $this.attr( "data-caption-delay" );
 
-				// Add map object to map node
-				plugins.maps[i].map = map;
-				plugins.maps[i].geocoder = geocoder;
-				plugins.maps[i].keySupported = true;
-				plugins.maps[i].google = google;
-
-				// Get Center coordinates from attribute
-				getLatLngObject(center, null, plugins.maps[i], function (location, markerElement, mapElement) {
-					mapElement.map.setCenter(location);
-				});
-
-				// Add markers from google-map-markers array
-				var markerItems = plugins.maps[i].querySelectorAll(".google-map-markers li");
-
-				if (markerItems.length){
-					var markers = [];
-					for (var j = 0; j < markerItems.length; j++){
-						var markerElement = markerItems[j];
-						getLatLngObject(markerElement.getAttribute("data-location"), markerElement, plugins.maps[i], function(location, markerElement, mapElement){
-							var icon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon");
-							var activeIcon = markerElement.getAttribute("data-icon-active") || mapElement.getAttribute("data-icon-active");
-							var info = markerElement.getAttribute("data-description") || "";
-							var infoWindow = new google.maps.InfoWindow({
-								content: info
-							});
-							markerElement.infoWindow = infoWindow;
-							var markerData = {
-								position: location,
-								map: mapElement.map
-							}
-							if (icon){
-								markerData.icon = icon;
-							}
-							var marker = new google.maps.Marker(markerData);
-							markerElement.gmarker = marker;
-							markers.push({markerElement: markerElement, infoWindow: infoWindow});
-							marker.isActive = false;
-							// Handle infoWindow close click
-							google.maps.event.addListener(infoWindow,'closeclick',(function(markerElement, mapElement){
-								var markerIcon = null;
-								markerElement.gmarker.isActive = false;
-								markerIcon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon");
-								markerElement.gmarker.setIcon(markerIcon);
-							}).bind(this, markerElement, mapElement));
-
-
-							// Set marker active on Click and open infoWindow
-							google.maps.event.addListener(marker, 'click', (function(markerElement, mapElement) {
-								if (markerElement.infoWindow.getContent().length === 0) return;
-								var gMarker, currentMarker = markerElement.gmarker, currentInfoWindow;
-								for (var k =0; k < markers.length; k++){
-									var markerIcon;
-									if (markers[k].markerElement === markerElement){
-										currentInfoWindow = markers[k].infoWindow;
-									}
-									gMarker = markers[k].markerElement.gmarker;
-									if (gMarker.isActive && markers[k].markerElement !== markerElement){
-										gMarker.isActive = false;
-										markerIcon = markers[k].markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon")
-										gMarker.setIcon(markerIcon);
-										markers[k].infoWindow.close();
-									}
-								}
-
-								currentMarker.isActive = !currentMarker.isActive;
-								if (currentMarker.isActive) {
-									if (markerIcon = markerElement.getAttribute("data-icon-active") || mapElement.getAttribute("data-icon-active")){
-										currentMarker.setIcon(markerIcon);
-									}
-
-									currentInfoWindow.open(map, marker);
-								}else{
-									if (markerIcon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon")){
-										currentMarker.setIcon(markerIcon);
-									}
-									currentInfoWindow.close();
-								}
-							}).bind(this, markerElement, mapElement))
-						})
-					}
-				}
-			}
-		});
+				setTimeout( function () {
+					$this
+						.removeClass( "not-animated" )
+						.addClass( $this.attr( "data-caption-animate" ) )
+						.addClass( "animated" );
+				}, delay ? parseInt( delay ) : 0 );
+			} );
 	}
 
-
-	// Google maps
-	if( plugins.maps.length ) {
-		lazyInit( plugins.maps, initMaps ); 
-	}
 	/**
 	 * Live Search
 	 * @description  create live search results
@@ -416,9 +336,106 @@ $document.ready( function () {
 		if ( isIE >= 12 ) $( "html" ).addClass( "ie-edge" );
 	}
 
+	// Swiper
+	if ( plugins.swiper.length ) {
+		plugins.swiper.each( function () {
+			var slider = $( this ),
+				pag = slider.find( ".swiper-pagination" ),
+				next = slider.find( ".swiper-button-next" ),
+				prev = slider.find( ".swiper-button-prev" ),
+				bar = slider.find( ".swiper-scrollbar" );
+
+			slider.find( ".swiper-slide" )
+				.each( function () {
+					var $this = $( this ), url;
+					if ( url = $this.attr( "data-slide-bg" ) ) {
+						$this.css( {
+							"background-image": "url(" + url + ")",
+							"background-size": "cover"
+						} )
+					}
+
+				} )
+				.end()
+				.find( "[data-caption-animate]" )
+				.addClass( "not-animated" )
+				.end()
+				.swiper( {
+					autoplay: !isNoviBuilder && $.isNumeric( slider.attr( 'data-autoplay' ) ) ? slider.attr( 'data-autoplay' ) : false,
+					direction: slider.attr( 'data-direction' ) || "horizontal",
+					effect: slider.attr( 'data-slide-effect' ) || "slide",
+					speed: slider.attr( 'data-slide-speed' ) || 600,
+					keyboardControl: !isNoviBuilder ? slider.attr( 'data-keyboard' ) === "true" : false,
+					mousewheelControl: !isNoviBuilder ? slider.attr( 'data-mousewheel' ) === "true" : false,
+					mousewheelReleaseOnEdges: slider.attr( 'data-mousewheel-release' ) === "true",
+					nextButton: next.length ? next.get( 0 ) : null,
+					prevButton: prev.length ? prev.get( 0 ) : null,
+					pagination: pag.length ? pag.get( 0 ) : null,
+					simulateTouch: false,
+					paginationClickable: pag.length ? pag.attr( "data-clickable" ) !== "false" : false,
+					paginationBulletRender: pag.length ? pag.attr( "data-index-bullet" ) === "true" ? function ( index, className ) {
+						return '<span class="' + className + '">' + (index + 1) + '</span>';
+					} : null : null,
+					scrollbar: bar.length ? bar.get( 0 ) : null,
+					scrollbarDraggable: bar.length ? bar.attr( "data-draggable" ) !== "false" : true,
+					scrollbarHide: bar.length ? bar.attr( "data-draggable" ) === "false" : false,
+					loop: !isNoviBuilder ? slider.attr( 'data-loop' ) !== "false" : false,
+					loopAdditionalSlides: 0,
+					loopedSlides: 0,
+					onTransitionStart: function ( swiper ) {
+						if ( !isNoviBuilder ) toggleSwiperInnerVideos( swiper );
+					},
+					onTransitionEnd: function ( swiper ) {
+						if ( !isNoviBuilder ) toggleSwiperCaptionAnimation( swiper );
+						$( window ).trigger( "resize" );
+					},
+
+					onInit: function ( swiper ) {
+						if ( !isNoviBuilder ) toggleSwiperInnerVideos( swiper );
+						if ( !isNoviBuilder ) toggleSwiperCaptionAnimation( swiper );
+						$( window ).on( 'resize', function () {
+							swiper.update( true );
+						} )
+					}
+				} );
+
+			$( window )
+				.load( function () {
+					slider.find( "video" ).each( function () {
+						if ( !$( this ).parents( ".swiper-slide-active" ).length ) {
+							this.pause();
+						}
+					} );
+				} )
+				.trigger( "resize" );
+		} );
+	}
+
 	// Copyright Year
 	if ( plugins.copyrightYear.length ) {
 		plugins.copyrightYear.text( initialDate.getFullYear() );
+	}
+
+	// Progress bar
+	if ( plugins.progressBar.length ) {
+		for ( i = 0; i < plugins.progressBar.length; i++ ) {
+			var progressBar = $( plugins.progressBar[ i ] );
+			$window
+				.on( "scroll load", $.proxy( function () {
+					var bar = $( this );
+					if ( !bar.hasClass( 'animated-first' ) && isScrolledIntoView( bar ) ) {
+						var end = bar.attr( "data-to" );
+						bar.find( '.progress-bar-linear' ).css( { width: end + '%' } );
+						bar.find( '.progress-value' ).countTo( {
+							refreshInterval: 40,
+							from: 0,
+							to: end,
+							speed: 500
+						} );
+						bar.addClass( 'animated-first' );
+					}
+				}, progressBar ) );
+		}
 	}
 
 	// Responsive Tabs
@@ -433,9 +450,36 @@ $document.ready( function () {
 		}
 	}
 
+	// RD Twitter Feed
+	if ( plugins.twitterfeed.length > 0 ) {
+		var i;
+		for ( i = 0; i < plugins.twitterfeed.length; i++ ) {
+			var twitterfeedItem = plugins.twitterfeed[ i ];
+			$( twitterfeedItem ).RDTwitter( {
+				hideReplies: false,
+				localTemplate: {
+					avatar: "images/features/rd-twitter-post-avatar-48x48.jpg"
+				},
+				callback: function () {
+					$window.trigger( "resize" );
+				}
+			} );
+		}
+	}
+
 	// RD Input Label
 	if ( plugins.rdInputLabel.length ) {
 		plugins.rdInputLabel.RDInputLabel();
+	}
+
+	// Stepper
+	if ( plugins.stepper.length ) {
+		plugins.stepper.stepper( {
+			labels: {
+				up: "",
+				down: ""
+			}
+		} );
 	}
 
 	// Regula
@@ -448,46 +492,94 @@ $document.ready( function () {
 		new WOW().init();
 	}
 
-	// Isotope
-	if ( plugins.isotope.length ) {
-		var i, isogroup = [];
-		for ( i = 0; i < plugins.isotope.length; i++ ) {
-			var
-				isotopeItem = plugins.isotope[ i ],
-				iso = new Isotope( isotopeItem, {
-					itemSelector: '.isotope-item',
-					layoutMode: isotopeItem.getAttribute( 'data-isotope-layout' ) ? isotopeItem.getAttribute( 'data-isotope-layout' ) : 'masonry',
-					filter: '*'
-				} );
+	// Owl carousel
+	if ( plugins.owl.length ) {
+		for ( var n = 0; n < plugins.owl.length; n++ ) {
+			var carousel = $( plugins.owl[ n ] ),
+				responsive = {},
+				aliaces = [ "-xs-", "-sm-", "-md-", "-lg-", "-xl-", "-xxl-" ],
+				values = [ 0, 480, 768, 992, 1200, 1600 ];
 
-			isogroup.push( iso );
-		}
-
-		setTimeout( function () {
-			for ( var i = 0; i < isogroup.length; i++ ) {
-				var isotope = isogroup[ i ];
-				isotope.element.className += " isotope--loaded";
-				isotope.layout();
-				window.addEventListener( 'resize', (function () {
-					this.layout();
-				}).bind( isotope ) );
+			for ( var i = 0; i < values.length; i++ ) {
+				responsive[ values[ i ] ] = {};
+				for ( var j = i; j >= -1; j-- ) {
+					if ( !responsive[ values[ i ] ][ "items" ] && carousel.attr( "data" + aliaces[ j ] + "items" ) ) {
+						responsive[ values[ i ] ][ "items" ] = j < 0 ? 1 : parseInt( carousel.attr( "data" + aliaces[ j ] + "items" ) );
+					}
+					if ( !responsive[ values[ i ] ][ "stagePadding" ] && responsive[ values[ i ] ][ "stagePadding" ] !== 0 && carousel.attr( "data" + aliaces[ j ] + "stage-padding" ) ) {
+						responsive[ values[ i ] ][ "stagePadding" ] = j < 0 ? 0 : parseInt( carousel.attr( "data" + aliaces[ j ] + "stage-padding" ) );
+					}
+					if ( !responsive[ values[ i ] ][ "margin" ] && responsive[ values[ i ] ][ "margin" ] !== 0 && carousel.attr( "data" + aliaces[ j ] + "margin" ) ) {
+						responsive[ values[ i ] ][ "margin" ] = j < 0 ? 30 : parseInt( carousel.attr( "data" + aliaces[ j ] + "margin" ) );
+					}
+					if ( !responsive[ values[ i ] ][ "dotsEach" ] && responsive[ values[ i ] ][ "dotsEach" ] !== 0 && carousel.attr( "data" + aliaces[ j ] + "dots-each" ) ) {
+						responsive[ values[ i ] ][ "dotsEach" ] = j < 0 ? false : parseInt( carousel.attr( "data" + aliaces[ j ] + "dots-each" ) );
+					}
+				}
 			}
-		}, 600 );
 
-		$( "[data-isotope-filter]" ).on( "click", function ( e ) {
-			e.preventDefault();
-			var filter = $( this );
-			filter.parents( ".isotope-filters" ).find( '.active' ).removeClass( "active" );
-			filter.addClass( "active" );
-			var iso = $( '.isotope[data-isotope-group="' + this.getAttribute( "data-isotope-group" ) + '"]' );
-			iso.isotope( {
-				itemSelector: '.isotope-item',
-				layoutMode: iso.attr( 'data-isotope-layout' ) ? iso.attr( 'data-isotope-layout' ) : 'masonry',
-				filter: this.getAttribute( "data-isotope-filter" ) == '*' ? '*' : '[data-filter*="' + this.getAttribute( "data-isotope-filter" ) + '"]'
+			// Create custom Pagination
+			if ( carousel.attr( 'data-dots-custom' ) ) {
+				carousel.on( "initialized.owl.carousel", function ( event ) {
+					var carousel = $( event.currentTarget ),
+						customPag = $( carousel.attr( "data-dots-custom" ) ),
+						active = 0;
+
+					if ( carousel.attr( 'data-active' ) ) {
+						active = parseInt( carousel.attr( 'data-active' ) );
+					}
+
+					carousel.trigger( 'to.owl.carousel', [ active, 300, true ] );
+					customPag.find( "[data-owl-item='" + active + "']" ).addClass( "active" );
+
+					customPag.find( "[data-owl-item]" ).on( 'click', function ( e ) {
+						e.preventDefault();
+						carousel.trigger( 'to.owl.carousel', [ parseInt( this.getAttribute( "data-owl-item" ) ), 300, true ] );
+					} );
+
+					carousel.on( "translate.owl.carousel", function ( event ) {
+						customPag.find( ".active" ).removeClass( "active" );
+						customPag.find( "[data-owl-item='" + event.item.index + "']" ).addClass( "active" )
+					} );
+				} );
+			}
+
+			// Create custom Navigation
+			if ( carousel.attr( 'data-nav-custom' ) ) {
+				carousel.on( "initialized.owl.carousel", function ( event ) {
+					var carousel = $( event.currentTarget ),
+						customNav = $( carousel.attr( "data-nav-custom" ) );
+
+					customNav.find( "[data-owl-prev]" ).on( 'click', function ( e ) {
+						e.preventDefault();
+						carousel.trigger( 'prev.owl.carousel', [ 300 ] );
+					} );
+
+					customNav.find( "[data-owl-next]" ).on( 'click', function ( e ) {
+						e.preventDefault();
+						carousel.trigger( 'next.owl.carousel', [ 300 ] );
+					} );
+				} );
+			}
+
+			carousel.owlCarousel( {
+				autoplay: !isNoviBuilder ? carousel.attr( "data-autoplay" ) === "true" : false,
+				loop: !isNoviBuilder ? carousel.attr( "data-loop" ) === "true" : false,
+				items: 1,
+				autoplaySpeed: 600,
+				autoplayTimeout: 3000,
+				dotsContainer: carousel.attr( "data-pagination-class" ) || false,
+				navContainer: carousel.attr( "data-navigation-class" ) || false,
+				mouseDrag: !isNoviBuilder ? carousel.attr( "data-mouse-drag" ) === "true" : false,
+				nav: carousel.attr( "data-nav" ) === "true",
+				dots: carousel.attr( "data-dots" ) === "true",
+				dotsEach: carousel.attr( "data-dots-each" ) ? parseInt( carousel.attr( "data-dots-each" ) ) : false,
+				responsive: responsive,
+				animateOut: carousel.attr( "data-animation-out" ) || false,
+				navText: carousel.attr( "data-nav-text" ) ? $.parseJSON( carousel.attr( "data-nav-text" ) ) : [],
+				navClass: carousel.attr( "data-nav-class" ) ? $.parseJSON( carousel.attr( "data-nav-class" ) ) : [ 'owl-prev', 'owl-next' ]
 			} );
-		} ).eq( 0 ).trigger( "click" );
-
-
+		}
 	}
 
 	// RD Navbar
@@ -526,6 +618,44 @@ $document.ready( function () {
 
 		if ( navbar.attr( "data-body-class" ) ) {
 			document.body.className += ' ' + navbar.attr( "data-body-class" );
+		}
+	}
+
+	// Select2
+	if ( plugins.selectFilter.length ) {
+		var i;
+		for ( i = 0; i < plugins.selectFilter.length; i++ ) {
+			var select = $( plugins.selectFilter[ i ] );
+
+			select.select2( {
+				theme: "bootstrap"
+			} ).next().addClass( select.attr( "class" ).match( /(input-sm)|(input-lg)|($)/i ).toString().replace( new RegExp( ",", 'g' ), " " ) );
+		}
+	}
+
+	// Product Thumbnails
+	if ( plugins.productThumb.length ) {
+		var i;
+		for ( i = 0; i < plugins.productThumb.length; i++ ) {
+			var thumbnails = $( plugins.productThumb[ i ] );
+
+			thumbnails.find( "li" ).on( 'click', function () {
+				var item = $( this );
+				item.parent().find( '.active' ).removeClass( 'active' );
+				var image = item.parents( ".product" ).find( ".product-image-area" );
+				image.removeClass( 'animateImageIn' );
+				image.addClass( 'animateImageOut' );
+				item.addClass( 'active' );
+				setTimeout( function () {
+					var src = item.find( "img" ).attr( "src" );
+					if ( item.attr( 'data-large-image' ) ) {
+						src = item.attr( 'data-large-image' );
+					}
+					image.attr( "src", src );
+					image.removeClass( 'animateImageOut' );
+					image.addClass( 'animateImageIn' );
+				}, 300 );
+			} )
 		}
 	}
 
@@ -752,23 +882,67 @@ $document.ready( function () {
 		}
 	}
 
-	// Custom Toggles
-	if ( plugins.customToggle.length ) {
-		var i;
-		for ( i = 0; i < plugins.customToggle.length; i++ ) {
-			var $this = $( plugins.customToggle[ i ] );
-			$this.on( 'click', function ( e ) {
-				e.preventDefault();
-				$( "#" + $( this ).attr( 'data-custom-toggle' ) ).add( this ).toggleClass( 'active' );
-			} );
+	// Checkout RD Material Tabs
+	if ( plugins.checkoutRDTabs.length ) {
+		var i, step = 0;
+		for ( i = 0; i < plugins.checkoutRDTabs.length; i++ ) {
+			var checkoutTab = $( plugins.checkoutRDTabs[ i ] );
 
-			if ( $this.attr( "data-custom-toggle-disable-on-blur" ) === "true" ) {
-				$( "body" ).on( "click", $this, function ( e ) {
-					if ( e.target !== e.data[ 0 ] && $( "#" + e.data.attr( 'data-custom-toggle' ) ).find( $( e.target ) ).length == 0 && e.data.find( $( e.target ) ).length == 0 ) {
-						$( "#" + e.data.attr( 'data-custom-toggle' ) ).add( e.data[ 0 ] ).removeClass( 'active' );
+			checkoutTab.RDMaterialTabs( {
+				dragList: true,
+				dragContent: false,
+				items: 1,
+				marginContent: 10,
+				margin: 0,
+				responsive: {
+					480: {
+						items: 2
+					},
+					768: {
+						dragList: false,
+						items: 3
 					}
-				} )
-			}
+				},
+				callbacks: {
+					onChangeStart: function ( active, indexTo ) {
+						if ( indexTo > step + 1 ) {
+							return false;
+						} else if ( indexTo == step + 1 ) {
+							for ( var j = 0; j < this.$content.find( ".rd-material-tab" ).length; j++ ) {
+								if ( j <= step ) {
+									var inputs = this.$content.find( ".rd-material-tab" ).eq( j ).find( "[data-constraints]" );
+
+									if ( !isValidated( inputs ) ) {
+										this.setContentTransition( this, this.options.speed )
+										this.moveTo( j );
+										return false
+									}
+								}
+							}
+							if ( indexTo > step ) step = indexTo;
+						}
+
+					},
+					onChangeEnd: function () {
+
+					},
+					onInit: function ( tabs ) {
+						attachFormValidator( tabs.$element.find( "[data-constraints]" ) );
+
+						$( '.checkout-step-btn' ).on( "click", function ( e ) {
+							e.preventDefault();
+							var index = this.getAttribute( "data-index-to" ),
+								inputs = tabs.$content.find( ".rd-material-tab" ).eq( index - 1 ).find( "[data-constraints]" );
+
+							if ( isValidated( inputs ) ) {
+								tabs.setContentTransition( tabs, tabs.options.speed );
+								tabs.moveTo( parseInt( index ) );
+								if ( index > step ) step = index;
+							}
+						} );
+					}
+				}
+			} );
 		}
 	}
 
@@ -786,7 +960,124 @@ $document.ready( function () {
 		}
 	}
 
-	
+	// Google maps
+	if ( plugins.maps.length ) {
+		var key;
+
+		for ( var i = 0; i < plugins.maps.length; i++ ) {
+			if ( plugins.maps[ i ].hasAttribute( "data-key" ) ) {
+				key = plugins.maps[ i ].getAttribute( "data-key" );
+				break;
+			}
+		}
+
+		$.getScript( '//maps.google.com/maps/api/js?' + ( key ? 'key=' + key + '&' : '' ) + 'sensor=false&libraries=geometry,places&v=3.7', function () {
+			var head = document.getElementsByTagName( 'head' )[ 0 ],
+				insertBefore = head.insertBefore;
+
+			head.insertBefore = function ( newElement, referenceElement ) {
+				if ( newElement.href && newElement.href.indexOf( '//fonts.googleapis.com/css?family=Roboto' ) !== -1 || newElement.innerHTML.indexOf( 'gm-style' ) !== -1 ) {
+					return;
+				}
+				insertBefore.call( head, newElement, referenceElement );
+			};
+			var geocoder = new google.maps.Geocoder;
+			for ( var i = 0; i < plugins.maps.length; i++ ) {
+				var zoom = parseInt( plugins.maps[ i ].getAttribute( "data-zoom" ), 10 ) || 11;
+				var styles = plugins.maps[ i ].hasAttribute( 'data-styles' ) ? JSON.parse( plugins.maps[ i ].getAttribute( "data-styles" ) ) : [];
+				var center = plugins.maps[ i ].getAttribute( "data-center" ) || "New York";
+
+				// Initialize map
+				var map = new google.maps.Map( plugins.maps[ i ].querySelectorAll( ".google-map" )[ 0 ], {
+					zoom: zoom,
+					styles: styles,
+					scrollwheel: false,
+					center: { lat: 0, lng: 0 }
+				} );
+
+				// Add map object to map node
+				plugins.maps[ i ].map = map;
+				plugins.maps[ i ].geocoder = geocoder;
+				plugins.maps[ i ].google = google;
+
+				// Get Center coordinates from attribute
+				getLatLngObject( center, null, plugins.maps[ i ], function ( location, markerElement, mapElement ) {
+					mapElement.map.setCenter( location );
+				} );
+
+				// Add markers from google-map-markers array
+				var markerItems = plugins.maps[ i ].querySelectorAll( ".google-map-markers li" );
+
+				if ( markerItems.length ) {
+					var markers = [];
+					for ( var j = 0; j < markerItems.length; j++ ) {
+						var markerElement = markerItems[ j ];
+						getLatLngObject( markerElement.getAttribute( "data-location" ), markerElement, plugins.maps[ i ], function ( location, markerElement, mapElement ) {
+							var icon = markerElement.getAttribute( "data-icon" ) || mapElement.getAttribute( "data-icon" );
+							var activeIcon = markerElement.getAttribute( "data-icon-active" ) || mapElement.getAttribute( "data-icon-active" );
+							var info = markerElement.getAttribute( "data-description" ) || "";
+							var infoWindow = new google.maps.InfoWindow( {
+								content: info
+							} );
+							markerElement.infoWindow = infoWindow;
+							var markerData = {
+								position: location,
+								map: mapElement.map
+							}
+							if ( icon ) {
+								markerData.icon = icon;
+							}
+							var marker = new google.maps.Marker( markerData );
+							markerElement.gmarker = marker;
+							markers.push( { markerElement: markerElement, infoWindow: infoWindow } );
+							marker.isActive = false;
+							// Handle infoWindow close click
+							google.maps.event.addListener( infoWindow, 'closeclick', (function ( markerElement, mapElement ) {
+								var markerIcon = null;
+								markerElement.gmarker.isActive = false;
+								markerIcon = markerElement.getAttribute( "data-icon" ) || mapElement.getAttribute( "data-icon" );
+								markerElement.gmarker.setIcon( markerIcon );
+							}).bind( this, markerElement, mapElement ) );
+
+
+							// Set marker active on Click and open infoWindow
+							google.maps.event.addListener( marker, 'click', (function ( markerElement, mapElement ) {
+								if ( markerElement.infoWindow.getContent().length === 0 ) return;
+								var gMarker, currentMarker = markerElement.gmarker, currentInfoWindow;
+								for ( var k = 0; k < markers.length; k++ ) {
+									var markerIcon;
+									if ( markers[ k ].markerElement === markerElement ) {
+										currentInfoWindow = markers[ k ].infoWindow;
+									}
+									gMarker = markers[ k ].markerElement.gmarker;
+									if ( gMarker.isActive && markers[ k ].markerElement !== markerElement ) {
+										gMarker.isActive = false;
+										markerIcon = markers[ k ].markerElement.getAttribute( "data-icon" ) || mapElement.getAttribute( "data-icon" )
+										gMarker.setIcon( markerIcon );
+										markers[ k ].infoWindow.close();
+									}
+								}
+
+								currentMarker.isActive = !currentMarker.isActive;
+								if ( currentMarker.isActive ) {
+									if ( markerIcon = markerElement.getAttribute( "data-icon-active" ) || mapElement.getAttribute( "data-icon-active" ) ) {
+										currentMarker.setIcon( markerIcon );
+									}
+
+									currentInfoWindow.open( map, marker );
+								} else {
+									if ( markerIcon = markerElement.getAttribute( "data-icon" ) || mapElement.getAttribute( "data-icon" ) ) {
+										currentMarker.setIcon( markerIcon );
+									}
+									currentInfoWindow.close();
+								}
+							}).bind( this, markerElement, mapElement ) )
+						} )
+					}
+				}
+			}
+		} );
+	}
 
 	// lightGallery
 	function initLightGallery ( itemsToInit, addClass ) {
