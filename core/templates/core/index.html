@@ -1,253 +1,569 @@
 {% extends "core/base.html" %}
-
 {% load static %}
 
 {% block content %}
-
-
- <!-- TESTING SWIPER-->
- <div class="swiper-container">
-  <div class="swiper-wrapper">
- {% for slide in slides %}
- <div class="swiper-slide parallax-container section" data-parallax-img="{% static 'core/images/bg-01-1920x718.jpg' %}" data-preset='{"title":"Content block 2","category":"content, parallax","reload":true,"id":"content-block-2"}'>
-    <div class="parallax-content section-85 section-lg-bottom-0 context-dark">
-      
-      
+      <!-- Swiper-->
+      <section class="section-relative" data-preset='{"title":"Slider","category":"content, slider","reload":true,"id":"slider"}'>
+        <div class="swiper-container swiper-slider" data-loop="true" data-autoplay="true" data-slide-effect="fade" data-dragable="false" data-dots="true">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide-overlay-disable swiper-slide-center" data-slide-bg="{% static 'core/images/home-01-1920x1028.jpg' %}"></div>
+            <div class="swiper-slide swiper-slide-overlay-disable swiper-slide-center" data-slide-bg="{% static 'core/images/home-02-1920x1028.jpg' %}"></div>
+            <div class="swiper-slide swiper-slide-overlay-disable swiper-slide-center" data-slide-bg="{% static 'core/images/home-03-1920x1028.jpg' %}"></div>
+          </div>
+          <!-- Swiper Pagination-->
+          <div class="swiper-pagination swiper-pagination-type-2"></div>
+        </div>
+        <div class="section-center-absolute">
+          <div class="text-extra-big text-white font-accent">Unique creations</div>
+          <h5 class="text-regular text-white offset-top-10">For Unique Occasions</h5>
+          <div class="container offset-top-14 offset-md-top-66">
+            <div class="row justify-content-sm-center grid-group-xs">
+              <div class="col-lg-5"><a class="btn btn-block btn-primary btn-ellipse" href="shop.html">shop now</a></div>
+              <div class="col-lg-5"><a class="btn btn-block btn-default btn-ellipse btn-anis-effect" href="blog.html">view blog</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Our Shop-->
+      <section class="section-98 section-md-top-110 section-md-bottom-124 novi-background" data-preset='{"title":"Content block 1","category":"content","reload":true,"id":"content-block-1"}'>
         <div class="container">
-          <h1 class="font-weight-bold"><span class="big">Kids Are The Best Explorers In The World</span></h1>
-          <div class="row offset-top-0 justify-content-sm-center">
-            <div class="col-lg-7"><img class="img-fluid d-none d-lg-inline-block" src="{{ slide.img.url }}" width="563" height="398" alt=""></div>
-            <div class="col-sm-10 col-lg-5 text-lg-left offset-top-50">
-              <svg height="13" viewbox="0 0 71 13" width="71" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <path class="bg-white" d="M 65.591797,0.39453125 C 64.632414,0.55512546 63.656631,1.037019 62.839844,1.9121094 l 2.009765,1.875 c 0.987119,-1.0575807 1.464926,-0.9055776 2.074219,-0.5703125 0.609293,0.335265 1.125342,1.2616345 1.144531,1.6152343 C 68.111503,5.6270437 67.786283,6.2015228 66.951172,6.875 66.116061,7.5484772 64.791442,8.161997 63.316406,8.6230469 60.366335,9.5451467 56.822431,9.9000923 55.357422,9.9453125 49.487597,10.126495 41.515727,8.2106051 34.380859,5.9648438 30.873861,4.8609863 26.209294,2.9728751 21.335938,1.7480469 16.462581,0.52321864 11.317182,-0.07967759 6.7734375,1.6503906 l -0.025391,0.00977 -0.025391,0.00977 C 4.3944177,2.6636873 2.6199428,4.0438286 1.515625,5.5957031 0.41130724,7.1475776 -0.0588551,9.0257429 0.7265625,10.642578 c 0.735964,1.515031 2.2978692,2.250647 3.6972656,2.234375 1.3993964,-0.01627 2.7415813,-0.606444 3.6738281,-1.679687 L 6.0214844,9.3945312 C 5.6678168,9.8016889 4.967102,10.122226 4.3925781,10.128906 3.8180543,10.135587 3.4724885,10.00395 3.1992188,9.4414062 2.9754025,8.9806654 3.024638,8.2170231 3.7558594,7.1894531 4.4839472,6.1662866 5.8567444,5.037042 7.78125,4.2109375 c 3.674744,-1.3881932 8.271853,-0.9562457 12.884766,0.203125 4.624565,1.1622992 9.200779,3.012418 12.890625,4.1738281 7.258822,2.2847774 15.360414,4.3068544 21.884765,4.1054684 1.739141,-0.05368 5.355814,-0.40149 8.695313,-1.445312 1.669749,-0.521911 3.270286,-1.207639 4.541015,-2.232422 C 69.948464,7.990842 70.909328,6.4678364 70.8125,4.6835938 70.724917,3.0697107 69.754257,1.63739 68.248047,0.80859375 67.494942,0.39419565 66.55118,0.23393704 65.591797,0.39453125 Z"></path>
-              </svg>
-              <p>Since 2001, Intense has been providing top-quality, AMI Certified Montessori Education to Elementary, Primary, and Toddler aged children in the area.</p><a class="btn btn-safety-orange" href="#">Learn More</a>
+          <h1 class="text-between">Our Shop</h1>
+          <div class="offset-top-30">
+            <!-- Tabs Classic-->
+                  <!-- Responsive-tabs-->
+                  <div class="responsive-tabs responsive-tabs-classic" data-type="horizontal">
+                    <ul class="resp-tabs-list tabs-1 text-center tabs-group-default" data-group="tabs-group-default">
+                      <li>New Arrivals</li>
+                      <li>Popular</li>
+                      <li>Best Sellers</li>
+                      <li>Specials</li>
+                    </ul>
+                    <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">
+                      <!-- First Tab-->
+                      <div>
+                        <div class="row">
+                          <!-- Owl First Slide-->
+                          <div class="col-md-6 col-lg-3">
+                                  <!-- Product-->
+                                  <div class="product product-grid product-grid-type-2">
+                                    <!-- Product Image-->
+                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-01-210x210.png' %}" alt="">
+                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
+                                    </div>
+                                    <!-- Product Rating-->
+                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
+                                    <!-- Product Title-->
+                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Wood Box Paining Set 12 Oil Colors</a></div>
+                                    <!-- Product price-->
+                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$254.00</span><span class="product-price-old text-dark">$319.00</span>
+                                    </div>
+                                    <div class="product-block-hover">
+                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
+                                    </div>
+                                  </div>
+                          </div>
+                          <div class="col-md-6 col-lg-3 offset-top-41 offset-md-top-0">
+                                  <!-- Product-->
+                                  <div class="product product-grid product-grid-type-2">
+                                    <!-- Product Image-->
+                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-02-232x229.png' %}" alt="">
+                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
+                                    </div>
+                                    <!-- Product Rating-->
+                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
+                                    <!-- Product Title-->
+                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Artist Paint Brush Set Nylon Hair Oil Painting Supplies</a></div>
+                                    <!-- Product price-->
+                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$124.00</span><span class="product-price-old text-dark">$219.00</span>
+                                    </div>
+                                    <div class="product-block-hover">
+                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
+                                    </div>
+                                  </div>
+                          </div>
+                          <div class="col-md-6 col-lg-3 offset-top-41 offset-lg-top-0">
+                                  <!-- Product-->
+                                  <div class="product product-grid product-grid-type-2">
+                                    <!-- Product Image-->
+                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-03-217x215.png' %}" alt="">
+                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
+                                    </div>
+                                    <!-- Product Rating-->
+                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
+                                    <!-- Product Title-->
+                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Castle Art Supplies Acrylic Paint Set Pack of 12 Colors</a></div>
+                                    <!-- Product price-->
+                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5">$289.00</span>
+                                    </div>
+                                    <div class="product-block-hover">
+                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
+                                    </div>
+                                  </div>
+                          </div>
+                          <div class="col-md-6 col-lg-3 offset-top-41 offset-lg-top-0">
+                                  <!-- Product-->
+                                  <div class="product product-grid product-grid-type-2">
+                                    <!-- Product Image-->
+                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-04-229x223.png' %}" alt="">
+                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
+                                    </div>
+                                    <!-- Product Rating-->
+                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
+                                    <!-- Product Title-->
+                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Color Set Marco Renoir Fine Art Drawing Oil Base Pencils</a></div>
+                                    <!-- Product price-->
+                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$189.00</span><span class="product-price-old text-dark">$219.00</span>
+                                    </div>
+                                    <div class="product-block-hover">
+                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
+                                    </div>
+                                  </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="row">
+                          <div class="col-md-6 col-lg-3">
+                                  <!-- Product-->
+                                  <div class="product product-grid product-grid-type-2">
+                                    <!-- Product Image-->
+                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-04-229x223.png' %}" alt="">
+                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
+                                    </div>
+                                    <!-- Product Rating-->
+                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
+                                    <!-- Product Title-->
+                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Color Set Marco Renoir Fine Art Drawing Oil Base Pencils</a></div>
+                                    <!-- Product price-->
+                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$189.00</span><span class="product-price-old text-dark">$219.00</span>
+                                    </div>
+                                    <div class="product-block-hover">
+                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
+                                    </div>
+                                  </div>
+                          </div>
+                          <div class="col-md-6 col-lg-3 offset-top-41 offset-md-top-0">
+                                  <!-- Product-->
+                                  <div class="product product-grid product-grid-type-2">
+                                    <!-- Product Image-->
+                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-02-232x229.png' %}" alt="">
+                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
+                                    </div>
+                                    <!-- Product Rating-->
+                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
+                                    <!-- Product Title-->
+                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Artist Paint Brush Set Nylon Hair Oil Painting Supplies</a></div>
+                                    <!-- Product price-->
+                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$124.00</span><span class="product-price-old text-dark">$219.00</span>
+                                    </div>
+                                    <div class="product-block-hover">
+                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
+                                    </div>
+                                  </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="row">
+                          <div class="col-md-6 col-lg-3">
+                                  <!-- Product-->
+                                  <div class="product product-grid product-grid-type-2">
+                                    <!-- Product Image-->
+                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-01-210x210.png' %}" alt="">
+                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
+                                    </div>
+                                    <!-- Product Rating-->
+                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
+                                    <!-- Product Title-->
+                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Wood Box Paining Set 12 Oil Colors</a></div>
+                                    <!-- Product price-->
+                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$254.00</span><span class="product-price-old text-dark">$319.00</span>
+                                    </div>
+                                    <div class="product-block-hover">
+                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
+                                    </div>
+                                  </div>
+                          </div>
+                          <div class="col-md-6 col-lg-3 offset-top-41 offset-md-top-0">
+                                  <!-- Product-->
+                                  <div class="product product-grid product-grid-type-2">
+                                    <!-- Product Image-->
+                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-03-217x215.png' %}" alt="">
+                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
+                                    </div>
+                                    <!-- Product Rating-->
+                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
+                                    <!-- Product Title-->
+                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Castle Art Supplies Acrylic Paint Set Pack of 12 Colors</a></div>
+                                    <!-- Product price-->
+                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5">$289.00</span>
+                                    </div>
+                                    <div class="product-block-hover">
+                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
+                                    </div>
+                                  </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="row">
+                          <div class="col-md-6 col-lg-3">
+                                  <!-- Product-->
+                                  <div class="product product-grid product-grid-type-2">
+                                    <!-- Product Image-->
+                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-02-232x229.png' %}" alt="">
+                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
+                                    </div>
+                                    <!-- Product Rating-->
+                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
+                                    <!-- Product Title-->
+                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Artist Paint Brush Set Nylon Hair Oil Painting Supplies</a></div>
+                                    <!-- Product price-->
+                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$124.00</span><span class="product-price-old text-dark">$219.00</span>
+                                    </div>
+                                    <div class="product-block-hover">
+                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
+                                    </div>
+                                  </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+          </div>
+        </div>
+      </section>
+      <!-- Classic Gallery Carousel-->
+      <!-- Embed Video-->
+      <!-- Classic Soundcloud Player-->
+      <!-- Upcoming Workshops-->
+      <section class="context-dark" data-preset='{"title":"Content block 2","category":"content, parallax","reload":true,"id":"content-block-2"}'>
+              <div class="parallax-container" data-parallax-img="{% static 'core/images/home-04-1920x1230.jpg' %}">
+                <div class="parallax-content">
+                  <div class="bg-overlay-gray-darkest">
+                    <div class="container section-98 section-md-110">
+                      <h1 class="text-between text-white">Upcoming Workshops</h1>
+                      <div class="row justify-content-sm-center">
+                        <div class="col-md-6 col-lg-5 col-xl-3">
+                                <!-- Post Event-->
+                                <article class="post post-event-type-2">
+                                  <!-- Post media-->
+                                  <header class="post-media novi-excluded"><a href="#"><img src="{% static 'core/images/home-05-270x310.jpg' %}" width="270" height="310" alt=""><span class="icon fa fa-info-circle novi-icon"></span></a>
+                                  </header>
+                                  <!-- Post content-->
+                                  <section class="post-content text-left novi-excluded offset-top-10">
+                                    <!-- Post Body-->
+                                    <div class="post-body">
+                                      <div class="icon icon-xxs mdi mdi-account text-middle novi-icon"></div> <span class="text-middle">Julia Flores</span>
+                                      <!-- Post Title-->
+                                      <h5 class="offset-top-10"><a href="#">Sew Workshop for Beginners</a></h5>
+                                      <!-- Post meta-->
+                                      <div class="post-meta context-dark">
+                                        <time datetime="2018-01-01"><span class="post-meta-day">22</span><span class="post-meta-month offset-top-4">September</span><span class="post-meta-time">18:00</span></time>
+                                      </div>
+                                    </div>
+                                  </section>
+                                </article>
+                        </div>
+                        <div class="col-md-6 col-lg-5 col-xl-3 offset-top-41 offset-md-top-0">
+                                <!-- Post Event-->
+                                <article class="post post-event-type-2">
+                                  <!-- Post media-->
+                                  <header class="post-media novi-excluded"><a href="#"><img src="{% static 'core/images/home-06-270x310.jpg' %}" width="270" height="310" alt=""><span class="icon fa fa-info-circle novi-icon"></span></a>
+                                  </header>
+                                  <!-- Post content-->
+                                  <section class="post-content text-left novi-excluded offset-top-10">
+                                    <!-- Post Body-->
+                                    <div class="post-body">
+                                      <div class="icon icon-xxs mdi mdi-account text-middle novi-icon"></div> <span class="text-middle">Douglas Torres</span>
+                                      <!-- Post Title-->
+                                      <h5 class="offset-top-10"><a href="#">Woodworking Workshop</a></h5>
+                                      <!-- Post meta-->
+                                      <div class="post-meta context-dark">
+                                        <time datetime="2018-01-01"><span class="post-meta-day">26</span><span class="post-meta-month offset-top-4">September</span><span class="post-meta-time">18:00</span></time>
+                                      </div>
+                                    </div>
+                                  </section>
+                                </article>
+                        </div>
+                        <div class="row-spacer d-none d-md-block d-xl-none offset-top-41"></div>
+                        <div class="col-md-6 col-lg-5 col-xl-3 offset-top-41 offset-md-top-0">
+                                <!-- Post Event-->
+                                <article class="post post-event-type-2">
+                                  <!-- Post media-->
+                                  <header class="post-media novi-excluded"><a href="#"><img src="{% static 'core/images/home-07-270x310.jpg' %}" width="270" height="310" alt=""><span class="icon fa fa-info-circle novi-icon"></span></a>
+                                  </header>
+                                  <!-- Post content-->
+                                  <section class="post-content text-left novi-excluded offset-top-10">
+                                    <!-- Post Body-->
+                                    <div class="post-body">
+                                      <div class="icon icon-xxs mdi mdi-account text-middle novi-icon"></div> <span class="text-middle">Rose Warren</span>
+                                      <!-- Post Title-->
+                                      <h5 class="offset-top-10"><a href="#">Scrapbooking Workshop for Beginners</a></h5>
+                                      <!-- Post meta-->
+                                      <div class="post-meta context-dark">
+                                        <time datetime="2018-01-01"><span class="post-meta-day">22</span><span class="post-meta-month offset-top-4">September</span><span class="post-meta-time">18:00</span></time>
+                                      </div>
+                                    </div>
+                                  </section>
+                                </article>
+                        </div>
+                        <div class="col-md-6 col-lg-5 col-xl-3 offset-top-41 offset-md-top-0">
+                                <!-- Post Event-->
+                                <article class="post post-event-type-2">
+                                  <!-- Post media-->
+                                  <header class="post-media novi-excluded"><a href="#"><img src="{% static 'core/images/home-08-270x310.jpg' %}" width="270" height="310" alt=""><span class="icon fa fa-info-circle novi-icon"></span></a>
+                                  </header>
+                                  <!-- Post content-->
+                                  <section class="post-content text-left novi-excluded offset-top-10">
+                                    <!-- Post Body-->
+                                    <div class="post-body">
+                                      <div class="icon icon-xxs mdi mdi-account text-middle novi-icon"></div> <span class="text-middle">Douglas Torres</span>
+                                      <!-- Post Title-->
+                                      <h5 class="offset-top-10"><a href="#">Wood processing Workshop</a></h5>
+                                      <!-- Post meta-->
+                                      <div class="post-meta context-dark">
+                                        <time datetime="2018-01-01"><span class="post-meta-day">22</span><span class="post-meta-month offset-top-4">September</span><span class="post-meta-time">18:00</span></time>
+                                      </div>
+                                    </div>
+                                  </section>
+                                </article>
+                        </div>
+                      </div>
+                      <div class="row justify-content-sm-center offset-top-66">
+                        <div class="col-sm-10 col-md-6 col-lg-5 col-xl-4 inset-left-50 inset-sm-left-80 inset-right-50 inset-sm-right-80"><a class="btn btn-block btn-default btn-ellipse" href="#">view all workshops</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </section>
+      <!-- Latest Blog Posts-->
+      <section class="section-98 section-md-110 novi-background" data-preset='{"title":"Blog 1","category":"content, blog","reload":false,"id":"blog-1"}'>
+        <div class="container">
+          <h1 class="text-between">Latest Blog Posts</h1>
+          <div class="row justify-content-sm-center">
+            <div class="col-md-10 col-lg-6">
+                    <!-- Post Boxed--><a class="d-block" href="blog-single-post.html">
+                      <div class="post post-boxed">
+                        <!-- Post media-->
+                        <header class="post-media novi-excluded"><img class="img-fluid" width="570" height="321" src="{% static 'core/images/post-01-570x321.jpg' %}" alt=""></header>
+                        <!-- Post content-->
+                        <section class="post-content text-left novi-excluded">
+                          <div class="post-tags group-xs"><span class="label-custom label-lg-custom label-primary">Handmade</span><span class="label-custom label-lg-custom label-primary">Scrapbooking</span>
+                          </div>
+                          <div class="post-body">
+                            <!-- Post Title-->
+                            <div class="post-title">
+                              <h4 class="text-regular">How To Grow Your Creative Business from Scratch</h4>
+                            </div>
+                            <div class="post-meta small">
+                              <ul class="list-inline list-inline-sm p">
+                                <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">Cheryl Crawford</span></li>
+                                <li class="list-inline-item"><span class="text-middle icon-xxs mdi mdi-clock novi-icon"></span>
+                                  <time class="font-italic text-warning text-middle" datetime="2018-01-01">2 days ago</time>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </section>
+                      </div></a>
+            </div>
+            <div class="col-md-10 col-lg-6 offset-top-66 offset-md-top-30 offset-lg-top-0">
+                    <!-- Post Boxed--><a class="d-block" href="blog-single-post.html">
+                      <div class="post post-boxed">
+                        <!-- Post media-->
+                        <header class="post-media novi-excluded"><img class="img-fluid" width="570" height="321" src="{% static 'core/images/post-02-570x321.jpg' %}" alt=""></header>
+                        <!-- Post content-->
+                        <section class="post-content text-left novi-excluded">
+                          <div class="post-tags group-xs"><span class="label-custom label-lg-custom label-primary">Handmade</span><span class="label-custom label-lg-custom label-primary">Scrapbooking</span>
+                          </div>
+                          <div class="post-body">
+                            <!-- Post Title-->
+                            <div class="post-title">
+                              <h4 class="text-regular">How To Prepare For a Creative Conference</h4>
+                            </div>
+                            <div class="post-meta small">
+                              <ul class="list-inline list-inline-sm p">
+                                <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">Cheryl Crawford</span></li>
+                                <li class="list-inline-item"><span class="text-middle icon-xxs mdi mdi-clock novi-icon"></span>
+                                  <time class="font-italic text-warning text-middle" datetime="2018-01-01">2 days ago</time>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </section>
+                      </div></a>
+            </div>
+            <div class="row-spacer d-none d-lg-block offset-top-30"></div>
+            <div class="col-md-10 col-lg-6 offset-top-66 offset-md-top-30 offset-lg-top-0">
+                    <!-- Post Boxed--><a class="d-block" href="blog-single-post.html">
+                      <div class="post post-boxed">
+                        <!-- Post media-->
+                        <header class="post-media novi-excluded"><img class="img-fluid" width="570" height="321" src="{% static 'core/images/post-03-570x321.jpg' %}" alt=""></header>
+                        <!-- Post content-->
+                        <section class="post-content text-left novi-excluded">
+                          <div class="post-tags group-xs"><span class="label-custom label-lg-custom label-primary">Handmade</span><span class="label-custom label-lg-custom label-primary">Scrapbooking</span>
+                          </div>
+                          <div class="post-body">
+                            <!-- Post Title-->
+                            <div class="post-title">
+                              <h4 class="text-regular">Wooden Toys For Learning and Play</h4>
+                            </div>
+                            <div class="post-meta small">
+                              <ul class="list-inline list-inline-sm p">
+                                <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">Jack George</span></li>
+                                <li class="list-inline-item"><span class="text-middle icon-xxs mdi mdi-clock novi-icon"></span>
+                                  <time class="font-italic text-warning text-middle" datetime="2018-01-01">2 days ago</time>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </section>
+                      </div></a>
+            </div>
+            <div class="col-md-10 col-lg-6 offset-top-66 offset-md-top-30 offset-lg-top-0">
+                    <!-- Post Boxed--><a class="d-block" href="blog-single-post.html">
+                      <div class="post post-boxed">
+                        <!-- Post media-->
+                        <header class="post-media novi-excluded"><img class="img-fluid" width="570" height="321" src="{% static 'core/images/post-04-570x321.jpg' %}" alt=""></header>
+                        <!-- Post content-->
+                        <section class="post-content text-left novi-excluded">
+                          <div class="post-tags group-xs"><span class="label-custom label-lg-custom label-primary">Handmade</span><span class="label-custom label-lg-custom label-primary">Textile</span>
+                          </div>
+                          <div class="post-body">
+                            <!-- Post Title-->
+                            <div class="post-title">
+                              <h4 class="text-regular">Alpha Custom Rugs' Ashram</h4>
+                            </div>
+                            <div class="post-meta small">
+                              <ul class="list-inline list-inline-sm p">
+                                <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">Barbara Hunt</span></li>
+                                <li class="list-inline-item"><span class="text-middle icon-xxs mdi mdi-clock novi-icon"></span>
+                                  <time class="font-italic text-warning text-middle" datetime="2018-01-01">2 days ago</time>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </section>
+                      </div></a>
+            </div>
+            <div class="col-12 offset-top-66"><a class="btn btn-primary btn-ellipse" href="blog.html">view all blog posts</a></div>
+          </div>
+        </div>
+      </section>
+      <!-- Artists Rating-->
+      <section class="section-66 section-md-110 bg-lighter novi-background" data-preset='{"title":"Artists block","category":"content","reload":false,"id":"artists-block"}'>
+        <div class="container">
+          <h1 class="text-between">Artists Rating</h1>
+          <div class="row justify-content-sm-center">
+            <div class="col-lg-10 col-xl-12">
+              <div class="row text-md-left">
+                <div class="col-sm-6 col-xl-4">
+                  <div class="unit unit-sm flex-md-row unit-spacing-sm">
+                    <div class="unit-left"><img src="{% static 'core/images/user-tiffany-harper-120x120.jpg' %}" width="120" height="120" alt="Tiffany Harper"></div>
+                    <div class="unit-body">
+                      <div>
+                        <h5 class="text-primary"><a href="#">Tiffany Harper</a></h5>
+                      </div>
+                      <div class="offset-top-10">
+                        <div class="text-dark offset-top-0">Scrapbooking, polymer clay</div>
+                      </div>
+                      <div class="offset-top-14">
+                        <div class="icon icon-xxs mdi novi-icon mdi-trending-up text-dark text-middle"></div><span class="text-darkest text-middle inset-left-10">1806.98</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-4 offset-top-41 offset-sm-top-0">
+                  <div class="unit unit-sm flex-md-row unit-spacing-sm">
+                    <div class="unit-left"><img src="{% static 'core/images/user-marie-myers-120x120.jpg' %}" width="120" height="120" alt="Marie Myers"></div>
+                    <div class="unit-body">
+                      <div>
+                        <h5 class="text-primary"><a href="#">Marie Myers</a></h5>
+                      </div>
+                      <div class="offset-top-10">
+                        <div class="text-dark offset-top-0">Scrapbooking, polymer clay</div>
+                      </div>
+                      <div class="offset-top-14">
+                        <div class="icon icon-xxs mdi novi-icon mdi-trending-up text-dark text-middle"></div><span class="text-darkest text-middle inset-left-10">1687.54</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-4 offset-top-41 offset-xl-top-0">
+                  <div class="unit unit-sm flex-md-row unit-spacing-sm">
+                    <div class="unit-left"><img src="{% static 'core/images/user-hannah-sandoval-120x120.jpg' %}" width="120" height="120" alt="Hannah Sandoval"></div>
+                    <div class="unit-body">
+                      <div>
+                        <h5 class="text-primary"><a href="#">Hannah Sandoval</a></h5>
+                      </div>
+                      <div class="offset-top-10">
+                        <div class="text-dark offset-top-0">Scrapbooking, polymer clay</div>
+                      </div>
+                      <div class="offset-top-14">
+                        <div class="icon icon-xxs mdi novi-icon mdi-trending-up text-dark text-middle"></div><span class="text-darkest text-middle inset-left-10">1387.54</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Next Range-->
+                <div class="row-spacer d-none d-xl-block offset-top-50"></div>
+                <div class="col-sm-6 col-xl-4 offset-top-41 offset-xl-top-0">
+                  <div class="unit unit-sm flex-md-row unit-spacing-sm">
+                    <div class="unit-left"><img src="{% static 'core/images/user-amy-perry-120x120.jpg' %}" width="120" height="120" alt="Amy Perry"></div>
+                    <div class="unit-body">
+                      <div>
+                        <h5 class="text-primary"><a href="#">Amy Perry</a></h5>
+                      </div>
+                      <div class="offset-top-10">
+                        <div class="text-dark offset-top-0">Scrapbooking, polymer clay</div>
+                      </div>
+                      <div class="offset-top-14">
+                        <div class="icon icon-xxs mdi novi-icon mdi-trending-up text-dark text-middle"></div><span class="text-darkest text-middle inset-left-10">1106.98</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-4 offset-top-41 offset-xl-top-0">
+                  <div class="unit unit-sm flex-md-row unit-spacing-sm">
+                    <div class="unit-left"><img src="{% static 'core/images/user-gloria-warren-120x120.jpg' %}" width="120" height="120" alt="Gloria Warren"></div>
+                    <div class="unit-body">
+                      <div>
+                        <h5 class="text-primary"><a href="#">Gloria Warren</a></h5>
+                      </div>
+                      <div class="offset-top-10">
+                        <div class="text-dark offset-top-0">Scrapbooking, polymer clay</div>
+                      </div>
+                      <div class="offset-top-14">
+                        <div class="icon icon-xxs mdi novi-icon mdi-trending-up text-dark text-middle"></div><span class="text-darkest text-middle inset-left-10">987.54</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-4 offset-top-41 offset-xl-top-0">
+                  <div class="unit unit-sm flex-md-row unit-spacing-sm">
+                    <div class="unit-left"><img src="{% static 'core/images/user-sarah-graham-120x120.jpg' %}" width="120" height="120" alt="Sarah Graham"></div>
+                    <div class="unit-body">
+                      <div>
+                        <h5 class="text-primary"><a href="#">Sarah Graham</a></h5>
+                      </div>
+                      <div class="offset-top-10">
+                        <div class="text-dark offset-top-0">Scrapbooking, polymer clay</div>
+                      </div>
+                      <div class="offset-top-14">
+                        <div class="icon icon-xxs mdi novi-icon mdi-trending-up text-dark text-middle"></div><span class="text-darkest text-middle inset-left-10">887.54</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      
-    </div>
-  </div>
-  {% endfor %}
-</div>
-
-<div class="swiper-pagination"></div>
-<div class="swiper-button-next"></div>
-<div class="swiper-button-prev"></div>
-
-</div>
-
-
-  <!-- Welcome to Intense-->
-  <section class="section novi-background section-98 section-md-124" data-preset='{"title":"Content block 1","category":"content","id":"content-block-1"}'>
-    <div class="container">
-      <div class="row grid-group-md offset-top-0 justify-content-center">
-        <div class="col-sm-10 col-lg-6 text-lg-left inset-lg-right-80">
-          <h1 class="font-weight-bold text-primary">Welcome to Intense</h1>
-          <div class="offset-top-30 offset-lg-top-50">
-            <p>At Intense, our mission is to provide excellence in preschool, kindergarten, before and after school programs and summer camp for families living in the greater local area. Here you’ll find exceptional teachers, curriculum and learning environments that encourage children to learn, play and explore in a safe and nurturing environment.</p>
-          </div>
-          <div class="offset-top-20 offset-lg-top-30"><a class="btn btn-safety-orange" href="faq.html">learn more</a></div>
-        </div>
-        <div class="col-sm-10 col-lg-6"><img class="img-fluid d-inline-block" src="{% static 'core/images/home-02-570x320.jpg' %}" width="570" height="320" alt=""></div>
-      </div>
-    </div>
-  </section>
-  <!-- Why People Choose Us-->
-  <section class="section novi-background section-98 section-lg-124 bg-lightest" data-preset='{"title":"Icon block 1","category":"content, icon block","id":"icon-block-1"}'>
-    <div class="container">
-      <h1 class="text-primary font-weight-bold">Why People Choose Us</h1>
-      <svg height="13" viewbox="0 0 71 13" width="71" xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <path class="bg-primary" d="M 65.591797,0.39453125 C 64.632414,0.55512546 63.656631,1.037019 62.839844,1.9121094 l 2.009765,1.875 c 0.987119,-1.0575807 1.464926,-0.9055776 2.074219,-0.5703125 0.609293,0.335265 1.125342,1.2616345 1.144531,1.6152343 C 68.111503,5.6270437 67.786283,6.2015228 66.951172,6.875 66.116061,7.5484772 64.791442,8.161997 63.316406,8.6230469 60.366335,9.5451467 56.822431,9.9000923 55.357422,9.9453125 49.487597,10.126495 41.515727,8.2106051 34.380859,5.9648438 30.873861,4.8609863 26.209294,2.9728751 21.335938,1.7480469 16.462581,0.52321864 11.317182,-0.07967759 6.7734375,1.6503906 l -0.025391,0.00977 -0.025391,0.00977 C 4.3944177,2.6636873 2.6199428,4.0438286 1.515625,5.5957031 0.41130724,7.1475776 -0.0588551,9.0257429 0.7265625,10.642578 c 0.735964,1.515031 2.2978692,2.250647 3.6972656,2.234375 1.3993964,-0.01627 2.7415813,-0.606444 3.6738281,-1.679687 L 6.0214844,9.3945312 C 5.6678168,9.8016889 4.967102,10.122226 4.3925781,10.128906 3.8180543,10.135587 3.4724885,10.00395 3.1992188,9.4414062 2.9754025,8.9806654 3.024638,8.2170231 3.7558594,7.1894531 4.4839472,6.1662866 5.8567444,5.037042 7.78125,4.2109375 c 3.674744,-1.3881932 8.271853,-0.9562457 12.884766,0.203125 4.624565,1.1622992 9.200779,3.012418 12.890625,4.1738281 7.258822,2.2847774 15.360414,4.3068544 21.884765,4.1054684 1.739141,-0.05368 5.355814,-0.40149 8.695313,-1.445312 1.669749,-0.521911 3.270286,-1.207639 4.541015,-2.232422 C 69.948464,7.990842 70.909328,6.4678364 70.8125,4.6835938 70.724917,3.0697107 69.754257,1.63739 68.248047,0.80859375 67.494942,0.39419565 66.55118,0.23393704 65.591797,0.39453125 Z"></path>
-      </svg>
-      <div class="row justify-content-sm-center offset-top-66">
-        <div class="col-sm-10 col-md-7 col-lg-4">
-          <!-- Icon Box Type 2-->
-          <div class="unit unit-md flex-lg-row text-lg-left">
-            <div class="unit-left"><span class="novi-icon icon icon-lg icon-outlined mdi mdi-account-multiple text-safety-orange"></span></div>
-            <div class="unit-body">
-              <h4 class="font-weight-bold font-default text-uppercase font-weight-bold offset-md-top-20">qualified teachers</h4>
-              <p>We employ only highly skilled teachers with more than 5 years of experience in teaching children.</p>
-            </div>
+          <div class="row justify-content-sm-center offset-top-66">
+            <div class="col-sm-10 col-md-6 col-lg-5 col-xl-4 inset-left-50 inset-sm-left-80 inset-right-50 inset-sm-right-80"><a class="btn btn-block btn-default btn-ellipse" href="#">view all members</a></div>
           </div>
         </div>
-        <div class="col-sm-10 col-md-7 col-lg-4 offset-top-50 offset-lg-top-0">
-          <!-- Icon Box Type 2-->
-          <div class="unit unit-md flex-lg-row text-lg-left">
-            <div class="unit-left"><span class="novi-icon icon icon-lg icon-outlined mdi mdi-palette text-safety-orange"></span></div>
-            <div class="unit-body">
-              <h4 class="font-weight-bold font-default text-uppercase font-weight-bold offset-md-top-20">hobby groups</h4>
-              <p>The groups where your children will be educated are created according to your child’s interests.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-10 col-md-7 col-lg-4 offset-top-50 offset-lg-top-0">
-          <!-- Icon Box Type 2-->
-          <div class="unit unit-md flex-lg-row text-lg-left">
-            <div class="unit-left"><span class="novi-icon icon icon-lg icon-outlined mdi mdi-school text-safety-orange"></span></div>
-            <div class="unit-body">
-              <h4 class="font-weight-bold font-default text-uppercase font-weight-bold offset-md-top-20">various programs</h4>
-              <p>We have a variety of programs to offer your children regardless of their age and level of knowledge.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Programs-->
-  <section class="section novi-background section-98 section-lg-124" data-preset='{"title":"Programs","category":"content","id":"programs"}'>
-    <div class="container">
-      <h1 class="text-primary font-weight-bold">Programs</h1>
-      <svg height="13" viewbox="0 0 71 13" width="71" xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <path class="bg-primary" d="M 65.591797,0.39453125 C 64.632414,0.55512546 63.656631,1.037019 62.839844,1.9121094 l 2.009765,1.875 c 0.987119,-1.0575807 1.464926,-0.9055776 2.074219,-0.5703125 0.609293,0.335265 1.125342,1.2616345 1.144531,1.6152343 C 68.111503,5.6270437 67.786283,6.2015228 66.951172,6.875 66.116061,7.5484772 64.791442,8.161997 63.316406,8.6230469 60.366335,9.5451467 56.822431,9.9000923 55.357422,9.9453125 49.487597,10.126495 41.515727,8.2106051 34.380859,5.9648438 30.873861,4.8609863 26.209294,2.9728751 21.335938,1.7480469 16.462581,0.52321864 11.317182,-0.07967759 6.7734375,1.6503906 l -0.025391,0.00977 -0.025391,0.00977 C 4.3944177,2.6636873 2.6199428,4.0438286 1.515625,5.5957031 0.41130724,7.1475776 -0.0588551,9.0257429 0.7265625,10.642578 c 0.735964,1.515031 2.2978692,2.250647 3.6972656,2.234375 1.3993964,-0.01627 2.7415813,-0.606444 3.6738281,-1.679687 L 6.0214844,9.3945312 C 5.6678168,9.8016889 4.967102,10.122226 4.3925781,10.128906 3.8180543,10.135587 3.4724885,10.00395 3.1992188,9.4414062 2.9754025,8.9806654 3.024638,8.2170231 3.7558594,7.1894531 4.4839472,6.1662866 5.8567444,5.037042 7.78125,4.2109375 c 3.674744,-1.3881932 8.271853,-0.9562457 12.884766,0.203125 4.624565,1.1622992 9.200779,3.012418 12.890625,4.1738281 7.258822,2.2847774 15.360414,4.3068544 21.884765,4.1054684 1.739141,-0.05368 5.355814,-0.40149 8.695313,-1.445312 1.669749,-0.521911 3.270286,-1.207639 4.541015,-2.232422 C 69.948464,7.990842 70.909328,6.4678364 70.8125,4.6835938 70.724917,3.0697107 69.754257,1.63739 68.248047,0.80859375 67.494942,0.39419565 66.55118,0.23393704 65.591797,0.39453125 Z"></path>
-      </svg>
-      <div class="row justify-content-sm-center">
-        <div class="cell xs-10 col-md-8">
-          <p>The educational child care programs in our center were designed to offer a comprehensive path to prepare your child for elementary school. Intense features developmentally appropriate programs with specialized curriculum for a variety of ages. Find the right path for your child here.</p>
-        </div>
-      </div>
-      <div class="row justify-content-sm-center offset-top-66">
-        <div class="col-sm-10 col-md-6 col-lg-3">
-          <!-- Thumbnail Terry-->
-          <figure class="thumbnail-terry"><a href="#"><img width="270" height="360" src="{% static 'core/images/home-03-270x360.jpg' %}" alt=""></a>
-            <figcaption>
-              <div>
-                <h4 class="thumbnail-terry-title">Infants</h4>
-              </div>
-              <p class="thumbnail-terry-desc offset-top-0"></p><a class="btn offset-top-10 offset-md-top-0 btn-safety-orange" href="single-program.html">learn more</a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-sm-10 col-md-6 col-lg-3 offset-top-50 offset-md-top-0">
-          <!-- Thumbnail Terry-->
-          <figure class="thumbnail-terry"><a href="#"><img width="270" height="360" src="{% static 'core/images/home-04-270x360.jpg' %}" alt=""></a>
-            <figcaption>
-              <div>
-                <h4 class="thumbnail-terry-title">Toddlers</h4>
-              </div>
-              <p class="thumbnail-terry-desc offset-top-0"></p><a class="btn offset-top-10 offset-md-top-0 btn-safety-orange" href="single-program.html">learn more</a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-sm-10 col-md-6 col-lg-3 offset-top-50 offset-lg-top-0">
-          <!-- Thumbnail Terry-->
-          <figure class="thumbnail-terry"><a href="#"><img width="270" height="360" src="{% static 'core/images/home-05-270x360.jpg' %}" alt=""></a>
-            <figcaption>
-              <div>
-                <h4 class="thumbnail-terry-title">Early Preschool</h4>
-              </div>
-              <p class="thumbnail-terry-desc offset-top-0"></p><a class="btn offset-top-10 offset-md-top-0 btn-safety-orange" href="single-program.html">learn more</a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="col-sm-10 col-md-6 col-lg-3 offset-top-50 offset-lg-top-0">
-          <!-- Thumbnail Terry-->
-          <figure class="thumbnail-terry"><a href="#"><img width="270" height="360" src="{% static 'core/images/home-06-270x360.jpg' %}" alt=""></a>
-            <figcaption>
-              <div>
-                <h4 class="thumbnail-terry-title">Preschool</h4>
-              </div>
-              <p class="thumbnail-terry-desc offset-top-0"></p><a class="btn offset-top-10 offset-md-top-0 btn-safety-orange" href="single-program.html">learn more</a>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Testimonials-->
-  <div class="parallax-container section" data-parallax-img="{% static 'core/images/bg-02-1920x748.jpg' %}" data-preset='{"title":"Testimonials","category":"content, testimonials, parallax","id":"testimonials"}'>
-    <div class="parallax-content section-98 section-lg-124 context-dark">
-      <div class="container">
-        <h1 class="font-weight-bold">Testimonials</h1>
-        <svg height="13" viewbox="0 0 71 13" width="71" xmlns="http://www.w3.org/2000/svg" version="1.1">
-          <path class="bg-white" d="M 65.591797,0.39453125 C 64.632414,0.55512546 63.656631,1.037019 62.839844,1.9121094 l 2.009765,1.875 c 0.987119,-1.0575807 1.464926,-0.9055776 2.074219,-0.5703125 0.609293,0.335265 1.125342,1.2616345 1.144531,1.6152343 C 68.111503,5.6270437 67.786283,6.2015228 66.951172,6.875 66.116061,7.5484772 64.791442,8.161997 63.316406,8.6230469 60.366335,9.5451467 56.822431,9.9000923 55.357422,9.9453125 49.487597,10.126495 41.515727,8.2106051 34.380859,5.9648438 30.873861,4.8609863 26.209294,2.9728751 21.335938,1.7480469 16.462581,0.52321864 11.317182,-0.07967759 6.7734375,1.6503906 l -0.025391,0.00977 -0.025391,0.00977 C 4.3944177,2.6636873 2.6199428,4.0438286 1.515625,5.5957031 0.41130724,7.1475776 -0.0588551,9.0257429 0.7265625,10.642578 c 0.735964,1.515031 2.2978692,2.250647 3.6972656,2.234375 1.3993964,-0.01627 2.7415813,-0.606444 3.6738281,-1.679687 L 6.0214844,9.3945312 C 5.6678168,9.8016889 4.967102,10.122226 4.3925781,10.128906 3.8180543,10.135587 3.4724885,10.00395 3.1992188,9.4414062 2.9754025,8.9806654 3.024638,8.2170231 3.7558594,7.1894531 4.4839472,6.1662866 5.8567444,5.037042 7.78125,4.2109375 c 3.674744,-1.3881932 8.271853,-0.9562457 12.884766,0.203125 4.624565,1.1622992 9.200779,3.012418 12.890625,4.1738281 7.258822,2.2847774 15.360414,4.3068544 21.884765,4.1054684 1.739141,-0.05368 5.355814,-0.40149 8.695313,-1.445312 1.669749,-0.521911 3.270286,-1.207639 4.541015,-2.232422 C 69.948464,7.990842 70.909328,6.4678364 70.8125,4.6835938 70.724917,3.0697107 69.754257,1.63739 68.248047,0.80859375 67.494942,0.39419565 66.55118,0.23393704 65.591797,0.39453125 Z"></path>
-        </svg>
-        <div class="row justify-content-sm-center offset-top-66">
-          <div class="col-sm-10 col-md-7 col-lg-4">
-            <!-- Boxed Testimonials-->
-            <blockquote class="quote quote-classic quote-classic-boxed">
-              <div class="quote-body bg-white text-darker">
-                <p>
-                  <q>My younger son returns very happy with all activities happening at your school every day. Thank you!</q>
-                </p>
-                <div class="quote-meta"><img class="rounded-circle quote-img" width="80" height="80" src="{% static 'core/images/user-alex-ross-80x80.jpg' %}" alt=""></div>
-              </div>
-              <h6 class="quote-author text-uppercase font-weight-bold font-default">
-                <cite class="text-normal">Alex Ross</cite>
-              </h6>
-              <p class="quote-desc">Designer at Comix Publishing</p>
-            </blockquote>
-          </div>
-          <div class="col-sm-10 col-md-7 col-lg-4 offset-top-50 offset-lg-top-0">
-            <!-- Boxed Testimonials-->
-            <blockquote class="quote quote-classic quote-classic-boxed">
-              <div class="quote-body bg-white text-darker">
-                <p>
-                  <q>I am glad that my son is being taught in your school. You have the most qualified teachers in the area!</q>
-                </p>
-                <div class="quote-meta"><img class="rounded-circle quote-img" width="80" height="80" src="{% static 'core/images/user-alisa-milano-80x80.jpg' %}" alt=""></div>
-              </div>
-              <h6 class="quote-author text-uppercase font-weight-bold font-default">
-                <cite class="text-normal">Alice McMillan</cite>
-              </h6>
-              <p class="quote-desc">Sales manager at Brix Ltd.</p>
-            </blockquote>
-          </div>
-          <div class="col-sm-10 col-md-7 col-lg-4 offset-top-50 offset-lg-top-0">
-            <!-- Boxed Testimonials-->
-            <blockquote class="quote quote-classic quote-classic-boxed">
-              <div class="quote-body bg-white text-darker">
-                <p>
-                  <q>My daughter is very satisfied with lessons of English and Math – they give her additional impact for development.</q>
-                </p>
-                <div class="quote-meta"><img class="rounded-circle quote-img" width="80" height="80" src="{% static 'core/images/user-john-more-80x80.jpg' %}" alt=""></div>
-              </div>
-              <h6 class="quote-author text-uppercase font-weight-bold font-default">
-                <cite class="text-normal">John Moore</cite>
-              </h6>
-              <p class="quote-desc">Driver at CIS Logistics</p>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Gallery-->
-  <section class="section novi-background" data-preset='{"title":"Gallery 1","category":"content, gallery","reload":true,"id":"gallery-1"}'>
-    <div class="row no-gutters" data-lightgallery="group">
-      <div class="col-sm-6 col-lg">
-        <!-- Thumbnail Rayen--><a class="thumbnail-rayen" data-lightgallery="item" href="{% static 'core/images/home-07_original-1200x774.jpg' %}"><img width="384" height="256" src="{% static 'core/images/home-07-384x256.jpg' %}" alt="">
-          <figcaption><span class="novi-icon icon icon-md fa-search-plus"></span></figcaption></a>
-      </div>
-      <div class="col-sm-6 col-lg">
-        <!-- Thumbnail Rayen--><a class="thumbnail-rayen" data-lightgallery="item" href="{% static 'core/images/home-08_original-1200x1126.jpg' %}"><img width="384" height="256" src="{% static 'core/images/home-08-384x256.jpg' %}" alt="">
-          <figcaption><span class="novi-icon icon icon-md fa-search-plus"></span></figcaption></a>
-      </div>
-      <div class="col-sm-6 col-lg">
-        <!-- Thumbnail Rayen--><a class="thumbnail-rayen" data-lightgallery="item" href="{% static 'core/images/home-09_original-1200x801.jpg' %}"><img width="384" height="256" src="{% static 'core/images/home-09-384x256.jpg' %}" alt="">
-          <figcaption><span class="novi-icon icon icon-md fa-search-plus"></span></figcaption></a>
-      </div>
-      <div class="col-sm-6 col-lg">
-        <!-- Thumbnail Rayen--><a class="thumbnail-rayen" data-lightgallery="item" href="{% static 'core/images/home-10_original-1200x801.jpg' %}"><img width="384" height="256" src="{% static 'core/images/home-10-384x256.jpg' %}" alt="">
-          <figcaption><span class="novi-icon icon icon-md fa-search-plus"></span></figcaption></a>
-      </div>
-      <div class="col-sm-6 col-lg">
-        <!-- Thumbnail Rayen--><a class="thumbnail-rayen" data-lightgallery="item" href="{% static 'core/images/home-11_original-1200x801.jpg' %}"><img width="384" height="256" src="{% static 'core/images/home-11-384x256.jpg' %}" alt="">
-          <figcaption><span class="novi-icon icon icon-md fa-search-plus"></span></figcaption></a>
-      </div>
-    </div>
-  </section>
-  <!-- Map-->
-  <section class="google-map-container section" data-center="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-styles="[{&quot;featureType&quot;: &quot;water&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [{&quot;color&quot;: &quot;#e9e9e9&quot;}, {&quot;lightness&quot;: 17}]}, {&quot;featureType&quot;: &quot;landscape&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [{&quot;color&quot;: &quot;#f5f5f5&quot;}, {&quot;lightness&quot;: 20}]}, {&quot;featureType&quot;: &quot;road.highway&quot;, &quot;elementType&quot;: &quot;geometry.fill&quot;, &quot;stylers&quot;: [{&quot;color&quot;: &quot;#ffffff&quot;}, {&quot;lightness&quot;: 17}]}, {&quot;featureType&quot;: &quot;road.highway&quot;, &quot;elementType&quot;: &quot;geometry.stroke&quot;, &quot;stylers&quot;: [{&quot;color&quot;: &quot;#ffffff&quot;}, {&quot;lightness&quot;: 29}, {&quot;weight&quot;: 0.2}]}, {&quot;featureType&quot;: &quot;road.arterial&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [{&quot;color&quot;: &quot;#ffffff&quot;}, {&quot;lightness&quot;: 18}]}, {&quot;featureType&quot;: &quot;road.local&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [{&quot;color&quot;: &quot;#ffffff&quot;}, {&quot;lightness&quot;: 16}]}, {&quot;featureType&quot;: &quot;poi&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [{&quot;color&quot;: &quot;#f5f5f5&quot;}, {&quot;lightness&quot;: 21}]}, {&quot;featureType&quot;: &quot;poi.park&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [{&quot;color&quot;: &quot;#dedede&quot;}, {&quot;lightness&quot;: 21}]}, {&quot;elementType&quot;: &quot;labels.text.stroke&quot;, &quot;stylers&quot;: [{&quot;visibility&quot;: &quot;on&quot;}, {&quot;color&quot;: &quot;#ffffff&quot;}, {&quot;lightness&quot;: 16}]}, {&quot;elementType&quot;: &quot;labels.text.fill&quot;, &quot;stylers&quot;: [{&quot;saturation&quot;: 36}, {&quot;color&quot;: &quot;#333333&quot;}, {&quot;lightness&quot;: 40}]}, {&quot;elementType&quot;: &quot;labels.icon&quot;, &quot;stylers&quot;: [{&quot;visibility&quot;: &quot;off&quot;}]}, {&quot;featureType&quot;: &quot;transit&quot;, &quot;elementType&quot;: &quot;geometry&quot;, &quot;stylers&quot;: [{&quot;color&quot;: &quot;#f2f2f2&quot;}, {&quot;lightness&quot;: 19}]}, {&quot;featureType&quot;: &quot;administrative&quot;, &quot;elementType&quot;: &quot;geometry.fill&quot;, &quot;stylers&quot;: [{&quot;color&quot;: &quot;#fefefe&quot;}, {&quot;lightness&quot;: 20}]}, {&quot;featureType&quot;: &quot;administrative&quot;, &quot;elementType&quot;: &quot;geometry.stroke&quot;, &quot;stylers&quot;: [{&quot;color&quot;: &quot;#fefefe&quot;}, {&quot;lightness&quot;: 17}, {&quot;weight&quot;: 1.2}]}]" data-zoom="5" data-preset='{"title":"Map","category":"map","reload":true,"id":"map"}'>
-    <div class="google-map"></div>
-    <ul class="google-map-markers">
-      <li data-location="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-description="9870 St Vincent Place, Glasgow" data-icon="core/images/gmap_marker.png" data-icon-active="core/images/gmap_marker_active.png"></li>
-    </ul>
-  </section>
+      </section>
 
-
-
-
-
-
-  {% endblock content %}
+{% endblock %}
