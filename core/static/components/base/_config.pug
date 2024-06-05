@@ -1,0 +1,74 @@
+-
+	var
+		logo = {
+			default: 'logo-default-167x49.svg',
+			inverse: 'logo-default-167x49.svg',
+			name: 'Ingreen'
+		},
+
+		buyLink = 'https://www.templatemonster.com/intense-multipurpose-html-template.html',
+
+		menu = {
+			type: 'root',
+			child: [
+				{
+					title: 'Home',
+					link: 'index.html', 
+					home: true
+				},
+				{
+					title: 'About us'
+				},
+
+				{
+					title: 'Pages',
+					link: '#',
+					child: {
+						type: 'dropdown',
+						child: [
+							{title: 'Services'},
+							{title: 'Team member'},
+							{title: 'Careers'},
+							{title: 'Search results'}
+						]
+					}
+				},
+				{
+					title: 'Blog',
+					link: '#', 
+					child: {
+						type: 'dropdown',  
+						child: [
+							{
+								title: 'Classic Blog'
+							},
+							{
+								title: 'Single Post'
+							}
+						]
+					}
+				},
+			
+
+				{
+					title: 'Portfolio',
+					child: {
+						type: 'dropdown',
+						child: [
+							{
+								title: 'Single Project'
+							}
+						]
+					}
+				}
+
+			]
+		},
+
+		homePage,
+		pageName,
+		pageId,
+		pageClass,
+		pageImage,
+		htmlClass,
+		breadcrumbs = [];

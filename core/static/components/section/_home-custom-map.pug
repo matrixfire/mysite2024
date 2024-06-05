@@ -1,0 +1,55 @@
+section.section.section-lg.bg-transparent.novi-background( data-preset!={ title:'Custom Map', category:'map', reload:false, id:'custom-map' } )
+	.container.text-center
+		.custom-map
+			.map-inner
+				.map-marker-box(style='left: 13%; top: 42%;')
+					button#map-marker-1.map-marker(data-multi-switch!={
+						targets: '#world-map-popup-1',
+						scope: '.map-popup'
+					} )
+					article.map-popup.map-popup-left#world-map-popup-1
+						.map-popup-title Wind Turbines
+						.map-popup-text 45,000MW
+				.map-marker-box(style='left: 34%; top: 24%;')
+					button#map-marker-2.map-marker.map-marker-secondary.map-marker-5(data-multi-switch!={
+						targets: '#world-map-popup-2',
+						scope: '.map-popup'
+						})
+					article.map-popup#world-map-popup-2
+						.map-popup-title.text-secondary Solar Power
+						.map-popup-text 33,500MW
+				.map-marker-box(style='left: 51%; top: 58%;')
+					button#map-marker-3.map-marker.map-marker-3(data-multi-switch!={
+						targets: '#world-map-popup-3',
+						scope: '.map-popup'
+					})
+					article.map-popup#world-map-popup-3
+						.map-popup-title Wind Turbines
+						.map-popup-text 25,000MW
+				.map-marker-box(style='left: 27%; top: 70%;')
+					button#map-marker-4.map-marker.map-marker-2.map-marker-secondary(data-multi-switch!={
+						targets: '#world-map-popup-4',
+						scope: '.map-popup'
+					})
+					article.map-popup#world-map-popup-4
+						.map-popup-title.text-secondary Solar Power
+						.map-popup-text 34,000MW
+				.map-marker-box(style='left: 64%; top: 44%;')
+					button#map-marker-5.map-marker.map-marker-6(data-multi-switch!={
+						targets: '#world-map-popup-5',
+						scope: '.map-popup'
+					})
+					article.map-popup#world-map-popup-5
+						.map-popup-title Wind Turbines
+						.map-popup-text 23,000MW
+				.map-marker-box(style='left: 80%; top: 42%;')
+					button#map-marker-6.map-marker.map-marker-dark.map-marker-4(data-multi-switch!={
+						targets: '#world-map-popup-6',
+						scope: '.map-popup'
+					})
+					article.map-popup.map-popup-right#world-map-popup-6
+						.map-popup-title.text-dark Hybrid Energy
+						.map-popup-text 32,000MW
+		
+				+img('map-01-967x625.svg')
+

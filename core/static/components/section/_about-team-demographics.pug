@@ -1,0 +1,32 @@
+include ../counter/_counter
+
+// Team demographics
+section.section.section-lg.bg-transparent.novi-background( data-preset!={ title:'Team Demographics', category:'content box', reload:true, id:'team-demographics' } )
+	.container
+		.row.row-30.justify-content-lg-between.novi-disabled
+			.col-md-4
+				h4 Team demographics
+				p Urna porttitor rhoncus dolor purus non enim. Facilisi cras fermentum odio eu feugiat pretium nibh.
+			.col-md-8.col-lg-7
+				div
+					.row
+						.col-6.col-xs-5.col-md-6.col-xl-5
+							+counter({
+								value: 57,
+								postfix: '%',
+								title: 'Men'
+							})
+						.col-6.col-xs-5.col-md-6.col-xl-5
+							+counter({
+								value: 43,
+								postfix: '%',
+								title: 'Women'
+							})
+				hr.divider.divider-sm
+				p.small A condimentum vitae sapien pellentesque habitant.
+					| #[br.d-none.d-xs-block]
+					| Nunc congue nisi vitae suscipit.
+				.offset-sm.group-30.d-flex.align-items-center.flex-wrap.flex-xs-nowrap
+					h3.h3-small Want to help build the future of renewable energy?
+					.flex-shrink-0
+						a.btn.btn-lg.btn-primary( href='#' ) Learn More

@@ -1,0 +1,54 @@
+include ../progress-linear/_progress-liear
+include ../counter/_counter
+
+// Skills and counters
+section.section.section-lg.bg-200.novi-background.bg-image-special( data-preset!={ title:'Skills', category:'content', reload:true, id:'skills' } )
+	.bg-image-special-image.bg-image( style='background-image: url("images/image-08-630x1241.jpg")' )
+	.container
+		.row.row-50.row-lg-80.row-xl-100.row-xxl-150.novi-disabled
+			.col-12
+				.row.row-40.justify-content-lg-between.novi-disabled
+					.col-md-5( data-animate!={ class: 'fadeInUp' } )
+						h3 Leading experts in renewable energy
+						p.block.block-sm Our team specializes in various kinds of green energy sources for everyday use.
+					.col-md-7.col-lg-6.progress-linear-area
+						+progress-linear({
+							title: 'Solar energy',
+							value: '75',
+							text: 'Solar energy is derived by capturing radiant energy from sunlight.'
+						}).progress-linear-lg.progress-linear-primary
+						+progress-linear({
+							title: 'Wind energy',
+							value: '99',
+							text: 'Wind energy is a clean energy source, meaning it doesn’t pollute the air.'
+						}).progress-linear-lg.progress-linear-secondary
+						+progress-linear({
+							title: 'Hydroelectric energy',
+							value: '45',
+							text: 'Hydroelectric power is very versatile and can be generated worldwide.'
+						}).progress-linear-lg.progress-linear-gray-400
+			.col-12
+				.row.row-40.justify-content-lg-between.novi-disabled
+					.col-md-5( data-animate!={ class: 'fadeInUp' } )
+						h3 We've helped businesses increase their revenue on average by 90% in their first year with us!
+						p.block.block-sm Get your source of green energy to become more energy efficient today.
+					.col-md-7.col-lg-6
+						.row.row-40
+							.col-auto.col-xs-6
+								+counter({
+									value: 2,
+									postfix: 'k+',
+									title: 'Customers Annually'
+								})
+							.col-auto.col-xs-6
+								+counter({
+									value: 2478,
+									title: 'Positive Reviews'
+								})
+							.col-auto.col-xs-6
+								+counter({
+									prefix: '+',
+									value: 83,
+									postfix: '%',
+									title: 'Usage increase'
+								})

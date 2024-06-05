@@ -1,0 +1,40 @@
+// Features
+section.section.bg-transparent.novi-background( data-preset!={ title:'Offer', category:'carousel', reload:false, id:'offer' } )
+	.container
+		.row.align-items-center.slick-creative.novi-disabled
+			.col-md-7.col-xl-6.d-md-flex.flex-md-row-reverse
+				.slick-slider.slider-for.slider-images( data-slick!={
+					arrows: false,
+					asNavFor: '.slider-nav',
+					adaptiveHeight: true
+				} )
+					.text-end: +img( 'image-02-930x779.png' )
+					.text-end: +img( 'image-02-930x779.png' )
+					.text-end: +img( 'image-02-930x779.png' )
+			.col-md-5.col-xl-6.pt-5( style='padding-bottom: 14.2%' )
+					.ps-4
+						h5.text-primary What We Offer
+						.slick-slider.slider-nav( data-slick!={
+							arrows: false,
+							asNavFor: '.slider-for',
+							autoplay: true,
+							autoplaySpeed: 3000,
+							focusOnSelect: true,
+							variableWidth: true
+						} )
+							.slick-dot Solar Panels
+							.slick-dot Wind Turbines
+							.slick-dot Hybrid Energy
+					.slick-slider.slider-for( data-slick!={
+						arrows: false,
+						asNavFor: '.slider-nav'
+					} )
+						div.slick-custom-slide
+							p We only use the most advanced solar technologies made by trusted names like LG. These solar panels are one of the best on the market.
+							a.btn.btn-lg.btn-primary( href='#' ) Learn More
+						div.slick-custom-slide
+							p Our wind turbines are designed and built to provide the most cost-effective long term power even if you are repowering an existing energy site. 
+							a.btn.btn-lg.btn-primary( href='#' ) Learn More
+						div.slick-custom-slide
+							p Our team provides cutting-edge hybrid energy solutions for corporate and individual customers throughout the world.
+							a.btn.btn-lg.btn-primary( href='#' ) Learn More

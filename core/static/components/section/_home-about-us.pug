@@ -1,0 +1,20 @@
+include ../counter/_counter
+
+// about us
+section.section.bg-white.section-lg.novi-background( data-preset!={ title:'About Us', category:'content', reload:true, id:'about-us' } )
+	.container
+		.row.row-50.justify-content-between.align-items-center
+			.col-lg-6( data-animate!={ class: 'fadeInLeft' } )
+				.pe-xl-5
+					h5.text-primary About Us
+					h2 Best Green Energy Provider
+					p.block.block-sm InGreen has been providing the nation with green energy of high quality since 2010.
+			.col-lg-6( data-animate!={ class: 'fadeInRight' } )
+				.figure.figure-with-counter
+					+img('image-01-554x453').figure-with-counter-img
+					.figure-counter-box
+						+counter({
+							value: 24,
+							postfix: 'k+',
+							title: 'Installed Panels'
+						}).counter-boxed.counter-boxed-dark

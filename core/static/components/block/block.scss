@@ -1,0 +1,15 @@
+@import "../bootstrap/scss/functions";
+@import "../base/functions";
+@import "../base/variables";
+@import "../bootstrap/scss/variables";
+@import "../bootstrap/scss/mixins";
+
+//base
+.block-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.block-sm {
+	max-width: 400px;
+}

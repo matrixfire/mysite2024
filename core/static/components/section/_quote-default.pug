@@ -1,0 +1,27 @@
+include ../quote/_quote
+
+// Quote default
+section.section.section-lg.bg-transparent.novi-background( data-preset!={ title:'Quote Default', category:'quote', reload:false, id:'quote-default' } )
+	.container
+		.row.row-40.row-md-50.novi-disabled( data-animate!={ class: 'fadeInUp' } )
+			.col-sm-6.col-lg-4
+				+quote({
+					text:     'The service provided by InGreen has been excellent. Their project delivery programme was well thought out and integrated seamlessly',
+					img:      'persons/person-01-64x64',
+					name:     'Adam Wilson',
+					position: 'Client'
+				})
+			.col-sm-6.col-lg-4
+				+quote({
+					text:     'We were really pleased that InGreen helped us find a solution which enabled the solar panels installation to run as smoothly as possible.',
+					img:      'persons/person-02-64x64',
+					name:     'John Williams',
+					position: 'Client'
+				})
+			.col-sm-6.col-lg-4
+				+quote({
+					text:     'The installation process was very good indeed. I’ve been impressed with your team’s performance throughout the project completion',
+					img:      'persons/person-03-64x64',
+					name:     'Eva Smith',
+					position: 'Client'
+				})

@@ -1,0 +1,88 @@
+include ../blurb/_blurb
+
+// Features
+section.section.section-lg.bg-transparent.novi-background( data-preset!={ title:'Features', category:'blurb, tab', reload:true, id:'features' } )
+	.container
+		.row.row-30.novi-disabled
+			.col-lg-6( data-animate!={ class: 'fadeInLeft' } )
+				.sticky.sticky-top
+					h2 Alternative
+						| #[br.d-none.d-lg-block]
+						| energy
+					p Here is a quick look at the benefits of 
+						| #[br.d-none.d-lg-block]
+						| renewable energy for your home and office.
+			.col-lg-6
+				.tab
+					ul.nav.nav-classic( role='tablist', data-animate!={ class: 'fadeInRight' } )
+						li.nav-item
+							a.nav-link.h4.active( data-bs-toggle='tab', href='#navClassic2-1', role='tab', aria-selected='true' ) For Home
+						li.nav-item
+							a.nav-link.h4( data-bs-toggle='tab', href='#navClassic2-2', role='tab', aria-selected='false' ) For Business
+					.tab-content
+						#navClassic2-1.tab-pane.fade.show.active( role='tabpanel' )
+							.row.row-30
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-sun novi-icon"></span>',
+										title: '90% Energy Saving'
+									})
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-pie-chart novi-icon"></span>',
+										title: 'Low Maintenance Cost'
+									})
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-cable novi-icon"></span>',
+										title: 'Diverse Applications'
+									})
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-wind novi-icon"></span>',
+										title: 'Time-Saving Solutions'
+									})
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-menu3 novi-icon"></span>',
+										title: 'End-To-End Services'
+									})
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-lock novi-icon"></span>',
+										title: 'Low Electricity Consumption'
+									})
+
+						#navClassic2-2.tab-pane.fade( role='tabpanel' )
+							.row.row-30
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-sun novi-icon"></span>',
+										title: 'Lower Energy Bills'
+									})
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-pie-chart novi-icon"></span>',
+										title: 'Public Relations Boost'
+									})
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-cable novi-icon"></span>',
+										title: 'Less Service Disruption'
+									})
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-wind novi-icon"></span>',
+										title: 'Fewer Global Warning Emissions'
+									})
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-menu3 novi-icon"></span>',
+										title: 'Energy Independence'
+									})
+								.col-6.col-xs-3.col-lg-4( data-animate!={ class: 'fadeInUp' } )
+									+blurb-small({
+										embed: '<span class="blurb-icon linearicons-lock novi-icon"></span>',
+										title: 'Improving Your Marketability'
+									})
+

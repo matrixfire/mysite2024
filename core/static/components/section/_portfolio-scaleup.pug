@@ -1,0 +1,58 @@
+include ../thumbnail-scaleup/_thumbnail-scaleup
+include ../thumbnail/_thumbnail-content-sample
+
+// Portfolio Bella
+section.section.section-lg.bg-transparent.novi-background( data-preset!={ title:'Portfolio Bella', category:'thumbnail, gallery, isotope', reload:true, id:'portfolio-bella' } )
+	.container.text-center
+		h2 Portfolio
+		.isotope-wrap.isotope-line
+			.isotope-filters
+				.isotope-filter.active( data-isotope-filter="*" ) All
+				.isotope-filter( data-isotope-filter=".design" ) 2023
+				.isotope-filter( data-isotope-filter=".development" ) 2019
+				.isotope-filter( data-isotope-filter=".marketing" ) 2018
+			.isotope.row.row-30.row-xl-80
+				.col-sm-6.isotope-item.development
+					+thumbnail-scaleup({
+						img: 'image-03-620x420',
+						title: 'WTC Photovoltaic Power Station',
+						link: 'single-project.html',
+						description: 'A small solar energy power plant.'
+					})
+				.col-sm-6.isotope-item.marketing
+					+thumbnail-scaleup({
+						img: 'image-04-620x420',
+						title: 'LA Solar Energy Power Plant',
+						link: 'single-project.html',
+						description: 'One of our most ambitious projects.'
+					})
+
+				.col-sm-6.isotope-item.development
+					+thumbnail-scaleup({
+						img: 'image-05-620x420',
+						title: 'Seattle Wind Turbine Complex',
+						link: 'single-project.html',
+						description: 'Supplying a local state with wind energy.'
+					})
+				.col-sm-6.isotope-item.design
+					+thumbnail-scaleup({
+						img: 'image-06-620x420',
+						title: 'Renewable Energy for Vehicles',
+						link: 'single-project.html',
+						description: 'A project made possible thanks to our partners.'
+					})
+
+				.col-sm-6.isotope-item.marketing
+					+thumbnail-scaleup({
+						img: 'image-07-620x420', 
+						title: 'Wind Deployment Center',
+						link: 'single-project.html',
+						description: 'A project made possible thanks to our partners.'
+					})
+				.col-sm-6.isotope-item.design
+					+thumbnail-scaleup({
+						img: 'image-08-620x420',
+						title: 'Solar Panels for Local Farms',
+						link: 'single-project.html',
+						description: 'A project made possible thanks to our partners.'
+					})
