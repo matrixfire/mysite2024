@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="keywords" content="Intense web design multipurpose template">
     <meta name="date" content="Apr 26">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{% static 'core/images/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Dancing+Script:700%7CLato:300,300italic,400,700,900">
     <link rel="stylesheet" href="css/style.css">
     <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
@@ -16,7 +16,7 @@
   </head>
   <body>
     <!-- IE Panel-->
-    <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"> <img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"> <img src="{% static 'core/images/ie8-panel/warning_bar_0000_us.jpg' %}" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <!-- Page-->
     <div class="page text-center">
       <!-- Page Header-->
@@ -33,7 +33,7 @@
                   </div>
                   <div class="col-xl-6 text-center">
                     <!--Navbar Brand-->
-                    <div class="rd-navbar-brand"><a href="../index.html"><img width='221' height='32' src='images/logo-dark.png' alt=''/></a></div>
+                    <div class="rd-navbar-brand"><a href="../index.html"><img width='221' height='32' src="{% static 'core/images/logo-dark.png' %}" alt=''/></a></div>
                   </div>
                   <div class="col-xl-3">
                     <div class="form-search-wrap">
@@ -61,7 +61,7 @@
                   <div class="rd-navbar-nav-wrap">
                     <div class="rd-navbar-mobile-scroll">
                       <!--Navbar Brand Mobile-->
-                      <div class="rd-navbar-mobile-brand"><a href="../index.html"><img width='221' height='32' src='images/logo-dark.png' alt=''/></a></div>
+                      <div class="rd-navbar-mobile-brand"><a href="../index.html"><img width='221' height='32' src="{% static 'core/images/logo-dark.png' %}" alt=''/></a></div>
                       <!-- RD Navbar Nav-->
                       <ul class="rd-navbar-nav">
                         <li class="active"><a href="index.html"><span>Home</span></a>
@@ -92,14 +92,14 @@
                             <div class="rd-navbar-cart-wrap">
                               <ul class="rd-navbar-list-products">
                                 <li>
-                                  <div class="rd-navbar-product-image"><img src="images/product-02-60x60.png" alt=""></div>
+                                  <div class="rd-navbar-product-image"><img src="{% static 'core/images/product-02-60x60.png' %}" alt=""></div>
                                   <div class="rd-navbar-product-caption">
                                     <h6 class="rd-navbar-product-title"><a href="single-product.html">Artist Paint Brush Set Nylon Hair Oil Painting Supplies</a></h6>
                                     <p class="rd-navbar-product-price">$124.00</p>
                                   </div><a class="mdi mdi-window-close novi-icon rd-navbar-product-remove" href="#"></a>
                                 </li>
                                 <li>
-                                  <div class="rd-navbar-product-image"><img src="images/product-07-60x60.png" alt=""></div>
+                                  <div class="rd-navbar-product-image"><img src="{% static 'core/images/product-07-60x60.png' %}" alt=""></div>
                                   <div class="rd-navbar-product-caption">
                                     <h6 class="rd-navbar-product-title"><a href="single-product.html">Marco 72 Colors Art Drawing Oil Base Pencils-Set</a></h6>
                                     <p class="rd-navbar-product-price">$189.00</p>
@@ -160,7 +160,7 @@
                 </div>
                 <div class="col-sm-12 col-lg-4 order-lg-1 offset-top-34 offset-lg-top-0">
                   <!-- Footer brand-->
-                  <div class="footer-brand"><a href="index.html"><img width='221' height='32' style='margin-left: -6px;' src='images/logo-light.png' alt=''/></a></div>
+                  <div class="footer-brand"><a href="index.html"><img width='221' height='32' style='margin-left: -6px;' src="{% static 'core/images/logo-light.png' %}" alt=''/></a></div>
                   <p class="small text-darker offset-top-4">&copy; <span id="copyright-year"></span> . <a href="privacy.html">Privacy Policy</a></p>
                 </div>
               </div>
@@ -171,12 +171,12 @@
       </footer>
     </div>
     
-    <a class="builder-button" href="https://ld-wp2.template-help.com/novi-builder/intense-handmade/" target="_blank"><img src="images/novi-icon-26x26.png" width="26" height="26" alt=""><span>Try builder</span></a>
+    <a class="builder-button" href="https://ld-wp2.template-help.com/novi-builder/intense-handmade/" target="_blank"><img src="{% static 'core/images/novi-icon-26x26.png' %}" width="26" height="26" alt=""><span>Try builder</span></a>
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"> </div>
     <!-- Java script-->
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
-    {% block extra_js %}{% endblock %}
+     {% block extra_js %}{% endblock %}
   </body>
 </html>
