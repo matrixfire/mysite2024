@@ -30,175 +30,201 @@
               <!-- Classic Soundcloud Player-->
               <!-- Blog Classic-->
               <section class="novi-excluded">
+
+
+
+
+                {% for post in posts %}
+                {% if post.post_type == post.PostType.CLASSIC_IMAGE %}
+                <!-- Type 1: Classic Post with Image -->
                 <div class="offset-top-41 offset-md-top-66">
-                              <!-- Post Classic-->
-                              <article class="post post-classic">
-                                <!-- Post media-->
-                                <header class="post-media novi-excluded">
-                                  <div><a class="thumbnail-classic" href="blog-single-post.html" target="_self">
-                                                    <figure><img width="770" height="434" src="{% static 'core/images/post-01-770x434.jpg' %}" alt="">
-                                                    </figure></a>
-                                  </div>
-                                </header>
-                                <!-- Post content-->
-                                <section class="post-content text-left novi-excluded offset-top-41">
-                                  <div class="unit unit-sm flex-md-row flex-md-row-reverse">
-                                    <div class="unit-body">
-                                      <!-- Post Meta-->
-                                      <div class="post-meta text-dark"><span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
-                                        <time class="text-middle small" datetime="2018-01-01">05/14/2018</time>
-                                      </div>
-                                      <!-- Post Title-->
-                                      <h3 class="text-regular offset-top-10"><a href="blog-single-post.html">Simple Handmade Techniques</a></h3>
-                                      <!-- Post Body-->
-                                      <div class="post-body">
-                                        <p>Today I would like to talk about some interesting art forms connected with handmade craft. They represent various handmade ideas that you will certainly find beneficial for your handmade craft skills as well as for your free time.</p>
-                                        <p>Handmade has always been a field where anyone who has manual skills and desire to develop them can achieve great results. Though handmade craft was not very popular…</p>
-                                      </div>
-                                      <!-- Post Tags-->
-                                      <p class="text-dark text-md-right"><small><a href="#">Handmade</a>, <a href="#">Scrapbooking</a></small></p>
-                                    </div>
-                                    <div class="unit-right">
-                                      <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
-                                        <div class="unit-left"><img class="rounded-circle" src="{% static 'core/images/user-july-mao-70x70.jpg' %}" alt=" " width="70" height="70"></div>
-                                        <div class="unit-body">
-                                          <p class="text-dark">
-                                            <cite class="small text-normal">July Mao</cite>
-                                          </p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </section>
-                              </article>
+                  <!-- Post Classic-->
+                  <article class="post post-classic">
+                    <!-- Post media-->
+                    <header class="post-media novi-excluded">
+                      <div>
+                        <a class="thumbnail-classic" href="{{ post.get_absolute_url }}" target="_self">
+                          <figure>
+                            <img width="770" height="434" src="{{ post.image.url }}" alt="{{ post.title }}">
+                          </figure>
+                        </a>
+                      </div>
+                    </header>
+                    <!-- Post content-->
+                    <section class="post-content text-left novi-excluded offset-top-41">
+                      <div class="unit unit-sm flex-md-row flex-md-row-reverse">
+                        <div class="unit-body">
+                          <!-- Post Meta-->
+                          <div class="post-meta text-dark">
+                            <span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
+                            <time class="text-middle small" datetime="{{ post.publish|date:'Y-m-d' }}">{{ post.publish|date:'m/d/Y' }}</time>
+                          </div>
+                          <!-- Post Title-->
+                          <h3 class="text-regular offset-top-10"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                          <!-- Post Body-->
+                          <div class="post-body">
+                            <p>{{ post.body|truncatewords:30 }}</p>
+                          </div>
+                          <!-- Post Tags-->
+                          <p class="text-dark text-md-right"><small>{% for tag in post.tags.all %}<a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
+                        </div>
+                        <div class="unit-right">
+                          <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
+                            <div class="unit-left"><img class="rounded-circle" src="{{ post.author_image.url }}" alt="{{ post.author.get_full_name }}" width="70" height="70"></div>
+                            <div class="unit-body">
+                              <p class="text-dark">
+                                <cite class="small text-normal">{{ post.author.get_full_name }}</cite>
+                              </p>
                             </div>
-                <hr class="hr bg-lighter offset-top-41 offset-md-top-66">
-                <div class="offset-top-41 offset-md-top-66">
-                                <!-- Post Classic-->
-                                <article class="post post-classic">
-                                  <!-- Post media-->
-                                  <!-- Post content-->
-                                  <section class="post-content text-left novi-excluded">
-                                    <div class="unit unit-sm flex-md-row flex-md-row-reverse">
-                                      <div class="unit-body">
-                                        <!-- Post Meta-->
-                                        <div class="post-meta text-dark"><span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
-                                          <time class="text-middle small" datetime="2018-01-01">05/14/2018</time>
-                                        </div>
-                                        <!-- Post Title-->
-                                        <h3 class="text-regular offset-top-10"><a href="blog-single-post.html">Handmade Interior Decoration</a></h3>
-                                        <!-- Post Body-->
-                                        <div class="post-body">
-                                          <p>In this article you will learn how to decorate your house without spending a single dollar. As handmade decorations become popular, many people think about trying to create something that would add a new element to their house’s interior without being expensive.</p>
-                                          <p>If you are looking for a cheap but eye-catching change for your interior, these simple solutions may give your room the additional effect and attract the attention of…</p>
-                                        </div>
-                                        <!-- Post Tags-->
-                                        <p class="text-dark text-md-right"><small><a href="#">Handmade</a>, <a href="#">News</a></small></p>
-                                      </div>
-                                      <div class="unit-right">
-                                        <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
-                                          <div class="unit-left"><img class="rounded-circle" src="{% static 'core/images/user-john-doe-70x70.jpg' %}" alt=" " width="70" height="70"></div>
-                                          <div class="unit-body">
-                                            <p class="text-dark">
-                                              <cite class="small text-normal">John Doe</cite>
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </section>
-                                </article>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </article>
                 </div>
                 <hr class="hr bg-lighter offset-top-41 offset-md-top-66">
+                {% elif post.post_type == post.PostType.CLASSIC_NO_IMAGE %}
+                <!-- Type 2: Classic Post without Image -->
                 <div class="offset-top-41 offset-md-top-66">
-                                <!-- Post Classic-->
-                                <article class="post post-classic">
-                                  <!-- Post media-->
-                                  <header class="post-media novi-excluded">
-                                                  <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe class="embed-responsive-item" src="//www.youtube.com/embed/-AhmuMqZB0s?wmode=transparent"></iframe>
-                                                  </div>
-                                  </header>
-                                  <!-- Post content-->
-                                  <section class="post-content text-left novi-excluded offset-top-41">
-                                    <div class="unit unit-sm flex-md-row flex-md-row-reverse">
-                                      <div class="unit-body">
-                                        <!-- Post Meta-->
-                                        <div class="post-meta text-dark"><span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
-                                          <time class="text-middle small" datetime="2018-01-01">05/14/2018</time>
-                                        </div>
-                                        <!-- Post Title-->
-                                        <h3 class="text-regular offset-top-10"><a href="blog-single-post.html">Interesting Handmade Ideas</a></h3>
-                                        <!-- Post Body-->
-                                        <div class="post-body">
-                                          <p>Recently I was browsing the Web looking for interesting handmade ideas. I saw the following video in a blog of a young handmader who showed her latest handmade masterpieces on her own blog. The items she showed were truly amazing and yet incredibly simple.</p>
-                                          <p>In this post, I am glad to share this video with you. If you have something to show us and you think our readers will benefit from it, feel free to send us your videos…</p>
-                                        </div>
-                                        <!-- Post Tags-->
-                                        <p class="text-dark text-md-right"><small><a href="#">Handmade</a>, <a href="#">News</a></small></p>
-                                      </div>
-                                      <div class="unit-right">
-                                        <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
-                                          <div class="unit-left"><img class="rounded-circle" src="{% static 'core/images/user-alex-ross-70x70.jpg' %}" alt=" " width="70" height="70"></div>
-                                          <div class="unit-body">
-                                            <p class="text-dark">
-                                              <cite class="small text-normal">Alex Ross</cite>
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </section>
-                                </article>
+                  <!-- Post Classic-->
+                  <article class="post post-classic">
+                    <!-- Post content-->
+                    <section class="post-content text-left novi-excluded">
+                      <div class="unit unit-sm flex-md-row flex-md-row-reverse">
+                        <div class="unit-body">
+                          <!-- Post Meta-->
+                          <div class="post-meta text-dark">
+                            <span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
+                            <time class="text-middle small" datetime="{{ post.publish|date:'Y-m-d' }}">{{ post.publish|date:'m/d/Y' }}</time>
+                          </div>
+                          <!-- Post Title-->
+                          <h3 class="text-regular offset-top-10"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                          <!-- Post Body-->
+                          <div class="post-body">
+                            <p>{{ post.body|truncatewords:30 }}</p>
+                          </div>
+                          <!-- Post Tags-->
+                          <p class="text-dark text-md-right"><small>{% for tag in post.tags.all %}<a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
+                        </div>
+                        <div class="unit-right">
+                          <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
+                            <div class="unit-left"><img class="rounded-circle" src="{{ post.author_image.url }}" alt="{{ post.author.get_full_name }}" width="70" height="70"></div>
+                            <div class="unit-body">
+                              <p class="text-dark">
+                                <cite class="small text-normal">{{ post.author.get_full_name }}</cite>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </article>
                 </div>
                 <hr class="hr bg-lighter offset-top-41 offset-md-top-66">
+                {% elif post.post_type == post.PostType.VIDEO %}
+                <!-- Type 3: Post with Embedded Video -->
+                <div class="offset-top-41 offset-md-top-66">
+                  <!-- Post Classic-->
+                  <article class="post post-classic">
+                    <!-- Post media-->
+                    <header class="post-media novi-excluded">
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/{{ post.video_id }}?wmode=transparent"></iframe>
+                      </div>
+                    </header>
+                    <!-- Post content-->
+                    <section class="post-content text-left novi-excluded offset-top-41">
+                      <div class="unit unit-sm flex-md-row flex-md-row-reverse">
+                        <div class="unit-body">
+                          <!-- Post Meta-->
+                          <div class="post-meta text-dark">
+                            <span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
+                            <time class="text-middle small" datetime="{{ post.publish|date:'Y-m-d' }}">{{ post.publish|date:'m/d/Y' }}</time>
+                          </div>
+                          <!-- Post Title-->
+                          <h3 class="text-regular offset-top-10"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                          <!-- Post Body-->
+                          <div class="post-body">
+                            <p>{{ post.body|truncatewords:30 }}</p>
+                          </div>
+                          <!-- Post Tags-->
+                          <p class="text-dark text-md-right"><small>{% for tag in post.tags.all %}<a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
+                        </div>
+                        <div class="unit-right">
+                          <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
+                            <div class="unit-left"><img class="rounded-circle" src="{{ post.author_image.url }}" alt="{{ post.author.get_full_name }}" width="70" height="70"></div>
+                            <div class="unit-body">
+                              <p class="text-dark">
+                                <cite class="small text-normal">{{ post.author.get_full_name }}</cite>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </article>
+                </div>
+                <hr class="hr bg-lighter offset-top-41 offset-md-top-66">
+                {% elif post.post_type == post.PostType.CAROUSEL %}
+                <!-- Type 4: Post with Carousel of Images -->
                 <div class="offset-top-41 offset-md-top-66 owl-carousel-height-auto">
-                                <!-- Post Classic-->
-                                <article class="post post-classic">
-                                  <!-- Post media-->
-                                  <header class="post-media novi-excluded">
-                                                  <!-- Owl Carousel-->
-                                                  <div class="owl-carousel owl-carousel-classic" data-items="1" data-dots="true" data-nav="true" data-nav-class="[&quot;owl-prev mdi mdi-chevron-left&quot;, &quot;owl-next mdi mdi-chevron-right&quot;]" data-lightgallery="group"><a class="thumbnail-classic" data-lightgallery="item" href="images/blog-01-1170x777.jpg">
-                                                                    <figure><img width="770" height="434" src="{% static 'core/images/blog-01-770x434.jpg' %}" alt="">
-                                                                    </figure></a><a class="thumbnail-classic" data-lightgallery="item" href="images/blog-02-1170x878.jpg">
-                                                                    <figure><img width="770" height="434" src="{% static 'core/images/blog-02-770x434.jpg' %}" alt="">
-                                                                    </figure></a><a class="thumbnail-classic" data-lightgallery="item" href="images/blog-03-1170x774.jpg">
-                                                                    <figure><img width="770" height="434" src="{% static 'core/images/blog-03-770x434.jpg' %}" alt="">
-                                                                    </figure></a>
-                                                  </div>
-                                  </header>
-                                  <!-- Post content-->
-                                  <section class="post-content text-left novi-excluded offset-top-41">
-                                    <div class="unit unit-sm flex-md-row flex-md-row-reverse">
-                                      <div class="unit-body">
-                                        <!-- Post Meta-->
-                                        <div class="post-meta text-dark"><span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
-                                          <time class="text-middle small" datetime="2018-01-01">05/14/2018</time>
-                                        </div>
-                                        <!-- Post Title-->
-                                        <h3 class="text-regular offset-top-10"><a href="blog-single-post.html">10 Reasons to Buy Handmade Gifts</a></h3>
-                                        <!-- Post Body-->
-                                        <div class="post-body">
-                                          <p>Homemade gifts can be an easy, fun, and affordable way to make a special present for those who you love or respect. Of course, it depends on how much you can spend on such a gift, but it is also possible to make a handmade present with your own hands.</p>
-                                          <p>However, today we will speak about 10 reasons to buy a handmade gift, and how to select a proper one for your friend or loved one. First, handmade is an extensive…</p>
-                                        </div>
-                                        <!-- Post Tags-->
-                                        <p class="text-dark text-md-right"><small><a href="#">Handmade</a>, <a href="#">Woodwork</a></small></p>
-                                      </div>
-                                      <div class="unit-right">
-                                        <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
-                                          <div class="unit-left"><img class="rounded-circle" src="{% static 'core/images/user-andy-cole-70x70.jpg' %}" alt=" " width="70" height="70"></div>
-                                          <div class="unit-body">
-                                            <p class="text-dark">
-                                              <cite class="small text-normal">Andy Cole</cite>
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </section>
-                                </article>
+                  <!-- Post Classic-->
+                  <article class="post post-classic">
+                    <!-- Post media-->
+                    <header class="post-media novi-excluded">
+                      <!-- Owl Carousel-->
+                      <div class="owl-carousel owl-carousel-classic" data-items="1" data-dots="true" data-nav="true" data-nav-class='["owl-prev mdi mdi-chevron-left", "owl-next mdi mdi-chevron-right"]' data-lightgallery="group">
+                        {% for image in post.carousel_images.all %}
+                        <a class="thumbnail-classic" data-lightgallery="item" href="{{ image.url }}">
+                          <figure>
+                            <img width="770" height="434" src="{{ image.url }}" alt="{{ post.title }}">
+                          </figure>
+                        </a>
+                        {% endfor %}
+                      </div>
+                    </header>
+                    <!-- Post content-->
+                    <section class="post-content text-left novi-excluded offset-top-41">
+                      <div class="unit unit-sm flex-md-row flex-md-row-reverse">
+                        <div class="unit-body">
+                          <!-- Post Meta-->
+                          <div class="post-meta text-dark">
+                            <span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
+                            <time class="text-middle small" datetime="{{ post.publish|date:'Y-m-d' }}">{{ post.publish|date:'m/d/Y' }}</time>
+                          </div>
+                          <!-- Post Title-->
+                          <h3 class="text-regular offset-top-10"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                          <!-- Post Body-->
+                          <div class="post-body">
+                            <p>{{ post.body|truncatewords:30 }}</p>
+                          </div>
+                          <!-- Post Tags-->
+                          <p class="text-dark text-md-right"><small>{% for tag in post.tags.all %}<a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
+                        </div>
+                        <div class="unit-right">
+                          <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
+                            <div class="unit-left"><img class="rounded-circle" src="{% if post.author_image %}{{ post.author_image.url }}{% else %}{% static "blog/img/small_logo.jpg" %}{% endif %}" alt="{{ post.author.get_full_name }}" width="70" height="70"></div>
+                            <div class="unit-body">
+                              <p class="text-dark">
+                                <cite class="small text-normal">{{ post.author.get_full_name }}</cite>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </article>
                 </div>
+                <hr class="hr bg-lighter offset-top-41 offset-md-top-66">
+                {% endif %}
+              {% endfor %}
+              
+
+
+
+
+
+
                 <div class="offset-top-66">
                                 <!-- Classic Pagination-->
                                 <nav>
