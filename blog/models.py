@@ -82,8 +82,8 @@ class Post(models.Model):
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=2, choices=Status.choices, default=Status.DRAFT)
-    post_type = models.CharField(max_length=2, choices=PostType.choices, default=PostType.CLASSIC_IMAGE)
+    status = models.CharField(max_length=2, choices=Status.choices, default=Status.PUBLISHED)
+    post_type = models.CharField(max_length=2, choices=PostType.choices, default=PostType.CLASSIC_NO_IMAGE)
     tags = TaggableManager()
 
     objects = models.Manager()  # The default manager.
