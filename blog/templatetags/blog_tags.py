@@ -4,6 +4,7 @@ from django.db.models import Count
 from django.utils.safestring import mark_safe
 
 from ..models import Post
+from taggit.models import Tag
 
 register = template.Library()
 
@@ -29,3 +30,13 @@ def get_most_commented_posts(count=5):
 @register.filter(name='markdown')
 def markdown_format(text):
     return mark_safe(markdown.markdown(text))
+
+
+@register.inclusion_tag('blog/sidebar.html', takes_context=True)
+def show_sidebar(context, author=None):
+    tags = Tag.objects.all()
+    return {
+        'request': context['request'],
+        'author': author,
+        'tags': tags,  # Add tags to the context
+    }

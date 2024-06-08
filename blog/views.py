@@ -20,6 +20,8 @@ def post_list(request, tag_slug=None):
     # Pagination with 3 posts per page
     paginator = Paginator(post_list, 3)
     page_number = request.GET.get('page', 1)
+
+    tags = Tag.objects.all()  # Get all tags
     try:
         posts = paginator.page(page_number)
     except PageNotAnInteger:
@@ -33,7 +35,8 @@ def post_list(request, tag_slug=None):
         'blog/post/list.html',
         {
             'posts': posts,
-            'tag': tag
+            'tag': tag,
+            'tags': tags,
         }
     )
 

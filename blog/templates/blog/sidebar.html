@@ -1,0 +1,67 @@
+{% load static %}
+<div class="col-lg-4 col-xl-3 offset-top-66 offset-lg-top-0">
+    <!-- Section Blog Modern-->
+    <aside>
+      <div class="row">
+        {% if author %}
+        <div class="col-12">
+          <!-- Member block type 3-->
+          <div class="member-block-type-3 shadow-drop-lg">
+            <div class="member-block-body">
+              <img class="rounded-circle" src="{% if post.author_image %}{{ post.author_image.url }}{% else %}{% static "blog/img/small_logo.jpg" %}{% endif %}">
+              <div class="offset-top-24">
+                <div>
+                  <h6 class="text-ubold text-uppercase">{{ author.get_full_name }}</h6>
+                </div>
+                <p class="small offset-top-10 text-primary">Handmader</p>
+              </div>
+            </div>
+            <div class="btn-group btn-group-sm offset-top-34" role="group" aria-label="button">
+              <a class="btn btn-default btn-icon btn-rect" href="#"><span class="icon novi-icon mdi mdi-facebook"></span></a>
+              <a class="btn btn-default btn-icon btn-rect" href="#"><span class="icon novi-icon mdi mdi-twitter"></span></a>
+              <a class="btn btn-default btn-icon btn-rect" href="#"><span class="icon novi-icon mdi mdi-google-plus"></span></a>
+            </div>
+            <div class="member-block-footer"><a class="btn btn-sm btn-default btn-block btn-rect" href="#">All Posts</a></div>
+          </div>
+        </div>
+        {% endif %}
+        <div class="col-12 text-left {% if not author %} offset-top-66 {% else %} offset-top-41 {% endif %}">
+          <!-- Search Form-->
+          <h6 class="text-uppercase text-spacing-60">Search</h6>
+          <div class="text-subline"></div>
+          <div class="offset-top-34">
+            <!-- RD Search Form-->
+            <form class="form-search rd-search" action="search-results.html" method="GET">
+              <div class="form-group">
+                <label class="form-label form-search-label form-label-sm" for="blog-sidebar-2-form-search-widget">Search</label>
+                <input class="form-search-input input-sm form-control input-sm" id="blog-sidebar-2-form-search-widget" type="text" name="s" autocomplete="off">
+              </div>
+              <button class="form-search-submit" type="submit"><span class="mdi mdi-magnify novi-icon"></span></button>
+            </form>
+          </div>
+        </div>
+        <div class="col-12 offset-top-41 text-left">
+          <!-- Tags-->
+          <h6 class="text-uppercase text-spacing-60">Tags</h6>
+          <div class="text-subline"></div>
+          <div class="offset-top-34 context-light">
+            <div class="group-xs tag-list">
+              <a class="btn-ellipse text-ubold btn btn-xs btn-default" href="#">handmade</a>
+              <a class="btn-ellipse text-ubold btn btn-xs btn-default" href="#">woodwork</a>
+              <a class="btn-ellipse text-ubold btn btn-xs btn-default" href="#">news</a>
+              <a class="btn-ellipse text-ubold btn btn-xs btn-default" href="#">textile</a>
+              <a class="btn-ellipse text-ubold btn btn-xs btn-default" href="#">scrapbooking</a>
+            </div>
+
+            <div class="group-xs tag-list">
+                {% for tag in tags %}
+                  <a class="btn-ellipse text-ubold btn btn-xs btn-default" href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>
+                {% endfor %}
+              </div>
+              
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+  

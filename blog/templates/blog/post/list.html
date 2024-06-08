@@ -1,8 +1,8 @@
-{% extends "core/base.html" %}
+{% extends "blog/base_blog.html" %}
 {% load static %}
+{% load blog_tags %}
 
-{% block content %}
-
+{% block blog_content %}
 
       <section data-preset='{"title":"Breadcrumbs","category":"breadcrumbs, parallax","reload":true,"id":"breadcrumbs"}'>
         <!-- Modern Breadcrumbs-->
@@ -230,80 +230,7 @@
 
               </section>
             </div>
-            <div class="col-lg-4 col-xl-3 offset-top-66 offset-lg-top-0">
-              <!-- Section Blog Modern-->
-              <aside class="text-left">
-                <div class="row">
-                  <div class="col-12">
-                    <!-- Search Form-->
-                    <h6 class="text-uppercase text-spacing-60">Search</h6>
-                    <div class="text-subline"></div>
-                    <div class="offset-top-34">
-                                    <!-- RD Search Form-->
-                                    <form class="form-search rd-search" action="search-results.html" method="GET">
-                                      <div class="form-group">
-                                        <label class="form-label form-search-label form-label-sm" for="blog-sidebar-2-form-search-widget">Search</label>
-                                        <input class="form-search-input input-sm form-control input-sm" id="blog-sidebar-2-form-search-widget" type="text" name="s" autocomplete="off">
-                                      </div>
-                                      <button class="form-search-submit" type="submit"><span class="mdi mdi-magnify novi-icon"></span></button>
-                                    </form>
-                    </div>
-                  </div>
-                  <div class="col-12 offset-top-41">
-                    <!-- Twitter Feed-->
-                    <h6 class="text-uppercase text-spacing-60">Twitter Feed</h6>
-                    <div class="text-subline"></div>
-                    <div class="offset-top-34">
-                                    <div class="twitter" data-twitter-username="templatemonster" data-twitter-date-hours=" hours ago" data-twitter-date-minutes=" minutes ago">
-                                      <div class="twitter-sm" data-twitter-type="tweet">
-                                        <div class="twitter-date text-dark small" data-date="text"></div>
-                                        <div class="twitter-text" data-tweet="text"></div>
-                                        <div class="twitter-name font-weight-bold big" data-screen_name="text"></div>
-                                      </div>
-                                      <div class="twitter-sm" data-twitter-type="tweet">
-                                        <div class="twitter-date text-dark small" data-date="text"></div>
-                                        <div class="twitter-text" data-tweet="text"></div>
-                                        <div class="twitter-name font-weight-bold big" data-screen_name="text"></div>
-                                      </div>
-                                    </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-12 offset-top-41">
-                    <!-- Category-->
-                    <h6 class="text-uppercase text-spacing-60">Categories</h6>
-                    <div class="text-subline"></div>
-                    <ul class="list list-marked offset-top-30">
-                      <li><a href="#">Handmade <span class="text-dark">(37)</span></a></li>
-                      <li><a href="#">Scrapbooking <span class="text-dark">(211)</span></a></li>
-                      <li><a href="#">Woodwork <span class="text-dark">(12)</span></a></li>
-                      <li><a href="#">Textile <span class="text-dark">(7)</span></a></li>
-                      <li><a href="#">News <span class="text-dark">(15)</span></a></li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-6 col-lg-12 offset-top-41 offset-sm-top-0 offset-lg-top-41">
-                    <!-- Archive-->
-                    <h6 class="text-uppercase text-spacing-60">Archive</h6>
-                    <div class="text-subline"></div>
-                    <ul class="list list-marked offset-top-30">
-                      <li><a href="#">January 2018 <span class="text-dark">(17)</span></a></li>
-                      <li><a href="#">December 2017 <span class="text-dark">(121)</span></a></li>
-                      <li><a href="#">November 2017 <span class="text-dark">(19)</span></a></li>
-                      <li><a href="#">October 2017 <span class="text-dark">(9)</span></a></li>
-                      <li><a href="#">September 2017 <span class="text-dark">(25)</span></a></li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-6 col-lg-12 offset-top-41">    
-                    <!-- Tags-->
-                    <h6 class="text-uppercase text-spacing-60">Tags</h6>
-                    <div class="text-subline"></div>
-                    <div class="offset-top-34 context-light">
-                                    <div class="group-xs tag-list"><a class="btn-ellipse text-ubold btn btn-xs btn-default" href="#">handmade</a><a class="btn-ellipse text-ubold btn btn-xs btn-default" href="#">woodwork</a><a class="btn-ellipse text-ubold btn btn-xs btn-default" href="#">news</a><a class="btn-ellipse text-ubold btn btn-xs btn-default" href="#">textile</a><a class="btn-ellipse text-ubold btn btn-xs btn-default" href="#">scrapbooking</a>
-                                    </div>
-                    </div>
-                  </div>
-                </div>
-              </aside>
-            </div>
+            {% show_sidebar %}
           </div>
         </div>
       </section>
