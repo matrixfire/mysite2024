@@ -25,21 +25,26 @@
           </div>
         </div>
         {% endif %}
+
+        
         <div class="col-12 text-left {% if not author %} offset-top-66 {% else %} offset-top-41 {% endif %}">
           <!-- Search Form-->
           <h6 class="text-uppercase text-spacing-60">Search</h6>
           <div class="text-subline"></div>
           <div class="offset-top-34">
             <!-- RD Search Form-->
-            <form class="form-search rd-search" action="search-results.html" method="GET">
+            <form class="form-search rd-search" action="{% url 'blog:post_search' %}" method="GET">
               <div class="form-group">
                 <label class="form-label form-search-label form-label-sm" for="blog-sidebar-2-form-search-widget">Search</label>
-                <input class="form-search-input input-sm form-control input-sm" id="blog-sidebar-2-form-search-widget" type="text" name="s" autocomplete="off">
+                <input class="form-search-input input-sm form-control input-sm" id="blog-sidebar-2-form-search-widget" type="text" name="query" autocomplete="off">
               </div>
               <button class="form-search-submit" type="submit"><span class="mdi mdi-magnify novi-icon"></span></button>
             </form>
           </div>
         </div>
+        
+
+
         <div class="col-12 offset-top-41 text-left">
           <!-- Tags-->
           <h6 class="text-uppercase text-spacing-60">Tags</h6>

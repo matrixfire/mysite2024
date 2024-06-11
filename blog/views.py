@@ -6,6 +6,8 @@ from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_POST
 from django.views.generic import ListView
 from taggit.models import Tag
+from django.contrib.postgres.search import SearchVector
+
 
 from .forms import CommentForm, EmailPostForm, SearchForm
 from .models import Post
@@ -163,7 +165,7 @@ def post_comment(request, post_id):
     )
 
 
-def post_search(request):
+def post_search_(request):
     form = SearchForm()
     query = None
     results = []
@@ -188,4 +190,45 @@ def post_search(request):
             'query': query,
             'results': results
         },
+    )
+
+
+
+def post_search(request):
+    form = SearchForm()
+    query = None
+    results = Post.published.none()
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = (
+                Post.published.annotate(
+                    search=SearchVector('title', 'body'),
+                )
+                .filter(search=query)
+            )
+    
+    paginator = Paginator(results, 3)  # Paginate with 3 posts per page
+    page_number = request.GET.get('page', 1)
+    tags = Tag.objects.all()  # Get all tags
+
+    try:
+        posts = paginator.page(page_number)
+    except PageNotAnInteger:
+        # If page_number is not an integer get the first page
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page_number is out of range get last page of results
+        posts = paginator.page(paginator.num_pages)
+
+    return render(
+        request,
+        'blog/post/list.html',
+        {
+            'posts': posts,
+            'query': query,
+            'form': form,
+            'tags': tags,
+        }
     )
