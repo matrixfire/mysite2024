@@ -1,7 +1,7 @@
-{% extends "core/base.html" %}
+{% extends "shop/base_shop.html" %}
 {% load static %}
 
-{% block content %}
+{% block shop_content %}
 
 
       <section>
@@ -62,19 +62,20 @@
                 {% endfor %}
 
               </div>
-              <div class="offset-top-66">
-                <!-- Classic Pagination-->
-                <nav>
-                  <ul class="pagination-classic">
-                    <li><a href="#">Prev</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">Next</a></li>
-                  </ul>
-                </nav>
-              </div>
+
+
+
+
+
+              {% include "pagination2.html" with page=products %}
+
+
+
+
             </div>
+
+
+
             <div class="col-lg-3 offset-top-66 offset-lg-top-0">
               <!-- Section Shop Sidebar-->
               <aside class="text-left">
@@ -83,55 +84,19 @@
                     <!-- Categories-->
                     <h6 class="text-uppercase text-spacing-60">Categories</h6>
                     <div class="text-subline"></div>
-                    <div class="custom-control custom-checkbox offset-top-20">
-                      <input class="custom-control-input" id="customCheck1" name="input-group-category" value="woman" type="checkbox">
-                      <label class="custom-control-label" for="customCheck1">Handmade <span class="text-dark">(37)</span></label>
-                    </div>
-                    <div class="custom-control custom-checkbox offset-top-4">
-                      <input class="custom-control-input" id="customCheck2" name="input-group-category" value="dresses" type="checkbox">
-                      <label class="custom-control-label" for="customCheck2">Scrapbooking <span class="text-dark">(211)</span></label>
-                    </div>
-                    <div class="custom-control custom-checkbox offset-top-4">
-                      <input class="custom-control-input" id="customCheck3" name="input-group-category" value="skirts" type="checkbox">
-                      <label class="custom-control-label" for="customCheck3">Woodwork <span class="text-dark">(12)</span></label>
-                    </div>
-                    <div class="custom-control custom-checkbox offset-top-4">
-                      <input class="custom-control-input" id="customCheck4" name="input-group-category" value="coats" type="checkbox">
-                      <label class="custom-control-label" for="customCheck4">Textile <span class="text-dark">(7)</span></label>
-                    </div>
-                    <div class="custom-control custom-checkbox offset-top-4">
-                      <input class="custom-control-input" id="customCheck5" name="input-group-category" value="top" type="checkbox">
-                      <label class="custom-control-label" for="customCheck5">Tools and Materials <span class="text-dark">(15)</span></label>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-lg-12">
-                    <!-- Brands-->
-                    <h6 class="offset-top-41 offset-sm-top-0 offset-lg-top-41 text-uppercase text-spacing-60">Brands</h6>
-                    <div class="text-subline"></div>
-                    <div class="custom-control custom-checkbox offset-top-20">
-                      <input class="custom-control-input" id="customCheck6" name="input-group-brands" value="apc" type="checkbox">
-                      <label class="custom-control-label" for="customCheck6">Koh-i-Noor <span class="text-dark">(37)</span></label>
-                    </div>
-                    <div class="custom-control custom-checkbox offset-top-4">
-                      <input class="custom-control-input" id="customCheck7" name="input-group-brands" value="armani" type="checkbox">
-                      <label class="custom-control-label" for="customCheck7">Pilot <span class="text-dark">(211)</span></label>
-                    </div>
-                    <div class="custom-control custom-checkbox offset-top-4">
-                      <input class="custom-control-input" id="customCheck8" name="input-group-brands" value="loro" type="checkbox">
-                      <label class="custom-control-label" for="customCheck8">Pentel <span class="text-dark">(12)</span></label>
-                    </div>
-                    <div class="custom-control custom-checkbox offset-top-4">
-                      <input class="custom-control-input" id="customCheck9" name="input-group-brands" value="coat" type="checkbox">
-                      <label class="custom-control-label" for="customCheck9">Platinum <span class="text-dark">(7)</span></label>
-                    </div>
-                    <div class="custom-control custom-checkbox offset-top-4">
-                      <input class="custom-control-input" id="customCheck10" name="input-group-brands" value="topiro" type="checkbox">
-                      <label class="custom-control-label" for="customCheck10">Sakura <span class="text-dark">(15)</span></label>
-                    </div>
+                    {% for category in categories %}
+                      <div class="custom-control custom-checkbox offset-top-4">
+                        <input class="custom-control-input" id="customCheck{{ forloop.counter }}" name="input-group-category" value="{{ category.slug }}" type="checkbox">
+                        <label class="custom-control-label" for="customCheck{{ forloop.counter }}">{{ category.name }} <span class="text-dark">({{ category.total_products }})</span></label>
+                      </div>
+                    {% endfor %}
                   </div>
                 </div>
               </aside>
             </div>
+            
+
+
           </div>
         </div>
       </section>
