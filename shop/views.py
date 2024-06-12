@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 
 from cart.forms import CartAddProductForm
-from .models import Category, Product
+from .models import Category, Product, Collection
 from django.db.models import Count
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
@@ -26,17 +26,23 @@ def product_list_(request, category_slug=None):
     )
 
 
-def product_list(request, category_slug=None):
+def product_list(request, category_slug=None, collection_slug=None):
     category = None
+    collection = None
     # categories = Category.objects.all()
     categories = Category.objects.annotate(total_products=Count('products'))
+    collections = Collection.objects.annotate(total_products=Count('products'))
     products = Product.objects.filter(available=True)
 
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
     
-    # Pagination with 3 products per page
+    if collection_slug:
+        collection = get_object_or_404(Collection, slug=collection_slug)
+        products = products.filter(collections=collection)
+    
+    # Pagination with 6 products per page
     paginator = Paginator(products, 6)  # Adjust the number 6 to however many products per page you want
     page_number = request.GET.get('page', 1)
 
@@ -54,10 +60,13 @@ def product_list(request, category_slug=None):
         'shop/product/list.html',
         {
             'category': category,
+            'collection': collection,
             'categories': categories,
+            'collections': collections,
             'products': products,
         },
     )
+
 
 
 
@@ -65,7 +74,10 @@ def product_detail(request, id, slug):
     product = get_object_or_404(
         Product, id=id, slug=slug, available=True
     )
-
+    categories = Category.objects.annotate(total_products=Count('products'))
+    product_images = product.images.all()
+    page_title = f"Reobrix-{product.name}"
+    meta_description = f"Build your dreams with this Reobrix {product.name}!"
     # List of similar products based on tags
     product_tags_ids = product.tags.values_list('id', flat=True)
     similar_posts = Product.objects.filter(
@@ -78,5 +90,14 @@ def product_detail(request, id, slug):
     return render(
         request,
         'shop/product/detail.html',
-        {'product': product, 'similar_posts': similar_posts}
+        {
+            'product': product, 
+            'categories': categories,
+            'product_images': product_images,
+            'page_title': page_title,
+            'meta_description': meta_description,
+            'similar_posts': similar_posts,
+
+            
+            }
     )

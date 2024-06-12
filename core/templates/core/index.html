@@ -25,214 +25,68 @@
         </div>
       </section>
       <!-- Our Shop-->
-      <section class="section-98 section-md-top-110 section-md-bottom-124 novi-background" data-preset='{"title":"Content block 1","category":"content","reload":true,"id":"content-block-1"}'>
+      <section class="section-98 section-md-top-110 section-md-bottom-124 novi-background">
         <div class="container">
-          <h1 class="text-between">Our Shop</h1>
-          <div class="offset-top-30">
-            <!-- Tabs Classic-->
-                  <!-- Responsive-tabs-->
-                  <div class="responsive-tabs responsive-tabs-classic" data-type="horizontal">
+            <h1 class="text-between">Our Shop</h1>
+            <div class="offset-top-30">
+                <!-- Tabs Classic-->
+                <div class="responsive-tabs responsive-tabs-classic" data-type="horizontal">
                     <ul class="resp-tabs-list tabs-1 text-center tabs-group-default" data-group="tabs-group-default">
-                      <li>New Arrivals</li>
-                      <li>Popular</li>
-                      <li>Best Sellers</li>
-                      <li>Specials</li>
+                        <li>New Arrivals</li>
+                        <li>Popular</li>
                     </ul>
                     <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">
-                      <!-- First Tab-->
-                      <div>
-                        <div class="row">
-                          <!-- Owl First Slide-->
-                          <div class="col-md-6 col-lg-3">
-                                  <!-- Product-->
-                                  <div class="product product-grid product-grid-type-2">
-                                    <!-- Product Image-->
-                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-01-210x210.png' %}" alt="">
-                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
+                        <!-- New Arrivals Tab-->
+                        <div>
+                            <div class="row">
+                                {% for product in new_arrivals %}
+                                <div class="col-md-6 col-lg-3">
+                                    <!-- Product-->
+                                    <div class="product product-grid product-grid-type-2">
+                                        <!-- Product Image-->
+                                        <div class="product-image">
+                                            <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            {% if product.tags.name == 'Sale' %}
+                                            <span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
+                                            {% endif %}
+                                        </div>
+                                        <!-- Product Title-->
+                                        <div class="product-title offset-top-4 text-primary">
+                                            <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                                        </div>
                                     </div>
-                                    <!-- Product Rating-->
-                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                    <!-- Product Title-->
-                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Wood Box Paining Set 12 Oil Colors</a></div>
-                                    <!-- Product price-->
-                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$254.00</span><span class="product-price-old text-dark">$319.00</span>
-                                    </div>
-                                    <div class="product-block-hover">
-                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                    </div>
-                                  </div>
-                          </div>
-                          <div class="col-md-6 col-lg-3 offset-top-41 offset-md-top-0">
-                                  <!-- Product-->
-                                  <div class="product product-grid product-grid-type-2">
-                                    <!-- Product Image-->
-                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-02-232x229.png' %}" alt="">
-                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
-                                    </div>
-                                    <!-- Product Rating-->
-                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                    <!-- Product Title-->
-                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Artist Paint Brush Set Nylon Hair Oil Painting Supplies</a></div>
-                                    <!-- Product price-->
-                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$124.00</span><span class="product-price-old text-dark">$219.00</span>
-                                    </div>
-                                    <div class="product-block-hover">
-                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                    </div>
-                                  </div>
-                          </div>
-                          <div class="col-md-6 col-lg-3 offset-top-41 offset-lg-top-0">
-                                  <!-- Product-->
-                                  <div class="product product-grid product-grid-type-2">
-                                    <!-- Product Image-->
-                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-03-217x215.png' %}" alt="">
-                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
-                                    </div>
-                                    <!-- Product Rating-->
-                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                    <!-- Product Title-->
-                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Castle Art Supplies Acrylic Paint Set Pack of 12 Colors</a></div>
-                                    <!-- Product price-->
-                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5">$289.00</span>
-                                    </div>
-                                    <div class="product-block-hover">
-                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                    </div>
-                                  </div>
-                          </div>
-                          <div class="col-md-6 col-lg-3 offset-top-41 offset-lg-top-0">
-                                  <!-- Product-->
-                                  <div class="product product-grid product-grid-type-2">
-                                    <!-- Product Image-->
-                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-04-229x223.png' %}" alt="">
-                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
-                                    </div>
-                                    <!-- Product Rating-->
-                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                    <!-- Product Title-->
-                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Color Set Marco Renoir Fine Art Drawing Oil Base Pencils</a></div>
-                                    <!-- Product price-->
-                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$189.00</span><span class="product-price-old text-dark">$219.00</span>
-                                    </div>
-                                    <div class="product-block-hover">
-                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                    </div>
-                                  </div>
-                          </div>
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
-                      </div>
-                      <div>
-                        <div class="row">
-                          <div class="col-md-6 col-lg-3">
-                                  <!-- Product-->
-                                  <div class="product product-grid product-grid-type-2">
-                                    <!-- Product Image-->
-                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-04-229x223.png' %}" alt="">
-                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
+                        <!-- Popular Products Tab-->
+                        <div>
+                            <div class="row">
+                                {% for product in popular_products %}
+                                <div class="col-md-6 col-lg-3">
+                                    <!-- Product-->
+                                    <div class="product product-grid product-grid-type-2">
+                                        <!-- Product Image-->
+                                        <div class="product-image">
+                                            <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            {% if product.tags.name == 'Sale' %}
+                                            <span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
+                                            {% endif %}
+                                        </div>
+                                        <!-- Product Title-->
+                                        <div class="product-title offset-top-4 text-primary">
+                                            <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                                        </div>
                                     </div>
-                                    <!-- Product Rating-->
-                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                    <!-- Product Title-->
-                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Color Set Marco Renoir Fine Art Drawing Oil Base Pencils</a></div>
-                                    <!-- Product price-->
-                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$189.00</span><span class="product-price-old text-dark">$219.00</span>
-                                    </div>
-                                    <div class="product-block-hover">
-                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                    </div>
-                                  </div>
-                          </div>
-                          <div class="col-md-6 col-lg-3 offset-top-41 offset-md-top-0">
-                                  <!-- Product-->
-                                  <div class="product product-grid product-grid-type-2">
-                                    <!-- Product Image-->
-                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-02-232x229.png' %}" alt="">
-                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
-                                    </div>
-                                    <!-- Product Rating-->
-                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                    <!-- Product Title-->
-                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Artist Paint Brush Set Nylon Hair Oil Painting Supplies</a></div>
-                                    <!-- Product price-->
-                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$124.00</span><span class="product-price-old text-dark">$219.00</span>
-                                    </div>
-                                    <div class="product-block-hover">
-                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                    </div>
-                                  </div>
-                          </div>
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
-                      </div>
-                      <div>
-                        <div class="row">
-                          <div class="col-md-6 col-lg-3">
-                                  <!-- Product-->
-                                  <div class="product product-grid product-grid-type-2">
-                                    <!-- Product Image-->
-                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-01-210x210.png' %}" alt="">
-                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
-                                    </div>
-                                    <!-- Product Rating-->
-                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                    <!-- Product Title-->
-                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Wood Box Paining Set 12 Oil Colors</a></div>
-                                    <!-- Product price-->
-                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$254.00</span><span class="product-price-old text-dark">$319.00</span>
-                                    </div>
-                                    <div class="product-block-hover">
-                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                    </div>
-                                  </div>
-                          </div>
-                          <div class="col-md-6 col-lg-3 offset-top-41 offset-md-top-0">
-                                  <!-- Product-->
-                                  <div class="product product-grid product-grid-type-2">
-                                    <!-- Product Image-->
-                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-03-217x215.png' %}" alt="">
-                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
-                                    </div>
-                                    <!-- Product Rating-->
-                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                    <!-- Product Title-->
-                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Castle Art Supplies Acrylic Paint Set Pack of 12 Colors</a></div>
-                                    <!-- Product price-->
-                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5">$289.00</span>
-                                    </div>
-                                    <div class="product-block-hover">
-                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                    </div>
-                                  </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div class="row">
-                          <div class="col-md-6 col-lg-3">
-                                  <!-- Product-->
-                                  <div class="product product-grid product-grid-type-2">
-                                    <!-- Product Image-->
-                                    <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'core/images/product-02-232x229.png' %}" alt="">
-                                      <!-- Product Label--><span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
-                                    </div>
-                                    <!-- Product Rating-->
-                                    <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                    <!-- Product Title-->
-                                    <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Artist Paint Brush Set Nylon Hair Oil Painting Supplies</a></div>
-                                    <!-- Product price-->
-                                    <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$124.00</span><span class="product-price-old text-dark">$219.00</span>
-                                    </div>
-                                    <div class="product-block-hover">
-                                      <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                    </div>
-                                  </div>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                  </div>
-          </div>
+                </div>
+            </div>
         </div>
-      </section>
+    </section>
       <!-- Classic Gallery Carousel-->
       <!-- Embed Video-->
       <!-- Classic Soundcloud Player-->

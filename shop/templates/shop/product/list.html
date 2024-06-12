@@ -25,21 +25,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-9">
-              <!-- Shop Grid View-->
-              <div class="toolbar-shop">
-                <div class="toolbar-shop-sorter"><a class="toolbar-shop-icon active" href="#"><span class="icon-xxs mdi mdi-view-module novi-icon"></span></a><a class="toolbar-shop-icon" href="#"><span class="icon-xxs mdi mdi-view-list novi-icon"></span></a></div>
-                <div class="toolbar-shop-pager"><span class="toolbar-shop-current text-primary">1-6 of 15</span>
-                  <div class="form-group">
-                    <label>Show:</label>
-                    <select class="form-control select-filter toolbar-shop-pager-select" data-placeholder="Select an option" data-minimum-results-for-search="Infinity">
-                      <option>6</option>
-                      <option>12</option>
-                      <option>18</option>
-                      <option>24</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+
               <div class="row justify-content-sm-center">
                 {% for product in products %}
                 <div class="col-sm-8 col-md-6 col-xl-4">
@@ -76,24 +62,7 @@
 
 
 
-            <div class="col-lg-3 offset-top-66 offset-lg-top-0">
-              <!-- Section Shop Sidebar-->
-              <aside class="text-left">
-                <div class="row">
-                  <div class="col-sm-6 col-lg-12">
-                    <!-- Categories-->
-                    <h6 class="text-uppercase text-spacing-60">Categories</h6>
-                    <div class="text-subline"></div>
-                    {% for category in categories %}
-                      <div class="custom-control custom-checkbox offset-top-4">
-                        <input class="custom-control-input" id="customCheck{{ forloop.counter }}" name="input-group-category" value="{{ category.slug }}" type="checkbox">
-                        <label class="custom-control-label" for="customCheck{{ forloop.counter }}">{{ category.name }} <span class="text-dark">({{ category.total_products }})</span></label>
-                      </div>
-                    {% endfor %}
-                  </div>
-                </div>
-              </aside>
-            </div>
+            {% include "shop/sidebar.html" with categories=categories %}
             
 
 

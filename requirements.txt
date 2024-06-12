@@ -18,3 +18,4 @@ django-rosetta==0.10.0
 django-parler==2.3
 django-localflavor==4.0
 psycopg_binary
+django-ckeditor

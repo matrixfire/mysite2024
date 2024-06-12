@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     # 3rd party
     'django.contrib.postgres',
     'taggit',
+    'ckeditor',
 
     # my apps
     'core',
