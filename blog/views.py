@@ -9,7 +9,7 @@ from taggit.models import Tag
 from django.contrib.postgres.search import SearchVector
 
 
-from .forms import CommentForm, EmailPostForm, SearchForm
+from .forms import EmailPostForm, SearchForm
 from .models import Post
 
 
@@ -53,10 +53,6 @@ def post_detail(request, year, month, day, post):
         publish__day=day,
     )
 
-    # List of active comments for this post
-    comments = post.comments.filter(active=True)
-    # Form for users to comment
-    form = CommentForm()
 
     # List of similar posts
     post_tags_ids = post.tags.values_list('id', flat=True)
@@ -72,22 +68,12 @@ def post_detail(request, year, month, day, post):
         'blog/post/detail.html',
         {
             'post': post,
-            'comments': comments,
             'form': form,
             'similar_posts': similar_posts,
         },
     )
 
 
-class PostListView(ListView):
-    """
-    Alternative post list view
-    """
-
-    queryset = Post.published.all()
-    context_object_name = 'posts'
-    paginate_by = 3
-    template_name = 'blog/post/list.html'
 
 
 def post_share(request, post_id):
@@ -136,61 +122,6 @@ def post_share(request, post_id):
         },
     )
 
-
-@require_POST
-def post_comment(request, post_id):
-    post = get_object_or_404(
-        Post,
-        id=post_id,
-        status=Post.Status.PUBLISHED
-    )
-    comment = None
-    # A comment was posted
-    form = CommentForm(data=request.POST)
-    if form.is_valid():
-        # Create a Comment object without saving it to the database
-        comment = form.save(commit=False)
-        # Assign the post to the comment
-        comment.post = post
-        # Save the comment to the database
-        comment.save()
-    return render(
-        request,
-        'blog/post/comment.html',
-        {
-            'post': post,
-            'form': form,
-            'comment': comment
-        },
-    )
-
-
-def post_search_(request):
-    form = SearchForm()
-    query = None
-    results = []
-
-    if 'query' in request.GET:
-        form = SearchForm(request.GET)
-        if form.is_valid():
-            query = form.cleaned_data['query']
-            results = (
-                Post.published.annotate(
-                    similarity=TrigramSimilarity('title', query),
-                )
-                .filter(similarity__gt=0.1)
-                .order_by('-similarity')
-            )
-
-    return render(
-        request,
-        'blog/post/search.html',
-        {
-            'form': form,
-            'query': query,
-            'results': results
-        },
-    )
 
 
 

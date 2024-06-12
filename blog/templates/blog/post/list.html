@@ -136,8 +136,10 @@
                     <!-- Post media-->
                     <header class="post-media novi-excluded">
                       <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/{{ post.video_id }}?wmode=transparent"></iframe>
+                        <iframe class="embed-responsive-item" src="{{ post.get_embed_url }}" allowfullscreen></iframe>
                       </div>
+
+
                     </header>
                     <!-- Post content-->
                     <section class="post-content text-left novi-excluded offset-top-41">
