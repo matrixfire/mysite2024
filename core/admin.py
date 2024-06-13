@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Slide
+from .models import Slide, DIYNews
 
 
 # Register your models here.
@@ -10,3 +10,9 @@ class SlideAdmin(admin.ModelAdmin):
     prepopulated_fields = {'subtitle': ('title',)}
     list_editable = ['title', 'subtitle']
     
+
+
+@admin.register(DIYNews)
+class DIYNewsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'image_tag')
+    readonly_fields = ('image_tag',)

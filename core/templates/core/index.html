@@ -92,220 +92,95 @@
       <!-- Classic Soundcloud Player-->
       <!-- Upcoming Workshops-->
       <section class="context-dark" data-preset='{"title":"Content block 2","category":"content, parallax","reload":true,"id":"content-block-2"}'>
-              <div class="parallax-container" data-parallax-img="{% static 'core/images/home-04-1920x1230.jpg' %}">
-                <div class="parallax-content">
-                  <div class="bg-overlay-gray-darkest">
-                    <div class="container section-98 section-md-110">
-                      <h1 class="text-between text-white">Upcoming Workshops</h1>
-                      <div class="row justify-content-sm-center">
-                        <div class="col-md-6 col-lg-5 col-xl-3">
-                                <!-- Post Event-->
-                                <article class="post post-event-type-2">
-                                  <!-- Post media-->
-                                  <header class="post-media novi-excluded"><a href="#"><img src="{% static 'core/images/home-05-270x310.jpg' %}" width="270" height="310" alt=""><span class="icon fa fa-info-circle novi-icon"></span></a>
-                                  </header>
-                                  <!-- Post content-->
-                                  <section class="post-content text-left novi-excluded offset-top-10">
-                                    <!-- Post Body-->
-                                    <div class="post-body">
-                                      <div class="icon icon-xxs mdi mdi-account text-middle novi-icon"></div> <span class="text-middle">Julia Flores</span>
-                                      <!-- Post Title-->
-                                      <h5 class="offset-top-10"><a href="#">Sew Workshop for Beginners</a></h5>
-                                      <!-- Post meta-->
-                                      <div class="post-meta context-dark">
-                                        <time datetime="2018-01-01"><span class="post-meta-day">22</span><span class="post-meta-month offset-top-4">September</span><span class="post-meta-time">18:00</span></time>
-                                      </div>
-                                    </div>
-                                  </section>
-                                </article>
+        <div class="parallax-container" data-parallax-img="{% static 'core/images/home-04-1920x1230.jpg' %}">
+          <div class="parallax-content">
+            <div class="bg-overlay-gray-darkest">
+              <div class="container section-98 section-md-110">
+                <h1 class="text-between text-white">Upcoming Workshops</h1>
+                <div class="row justify-content-sm-center">
+                  {% for news in diy_news_list %}
+                  <div class="col-md-6 col-lg-5 col-xl-3">
+                    <!-- Post Event-->
+                    <article class="post post-event-type-2">
+                      <!-- Post media-->
+                      <header class="post-media novi-excluded">
+                        <a href="{{ news.get_absolute_url }}">
+                          <img src="{{ news.cover_image.url }}" width="270" height="310" alt="{{ news.title }}">
+                          <span class="icon fa fa-info-circle novi-icon"></span>
+                        </a>
+                      </header>
+                      <!-- Post content-->
+                      <section class="post-content text-left novi-excluded offset-top-10">
+                        <!-- Post Body-->
+                        <div class="post-body">
+                          <!-- Post Title-->
+                          <h5 class="offset-top-10"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h5>
                         </div>
-                        <div class="col-md-6 col-lg-5 col-xl-3 offset-top-41 offset-md-top-0">
-                                <!-- Post Event-->
-                                <article class="post post-event-type-2">
-                                  <!-- Post media-->
-                                  <header class="post-media novi-excluded"><a href="#"><img src="{% static 'core/images/home-06-270x310.jpg' %}" width="270" height="310" alt=""><span class="icon fa fa-info-circle novi-icon"></span></a>
-                                  </header>
-                                  <!-- Post content-->
-                                  <section class="post-content text-left novi-excluded offset-top-10">
-                                    <!-- Post Body-->
-                                    <div class="post-body">
-                                      <div class="icon icon-xxs mdi mdi-account text-middle novi-icon"></div> <span class="text-middle">Douglas Torres</span>
-                                      <!-- Post Title-->
-                                      <h5 class="offset-top-10"><a href="#">Woodworking Workshop</a></h5>
-                                      <!-- Post meta-->
-                                      <div class="post-meta context-dark">
-                                        <time datetime="2018-01-01"><span class="post-meta-day">26</span><span class="post-meta-month offset-top-4">September</span><span class="post-meta-time">18:00</span></time>
-                                      </div>
-                                    </div>
-                                  </section>
-                                </article>
-                        </div>
-                        <div class="row-spacer d-none d-md-block d-xl-none offset-top-41"></div>
-                        <div class="col-md-6 col-lg-5 col-xl-3 offset-top-41 offset-md-top-0">
-                                <!-- Post Event-->
-                                <article class="post post-event-type-2">
-                                  <!-- Post media-->
-                                  <header class="post-media novi-excluded"><a href="#"><img src="{% static 'core/images/home-07-270x310.jpg' %}" width="270" height="310" alt=""><span class="icon fa fa-info-circle novi-icon"></span></a>
-                                  </header>
-                                  <!-- Post content-->
-                                  <section class="post-content text-left novi-excluded offset-top-10">
-                                    <!-- Post Body-->
-                                    <div class="post-body">
-                                      <div class="icon icon-xxs mdi mdi-account text-middle novi-icon"></div> <span class="text-middle">Rose Warren</span>
-                                      <!-- Post Title-->
-                                      <h5 class="offset-top-10"><a href="#">Scrapbooking Workshop for Beginners</a></h5>
-                                      <!-- Post meta-->
-                                      <div class="post-meta context-dark">
-                                        <time datetime="2018-01-01"><span class="post-meta-day">22</span><span class="post-meta-month offset-top-4">September</span><span class="post-meta-time">18:00</span></time>
-                                      </div>
-                                    </div>
-                                  </section>
-                                </article>
-                        </div>
-                        <div class="col-md-6 col-lg-5 col-xl-3 offset-top-41 offset-md-top-0">
-                                <!-- Post Event-->
-                                <article class="post post-event-type-2">
-                                  <!-- Post media-->
-                                  <header class="post-media novi-excluded"><a href="#"><img src="{% static 'core/images/home-08-270x310.jpg' %}" width="270" height="310" alt=""><span class="icon fa fa-info-circle novi-icon"></span></a>
-                                  </header>
-                                  <!-- Post content-->
-                                  <section class="post-content text-left novi-excluded offset-top-10">
-                                    <!-- Post Body-->
-                                    <div class="post-body">
-                                      <div class="icon icon-xxs mdi mdi-account text-middle novi-icon"></div> <span class="text-middle">Douglas Torres</span>
-                                      <!-- Post Title-->
-                                      <h5 class="offset-top-10"><a href="#">Wood processing Workshop</a></h5>
-                                      <!-- Post meta-->
-                                      <div class="post-meta context-dark">
-                                        <time datetime="2018-01-01"><span class="post-meta-day">22</span><span class="post-meta-month offset-top-4">September</span><span class="post-meta-time">18:00</span></time>
-                                      </div>
-                                    </div>
-                                  </section>
-                                </article>
-                        </div>
-                      </div>
-                      <div class="row justify-content-sm-center offset-top-66">
-                        <div class="col-sm-10 col-md-6 col-lg-5 col-xl-4 inset-left-50 inset-sm-left-80 inset-right-50 inset-sm-right-80"><a class="btn btn-block btn-default btn-ellipse" href="#">view all workshops</a></div>
-                      </div>
-                    </div>
+                      </section>
+                    </article>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="row justify-content-sm-center offset-top-66">
+                  <div class="col-sm-10 col-md-6 col-lg-5 col-xl-4 inset-left-50 inset-sm-left-80 inset-right-50 inset-sm-right-80">
+                    <a class="btn btn-block btn-default btn-ellipse" href="#">view all workshops</a>
                   </div>
                 </div>
               </div>
-      </section>
-      <!-- Latest Blog Posts-->
-      <section class="section-98 section-md-110 novi-background" data-preset='{"title":"Blog 1","category":"content, blog","reload":false,"id":"blog-1"}'>
-        <div class="container">
-          <h1 class="text-between">Latest Blog Posts</h1>
-          <div class="row justify-content-sm-center">
-            <div class="col-md-10 col-lg-6">
-                    <!-- Post Boxed--><a class="d-block" href="blog-single-post.html">
-                      <div class="post post-boxed">
-                        <!-- Post media-->
-                        <header class="post-media novi-excluded"><img class="img-fluid" width="570" height="321" src="{% static 'core/images/post-01-570x321.jpg' %}" alt=""></header>
-                        <!-- Post content-->
-                        <section class="post-content text-left novi-excluded">
-                          <div class="post-tags group-xs"><span class="label-custom label-lg-custom label-primary">Handmade</span><span class="label-custom label-lg-custom label-primary">Scrapbooking</span>
-                          </div>
-                          <div class="post-body">
-                            <!-- Post Title-->
-                            <div class="post-title">
-                              <h4 class="text-regular">How To Grow Your Creative Business from Scratch</h4>
-                            </div>
-                            <div class="post-meta small">
-                              <ul class="list-inline list-inline-sm p">
-                                <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">Cheryl Crawford</span></li>
-                                <li class="list-inline-item"><span class="text-middle icon-xxs mdi mdi-clock novi-icon"></span>
-                                  <time class="font-italic text-warning text-middle" datetime="2018-01-01">2 days ago</time>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </section>
-                      </div></a>
             </div>
-            <div class="col-md-10 col-lg-6 offset-top-66 offset-md-top-30 offset-lg-top-0">
-                    <!-- Post Boxed--><a class="d-block" href="blog-single-post.html">
-                      <div class="post post-boxed">
-                        <!-- Post media-->
-                        <header class="post-media novi-excluded"><img class="img-fluid" width="570" height="321" src="{% static 'core/images/post-02-570x321.jpg' %}" alt=""></header>
-                        <!-- Post content-->
-                        <section class="post-content text-left novi-excluded">
-                          <div class="post-tags group-xs"><span class="label-custom label-lg-custom label-primary">Handmade</span><span class="label-custom label-lg-custom label-primary">Scrapbooking</span>
-                          </div>
-                          <div class="post-body">
-                            <!-- Post Title-->
-                            <div class="post-title">
-                              <h4 class="text-regular">How To Prepare For a Creative Conference</h4>
-                            </div>
-                            <div class="post-meta small">
-                              <ul class="list-inline list-inline-sm p">
-                                <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">Cheryl Crawford</span></li>
-                                <li class="list-inline-item"><span class="text-middle icon-xxs mdi mdi-clock novi-icon"></span>
-                                  <time class="font-italic text-warning text-middle" datetime="2018-01-01">2 days ago</time>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </section>
-                      </div></a>
-            </div>
-            <div class="row-spacer d-none d-lg-block offset-top-30"></div>
-            <div class="col-md-10 col-lg-6 offset-top-66 offset-md-top-30 offset-lg-top-0">
-                    <!-- Post Boxed--><a class="d-block" href="blog-single-post.html">
-                      <div class="post post-boxed">
-                        <!-- Post media-->
-                        <header class="post-media novi-excluded"><img class="img-fluid" width="570" height="321" src="{% static 'core/images/post-03-570x321.jpg' %}" alt=""></header>
-                        <!-- Post content-->
-                        <section class="post-content text-left novi-excluded">
-                          <div class="post-tags group-xs"><span class="label-custom label-lg-custom label-primary">Handmade</span><span class="label-custom label-lg-custom label-primary">Scrapbooking</span>
-                          </div>
-                          <div class="post-body">
-                            <!-- Post Title-->
-                            <div class="post-title">
-                              <h4 class="text-regular">Wooden Toys For Learning and Play</h4>
-                            </div>
-                            <div class="post-meta small">
-                              <ul class="list-inline list-inline-sm p">
-                                <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">Jack George</span></li>
-                                <li class="list-inline-item"><span class="text-middle icon-xxs mdi mdi-clock novi-icon"></span>
-                                  <time class="font-italic text-warning text-middle" datetime="2018-01-01">2 days ago</time>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </section>
-                      </div></a>
-            </div>
-            <div class="col-md-10 col-lg-6 offset-top-66 offset-md-top-30 offset-lg-top-0">
-                    <!-- Post Boxed--><a class="d-block" href="blog-single-post.html">
-                      <div class="post post-boxed">
-                        <!-- Post media-->
-                        <header class="post-media novi-excluded"><img class="img-fluid" width="570" height="321" src="{% static 'core/images/post-04-570x321.jpg' %}" alt=""></header>
-                        <!-- Post content-->
-                        <section class="post-content text-left novi-excluded">
-                          <div class="post-tags group-xs"><span class="label-custom label-lg-custom label-primary">Handmade</span><span class="label-custom label-lg-custom label-primary">Textile</span>
-                          </div>
-                          <div class="post-body">
-                            <!-- Post Title-->
-                            <div class="post-title">
-                              <h4 class="text-regular">Alpha Custom Rugs' Ashram</h4>
-                            </div>
-                            <div class="post-meta small">
-                              <ul class="list-inline list-inline-sm p">
-                                <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">Barbara Hunt</span></li>
-                                <li class="list-inline-item"><span class="text-middle icon-xxs mdi mdi-clock novi-icon"></span>
-                                  <time class="font-italic text-warning text-middle" datetime="2018-01-01">2 days ago</time>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </section>
-                      </div></a>
-            </div>
-            <div class="col-12 offset-top-66"><a class="btn btn-primary btn-ellipse" href="blog.html">view all blog posts</a></div>
           </div>
         </div>
       </section>
+
+
+      
+      <!-- Latest Blog Posts-->
+      <section class="section-98 section-md-110 novi-background" data-preset='{"title":"Blog 1","category":"content, blog","reload":false,"id":"blog-1"}'>
+        <div class="container">
+            <h1 class="text-between">Latest Blog Posts</h1>
+            <div class="row justify-content-sm-center">
+                {% for post in latest_classic_image_posts %}
+                <div class="col-md-10 col-lg-6 offset-top-66 offset-md-top-30 offset-lg-top-0">
+                    <!-- Post Boxed-->
+                    <a class="d-block" href="{{ post.get_absolute_url }}">
+                        <div class="post post-boxed">
+                            <!-- Post media-->
+                            <header class="post-media novi-excluded">
+                                <img class="img-fluid" width="570" height="321" src="{{ post.classic_image.url }}" alt="{{ post.title }}">
+                            </header>
+                            <!-- Post content-->
+                            <section class="post-content text-left novi-excluded">
+                                <div class="post-tags group-xs">
+                                    {% for tag in post.tags.all %}
+                                    <span class="label-custom label-lg-custom label-primary">{{ tag.name }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="post-body">
+                                    <!-- Post Title-->
+                                    <div class="post-title">
+                                        <h4 class="text-regular">{{ post.title }}</h4>
+                                    </div>
+                                    <div class="post-meta small">
+                                        <ul class="list-inline list-inline-sm p">
+                                            <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">{{ post.author }}</span></li>
+                                            <li class="list-inline-item"><span class="text-middle icon-xxs mdi mdi-clock novi-icon"></span>
+                                                <time class="font-italic text-warning text-middle" datetime="{{ post.publish|date:"Y-m-d" }}">{{ post.publish|timesince }} ago</time>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                <div class="col-12 offset-top-66"><a class="btn btn-primary btn-ellipse" href="{% url 'blog:post_list' %}">view all blog posts</a></div>
+            </div>
+        </div>
+    </section>
+
+
+    
       <!-- Artists Rating-->
       <section class="section-66 section-md-110 bg-lighter novi-background" data-preset='{"title":"Artists block","category":"content","reload":false,"id":"artists-block"}'>
         <div class="container">
