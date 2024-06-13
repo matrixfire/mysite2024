@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from .models import Slide, DIYNews
+from django.http import Http404
 
 from django.shortcuts import render, get_object_or_404
 from shop.models import Product, Collection
@@ -11,14 +12,30 @@ from blog.models import Post
 #     slides = Slide.objects.all()
 #     return render(request, 'core/index.html', {"slides": slides})
 
+# new_arrivals, popular_products = None, None
+
 
 
 def index(request):
-    new_arrivals_collection = get_object_or_404(Collection, slug="new-arrivals")
-    popular_collection = get_object_or_404(Collection, slug="popular")
+    try:
+        new_arrivals_collection = get_object_or_404(Collection, slug="new-arrivals")
+    except Http404:
+        new_arrivals_collection = None
 
-    new_arrivals = Product.objects.filter(collections=new_arrivals_collection, available=True).order_by('-created')[:4]
-    popular_products = Product.objects.filter(collections=popular_collection, available=True).order_by('-created')[:4]
+    try:
+        popular_collection = get_object_or_404(Collection, slug="popular")
+    except Http404:
+        popular_collection = None
+
+    if new_arrivals_collection:
+        new_arrivals = Product.objects.filter(collections=new_arrivals_collection, available=True).order_by('-created')[:4]
+    else:
+        new_arrivals = []
+
+    if popular_collection:
+        popular_products = Product.objects.filter(collections=popular_collection, available=True).order_by('-created')[:4]
+    else:
+        popular_products = []
 
     slides = Slide.objects.all()  # Assuming you have a Slide model for slides
     diy_news_list = DIYNews.objects.all()  # Retrieve all DIYNews objects
@@ -32,6 +49,7 @@ def index(request):
         'latest_classic_image_posts': latest_classic_image_posts,  # Add classic image posts to the context
     }
     return render(request, 'core/index.html', context)
+
 
 
 
