@@ -96,69 +96,31 @@
 
 
 
-
-          <div class="offset-top-66">
-            <h1 class="text-between">Related Products</h1>
-            <div class="row">
-              <div class="col-sm-6 col-md-4 offset-top-41 offset-sm-top-0">
-                              <!-- Product-->
-                              <div class="product product-grid product-grid-type-2">
-                                <!-- Product Image-->
-                                <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'shop/img/product-02-232x229.png' %}" alt="" width="232" height="229">
-                                  <!-- Product Label-->
-                                </div>
-                                <!-- Product Rating-->
-                                <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                <!-- Product Title-->
-                                <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Artist Paint Brush Set Nylon Hair Oil Painting Supplies</a></div>
-                                <!-- Product price-->
-                                <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$124.00</span><span class="product-price-old text-dark">$219.00</span>
-                                </div>
-                                <div class="product-block-hover">
-                                  <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                </div>
-                              </div>
-              </div>
-              <div class="col-sm-6 col-md-4 offset-top-41 offset-sm-top-0">
-                              <!-- Product-->
-                              <div class="product product-grid product-grid-type-2">
-                                <!-- Product Image-->
-                                <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'shop/img/product-03-217x215.png' %}" alt="" width="217" height="215">
-                                  <!-- Product Label-->
-                                </div>
-                                <!-- Product Rating-->
-                                <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                <!-- Product Title-->
-                                <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Castle Art Supplies Acrylic Paint Set Pack of 12 Colors</a></div>
-                                <!-- Product price-->
-                                <div class="product-price font-weight-bold offset-top-20"><span class="h5">$289.00</span>
-                                </div>
-                                <div class="product-block-hover">
-                                  <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                </div>
-                              </div>
-              </div>
-              <div class="col-sm-6 col-md-4 offset-top-41 offset-md-top-0">
-                              <!-- Product-->
-                              <div class="product product-grid product-grid-type-2">
-                                <!-- Product Image-->
-                                <div class="product-image"><img class="img-fluid product-image-area" src="{% static 'shop/img/product-04-229x223.png' %}" alt="" width="229" height="223">
-                                  <!-- Product Label-->
-                                </div>
-                                <!-- Product Rating-->
-                                <div class="product-rating offset-top-20"><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star"></span><span class="mdi novi-icon mdi-star-half"></span><span class="mdi novi-icon mdi-star-outline"></span></div>
-                                <!-- Product Title-->
-                                <div class="product-title offset-top-4 text-primary"><a class="big" href="single-product.html">Color Set Marco Renoir Fine Art Drawing Oil Base Pencils</a></div>
-                                <!-- Product price-->
-                                <div class="product-price font-weight-bold offset-top-20"><span class="h5 product-price-new">$219.00</span><span class="product-price-old text-dark">$189.00</span>
-                                </div>
-                                <div class="product-block-hover">
-                                  <!-- Product Add To cart--><a class="btn btn-icon btn-icon-left btn-primary product-btn btn-ellipse offset-top-20" href="single-product.html"><span class="icon mdi mdi-cart novi-icon"></span>Add to Cart</a>
-                                </div>
-                              </div>
+        <div class="offset-top-66">
+          <h1 class="text-between">Related Products</h1>
+          <div class="row">
+            {% for product in similar_products %}
+            <div class="col-sm-6 col-md-4 offset-top-41 offset-sm-top-0">
+              <!-- Product-->
+              <div class="product product-grid product-grid-type-2">
+                <!-- Product Image-->
+                <div class="product-image">
+                  <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}" width="232" height="229">
+                  <!-- Product Label-->
+                </div>
+                <!-- Product Title-->
+                <div class="product-title offset-top-4 text-primary">
+                  <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                </div>
               </div>
             </div>
+            {% endfor %}
           </div>
+        </div>
+        
+
+
+
         </div>
         {% include "shop/sidebar.html" with categories=categories %}
       </div>

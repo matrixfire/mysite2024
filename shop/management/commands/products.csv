@@ -1,0 +1,3 @@
+category,collection,name,slug,image,short_description,description,price,available
+Category1,Collection1,Product1,product-1,https://cdn.shopify.com/s/files/1/0632/2939/5192/files/ReobrixConstructionSetsWz-10-2.jpg,Short description 1,Description 1,19.99,TRUE
+Category2,Collection2,Product2,product-2,https://cdn.shopify.com/s/files/1/0632/2939/5192/files/ReobrixConstructionSetsWalkingMechanism-DynamicVersion-2.jpg,Short description 2,Description 2,29.99,TRUE
