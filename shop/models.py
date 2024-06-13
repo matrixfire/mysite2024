@@ -34,7 +34,7 @@ class Collection(models.Model):
 
     def get_absolute_url(self):
         return reverse('shop:product_list_by_collection', args=[self.slug])
-
+    
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     collections = models.ManyToManyField(Collection, related_name='products', blank=True)
@@ -48,6 +48,7 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     tags = TaggableManager(blank=True)
+    handle = models.CharField(max_length=200, unique=True, default='default-handle')  # New field
 
     class Meta:
         ordering = ['name']
@@ -56,6 +57,7 @@ class Product(models.Model):
             models.Index(fields=['name']),
             models.Index(fields=['-created']),
         ]
+        
 
     def __str__(self):
         return self.name
@@ -66,6 +68,9 @@ class Product(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='uploads/products/', blank=True)
+    handle = models.CharField(max_length=200)  # New field
+
+
 
 class Carousel(models.Model):
     image = models.ImageField(upload_to="pics/")

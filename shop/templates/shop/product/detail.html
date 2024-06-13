@@ -44,8 +44,8 @@
                         {% endif %}
                         <ul class="product-thumbnails">
                             {% for image in product_images %}
-                            <li class="{% if forloop.first %}active{% endif %}" data-large-image="{{ image.image.url }}">
-                                <img class="img-fluid" src="{{ image.image.url }}" alt="{{ product.name }}" width="78" height="76">
+                            <li class="{% if forloop.first %}active{% endif %}" data-large-image="{{ image.url }}">
+                                <img class="img-fluid" src="{{ image.url }}" alt="{{ product.name }}" width="78" height="76">
                             </li>
                             {% endfor %}
                         </ul>
