@@ -4,6 +4,62 @@
 {% block title %}
   {{ product.name }}
 {% endblock %}
+
+{% block extra_css %}
+
+<style>
+
+.product-image {
+  position: relative;
+  text-align: center;
+}
+
+.product-thumbnails {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.product-thumbnails li {
+  margin: 0 5px;
+}
+
+.product-thumbnails img {
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.product-thumbnails li.active img,
+.product-thumbnails img:hover {
+  border-color: #333;
+}
+
+.product-image img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+{% endblock %}
+
+
 {% block shop_content %}
 
 
@@ -27,6 +83,8 @@
       </div>
     </div>
   </section>
+
+  
   <section class="section-98 section-md-124 novi-background" data-preset='{"title":"Product","category":"shop","reload":true,"id":"product"}'>
     <div class="container">
       <div class="row">
@@ -37,86 +95,84 @@
 
           <div class="product product-single">
             <div class="row justify-content-sm-center">
-                <div class="col-md-8 col-lg-5">
-                    <div class="product-image">
-                        {% if product.image %}
-                        <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}">
-                        {% endif %}
-                        <ul class="product-thumbnails">
-                            {% for product_image in product_images %}
-                            <li class="{% if forloop.first %}active{% endif %}" data-large-image="{{ product_image.image.url }}">
-                                <img class="img-fluid" src="{{ product_image.image.url }}" alt="{{ product.name }}" width="78" height="76">
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-12 col-lg-7 text-left offset-top-66 offset-lg-top-0">
-                    <!-- Product Brand-->
-                    <p class="product-brand font-italic text-dark">Brand Name</p>
-                    <!-- Product Title-->
-                    <h3 class="product-title offset-top-0 font-default text-darker text-regular">
-                        <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-                    </h3>
-
-                    <!-- Bootstrap Accordion-->
-                    <div class="offset-top-0" role="tablist" aria-multiselectable="true" id="accordion-1">
-                        <div class="card card-classic">
-                            <a class="card-header" href="#" data-toggle="collapse" data-target="#accordion-1--card-0-content"
-                                id="accordion-1--card-0-header" aria-expanded="true"
-                                aria-controls="accordion-1--card-0-content">Description</a>
-                            <div class="collapse show" id="accordion-1--card-0-content" aria-labelledby="accordion-1--card-0-header"
-                                data-parent="#accordion-1">
-                                <div class="card-body">{{ product.description|safe }}</div>
-                            </div>
-                        </div>
-                        <div class="card card-classic">
-                            <a class="card-header collapsed" href="#" data-toggle="collapse"
-                                data-target="#accordion-1--card-2-content" id="accordion-1--card-2-header" aria-expanded="false"
-                                aria-controls="accordion-1--card-2-content">Delivery & Returns</a>
-                            <div class="collapse" id="accordion-1--card-2-content"
-                                aria-labelledby="accordion-1--card-2-header" data-parent="#accordion-1">
-                                <div class="card-body">
-                                    We deliver our goods worldwide. No matter where you live, your order will be shipped in time and
-                                    delivered right to your door or to any other location you have stated. The packages are handled with
-                                    utmost care, so the ordered products will be handed to you safe and sound, just like you expect them
-                                    to be. If you are not satisfied with the quality of your purchase or single items included in it, you
-                                    can return your order to us. It is important to preserve the original packaging and any documents you
-                                    get from your courier.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-
-
-
-
-
-        <div class="offset-top-66">
-          <h1 class="text-between">Related Products</h1>
-          <div class="row">
-            {% for product in similar_products %}
-            <div class="col-sm-6 col-md-4 offset-top-41 offset-sm-top-0">
-              <!-- Product-->
-              <div class="product product-grid product-grid-type-2">
-                <!-- Product Image-->
+              <div class="col-md-8 col-lg-5">
                 <div class="product-image">
-                  <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}" width="232" height="229">
-                  <!-- Product Label-->
+                  {% if product.image %}
+                  <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}">
+                  {% endif %}
+                  <ul class="product-thumbnails">
+                    {% for product_image in product_images %}
+                    <li class="{% if forloop.first %}active{% endif %}" data-large-image="{{ product_image.image.url }}">
+                      <img class="img-fluid" src="{{ product_image.image.url }}" alt="{{ product.name }}" width="78" height="76">
+                    </li>
+                    {% endfor %}
+                  </ul>
                 </div>
+              </div>
+              <div class="col-md-12 col-lg-7 text-left offset-top-66 offset-lg-top-0">
+                <!-- Product Brand-->
+                <p class="product-brand font-italic text-dark">Brand Name</p>
                 <!-- Product Title-->
-                <div class="product-title offset-top-4 text-primary">
-                  <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                <h3 class="product-title offset-top-0 font-default text-darker text-regular">
+                  <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                </h3>
+          
+                <!-- Bootstrap Accordion-->
+                <div class="offset-top-0" role="tablist" aria-multiselectable="true" id="accordion-1">
+                  <div class="card card-classic">
+                    <a class="card-header" href="#" data-toggle="collapse" data-target="#accordion-1--card-0-content"
+                      id="accordion-1--card-0-header" aria-expanded="true" aria-controls="accordion-1--card-0-content">Description</a>
+                    <div class="collapse show" id="accordion-1--card-0-content" aria-labelledby="accordion-1--card-0-header"
+                      data-parent="#accordion-1">
+                      <div class="card-body">{{ product.description|safe }}</div>
+                    </div>
+                  </div>
+                  <div class="card card-classic">
+                    <a class="card-header collapsed" href="#" data-toggle="collapse"
+                      data-target="#accordion-1--card-2-content" id="accordion-1--card-2-header" aria-expanded="false"
+                      aria-controls="accordion-1--card-2-content">Delivery & Returns</a>
+                    <div class="collapse" id="accordion-1--card-2-content" aria-labelledby="accordion-1--card-2-header"
+                      data-parent="#accordion-1">
+                      <div class="card-body">
+                        We deliver our goods worldwide. No matter where you live, your order will be shipped in time and
+                        delivered right to your door or to any other location you have stated. The packages are handled with
+                        utmost care, so the ordered products will be handed to you safe and sound, just like you expect them
+                        to be. If you are not satisfied with the quality of your purchase or single items included in it, you
+                        can return your order to us. It is important to preserve the original packaging and any documents you
+                        get from your courier.
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            {% endfor %}
           </div>
-        </div>
+          
+
+
+
+
+          <div class="offset-top-66">
+            <h1 class="text-between">Related Products</h1>
+            <div class="row">
+              {% for product in similar_products %}
+              <div class="col-sm-6 col-md-4 offset-top-41 offset-sm-top-0">
+                <!-- Product-->
+                <div class="product product-grid product-grid-type-2">
+                  <!-- Product Image-->
+                  <div class="product-image">
+                    <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}" width="232" height="229">
+                    <!-- Product Label-->
+                  </div>
+                  <!-- Product Title-->
+                  <div class="product-title offset-top-4 text-primary">
+                    <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
         
 
 
