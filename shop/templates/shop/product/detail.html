@@ -43,9 +43,9 @@
                         <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}">
                         {% endif %}
                         <ul class="product-thumbnails">
-                            {% for image in product_images %}
-                            <li class="{% if forloop.first %}active{% endif %}" data-large-image="{{ image.url }}">
-                                <img class="img-fluid" src="{{ image.url }}" alt="{{ product.name }}" width="78" height="76">
+                            {% for product_image in product_images %}
+                            <li class="{% if forloop.first %}active{% endif %}" data-large-image="{{ product_image.image.url }}">
+                                <img class="img-fluid" src="{{ product_image.image.url }}" alt="{{ product.name }}" width="78" height="76">
                             </li>
                             {% endfor %}
                         </ul>
@@ -67,7 +67,7 @@
                                 aria-controls="accordion-1--card-0-content">Description</a>
                             <div class="collapse show" id="accordion-1--card-0-content" aria-labelledby="accordion-1--card-0-header"
                                 data-parent="#accordion-1">
-                                <div class="card-body">{{ product.description }}</div>
+                                <div class="card-body">{{ product.description|safe }}</div>
                             </div>
                         </div>
                         <div class="card card-classic">
