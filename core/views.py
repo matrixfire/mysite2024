@@ -7,6 +7,17 @@ from shop.models import Product, Collection
 from blog.models import Post
 
 
+
+from django import forms
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.search import (
+    SearchVector,
+    SearchQuery,
+    SearchRank
+)
+
+
 # def index_(request):
 #     """The home page for reobrix."""
 #     slides = Slide.objects.all()
@@ -83,8 +94,65 @@ def privacy(request):
     return render(request, 'core/privacy.html')
 
 
+class SearchForm(forms.Form):
+    query = forms.CharField()
+
+
+def search(request, queryset, search_fields):
+    form = SearchForm()
+    query = None
+    results = queryset.none()
+
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            print(query, type(query))
+            search_vector = SearchVector(*search_fields)
+            print(*search_fields)
+            results = queryset.annotate(search=search_vector).filter(search=query)
+    
+    paginator = Paginator(results, 3)  # Paginate with 3 items per page
+    page_number = request.GET.get('page', 1)
+
+    try:
+        items = paginator.page(page_number)
+    except PageNotAnInteger:
+        # If page_number is not an integer, get the first page
+        items = paginator.page(1)
+    except EmptyPage:
+        # If page_number is out of range, get the last page of results
+        items = paginator.page(paginator.num_pages)
+
+    return render(
+        request,
+        'shop/product/list.html',
+        {
+            'products': items,
+            'query': query,
+            'form': form,
+        }
+
+
+        # {
+        #     'category': category,
+        #     'collection': collection,
+        #     'categories': categories,
+        #     'collections': collections,
+        #     'products': products,
+        # }
+    )
+
+
+
+
 def search_results(request):
-    return render(request, 'core/search-results.html')
+    queryset = Product.objects.filter(available=True)
+    print(f'{len(queryset)}')
+    search_fields = ['name', 'description', 'short_description']
+    return search(request, queryset, search_fields)
+    # return render(request, 'core/search-results.html')
 
 
 def shop(request):

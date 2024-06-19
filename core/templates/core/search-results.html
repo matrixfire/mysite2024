@@ -1,6 +1,8 @@
 {% extends "core/base.html" %}
 {% load static %}
 
+{% load blog_tags %}
+
 {% block content %}
 
 
@@ -13,7 +15,7 @@
                 <div class="text-extra-big font-accent d-none d-lg-block"><span class="big">Search Results</span></div>
                 <ul class="list-inline list-inline-dashed p offset-top-0">
                   <li class="list-inline-item"><a class="small" href="index.html">Home</a></li>
-                  <li class="list-inline-item">Search Results
+                  <li class="list-inline-item">Search Results XXX
                   </li>
                 </ul>
               </div>
@@ -21,13 +23,44 @@
           </div>
         </div>
       </section>
+
+
+
+
       <section class="section-98 section-md-124 novi-background" data-preset='{"title":"Search","category":"search","reload":true,"id":"search"}'>
         <div class="container">
+          {% if query %}
+          <h1>Posts containing "{{ query }}"</h1>
+          <h3>
+            {% with results.count as total_results %}
+              Found {{ total_results }} result{{ total_results|pluralize }}
+            {% endwith %}
+          </h3>
+          {% for post in items %}
+            <h4>
+              <a href="{{ post.get_absolute_url }}">
+                {{ post.title }}
+              </a>
+            </h4>
+            {{ post.body|markdown|truncatewords_html:12 }}
+          {% empty %}
+            <p>There are no results for your query.</p>
+          {% endfor %}
+          <p><a href="{% url "blog:post_search" %}">Search again</a></p>
+        {% else %}
+          <h1>Search for posts</h1>
+          <form method="get">
+            {{ form.as_p }}
+            <input type="submit" value="Search">
+          </form>
+        {% endif %}
+
+
           <!-- RD Search Form-->
-          <form class="form-search rd-search" action="search-results.html" method="GET">
+          <form class="form-search rd-search" action="{% url 'core:search_results' %}" method="GET">
             <div class="form-group">
               <label class="form-label form-search-label form-label-sm" for="search-results">Search</label>
-              <input class="form-search-input input-sm form-control input-sm" id="search-results" type="text" name="s" autocomplete="off">
+              <input class="form-search-input input-sm form-control input-sm" id="search-results" type="text" name="query" autocomplete="off">
             </div>
             <button class="form-search-submit" type="submit"><span class="mdi mdi-magnify novi-icon"></span></button>
           </form>
