@@ -21,7 +21,7 @@ class Category(models.Model):
 
 class Collection(models.Model):
     name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True) # unique implies the creation of an index
 
     class Meta:
         ordering = ['name']
