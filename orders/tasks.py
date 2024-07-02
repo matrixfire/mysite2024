@@ -18,6 +18,25 @@ def order_created(order_id):
         f'Your order ID is {order.id}.'
     )
     mail_sent = send_mail(
-        subject, message, 'admin@myshop.com', [order.email]
+        subject, message, 'amazingtransition1@qq.com', [order.email]
+    )
+    return mail_sent
+
+
+@shared_task
+def test(name):
+    """
+    Task to send an e-mail notification when an order is
+    successfully created.
+    """
+
+    subject = f'Order nr. {name}'
+    message = (
+        f'Dear {name},\n\n'
+        f'You have successfully placed an order.'
+        f'Your order ID is {name}.'
+    )
+    mail_sent = send_mail(
+        subject, message, 'amazingtransition1@qq.com', ["amazingtransition1@qq.com"]
     )
     return mail_sent

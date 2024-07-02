@@ -161,6 +161,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_ROOT = BASE_DIR / 'media'
 
 
+# Celery Configuration Options
+CELERY_BROKER_URL = 'pyamqp://guest:guest@localhost:5673//'
+CELERY_RESULT_BACKEND = 'rpc://'
 
 
 # Email server configuration

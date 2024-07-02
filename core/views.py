@@ -63,10 +63,19 @@ def index(request):
 
 
 
+from .tasks import test
+
+def f(name):
+    print("testing before")
+    test(name)
+    print("testing after")
+
+
 
 
 
 def about_us(request):
+    f("fuckfuckfuck")
     return render(request, 'core/about-us.html')
 
 
