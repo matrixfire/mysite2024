@@ -8,7 +8,7 @@ from django.core.files.base import ContentFile
 
 
 class Slide(models.Model):
-    img = models.ImageField(upload_to='slides/')
+    image = models.ImageField(upload_to='slides/')
     title = models.CharField(max_length=200)
     subtitle = models.CharField(max_length=300)
 
@@ -46,3 +46,17 @@ class DIYNews(models.Model):
         return ""
 
     image_tag.short_description = 'Cover Image'
+
+
+
+
+# class Carousel(models.Model):
+#     # image       = models.ImageField(upload_to="pics/%y/%m/%d/")
+#     image       = models.ImageField(upload_to="pics/")
+#     title       = models.CharField(max_length=150)
+#     action_name = models.CharField(max_length=50)
+#     link        = models.TextField(null=True, blank=True)
+#     sub_title   = models.CharField(max_length=100)
+    
+#     def __str__(self):
+#         return self.title

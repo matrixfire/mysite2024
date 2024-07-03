@@ -2,19 +2,22 @@
 {% load static %}
 
 {% block content %}
+ 
+
       <!-- Swiper-->
       <section class="section-relative" data-preset='{"title":"Slider","category":"content, slider","reload":true,"id":"slider"}'>
         <div class="swiper-container swiper-slider" data-loop="true" data-autoplay="true" data-slide-effect="fade" data-dragable="false" data-dots="true">
           <div class="swiper-wrapper">
-            <div class="swiper-slide swiper-slide-overlay-disable swiper-slide-center" data-slide-bg="{% static 'core/images/home-01-1920x1028.jpg' %}"></div>
-            <div class="swiper-slide swiper-slide-overlay-disable swiper-slide-center" data-slide-bg="{% static 'core/images/home-02-1920x1028.jpg' %}"></div>
-            <div class="swiper-slide swiper-slide-overlay-disable swiper-slide-center" data-slide-bg="{% static 'core/images/home-03-1920x1028.jpg' %}"></div>
+            {% for slide in slides %}
+            <div class="swiper-slide swiper-slide-overlay-disable swiper-slide-center" data-slide-bg="{{ slide.image.url }}"></div>
+            <img src="slide.image.url" alt="">
+            {% endfor %}
           </div>
           <!-- Swiper Pagination-->
           <div class="swiper-pagination swiper-pagination-type-2"></div>
         </div>
         <div class="section-center-absolute">
-          <div class="text-extra-big text-white font-accent">Unique creations</div>
+          <div class="text-extra-big text-white font-accent">Unique creationsX</div>
           <h5 class="text-regular text-white offset-top-10">For Unique Occasions</h5>
           <div class="container offset-top-14 offset-md-top-66">
             <div class="row justify-content-sm-center grid-group-xs">
@@ -24,6 +27,8 @@
           </div>
         </div>
       </section>
+
+
       <!-- Our Shop-->
       <section class="section-98 section-md-top-110 section-md-bottom-124 novi-background">
         <div class="container">

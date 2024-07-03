@@ -30,6 +30,7 @@ from django.contrib.postgres.search import (
 def index(request):
     try:
         new_arrivals_collection = get_object_or_404(Collection, slug="new-arrivals")
+        # print(new_arrivals_collection.count) # ???
     except Http404:
         new_arrivals_collection = None
 
@@ -49,8 +50,12 @@ def index(request):
         popular_products = []
 
     slides = Slide.objects.all()  # Assuming you have a Slide model for slides
+    slide_count = slides.count()
+    print(f"Number of slides: {slide_count}")
+
     diy_news_list = DIYNews.objects.all()  # Retrieve all DIYNews objects
     latest_classic_image_posts = Post.objects.filter(post_type=Post.PostType.CLASSIC_IMAGE).order_by('-created')[:4]  # Latest 4 classic image posts
+
 
     context = {
         'new_arrivals': new_arrivals,
