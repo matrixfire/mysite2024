@@ -17,6 +17,6 @@ def test(name):
         f'Your order ID is {name}.'
     )
     mail_sent = send_mail(
-        subject, message, 'amazingtransition1@qq.com', ["amazingtransition1@qq.com"]
+        subject, message, 'amazingtransition1@qq.com', ["matrixbox@qq.com"]
     )
     return mail_sent

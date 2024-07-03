@@ -165,8 +165,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Celery Configuration Options
-CELERY_BROKER_URL = 'pyamqp://guest:guest@localhost:5673//'
+CELERY_BROKER_URL = 'pyamqp://guest:guest@localhost:5672//'
 CELERY_RESULT_BACKEND = 'rpc://'
+
+# Celery Configuration Options
+CELERY_TIMEZONE = "Australia/Tasmania"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
 
 
 # Email server configuration
