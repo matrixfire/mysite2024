@@ -80,7 +80,9 @@ def f(name):
 
 
 def about_us(request):
-    f("fuckfuckfuck")
+    # f("fuckfuckfuck")
+    # launch asynchronous task
+    test.delay("tesing this celery rabbitmq...")
     return render(request, 'core/about-us.html')
 
 

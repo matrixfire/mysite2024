@@ -28,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-p22(+szg+i9_1o(xdjk3%@n9-gtuy*^2aq8qg1b2l=p%!t$b7w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True # False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] # ALLOWED_HOSTS = [] # if local
 
 
 
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
-    'django.contrib.sitemaps',    
+    'django.contrib.sitemaps',
     'django.contrib.staticfiles',
 
     # 3rd party
@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -104,13 +104,15 @@ WSGI_APPLICATION = 'reobrix.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql', # 'django.db.backends.mysql' in pythonanywhere and 'django.db.backends.postgresql'
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
+		'TEST': {'NAME': config('TEST_DB_NAME'),}
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -147,6 +149,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # if local develop this can be omitted.
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
