@@ -18,6 +18,10 @@ from django.contrib.postgres.search import (
 )
 
 
+
+from .tasks import test, fucking_print
+
+
 # def index_(request):
 #     """The home page for reobrix."""
 #     slides = Slide.objects.all()
@@ -66,14 +70,6 @@ def index(request):
     }
     return render(request, 'core/index.html', context)
 
-
-
-from .tasks import test, fucking_print
-
-def f(name):
-    print("testing before")
-    test(name)
-    print("testing after")
 
 
 

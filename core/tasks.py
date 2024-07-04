@@ -12,7 +12,7 @@ def test(name):
 
     subject = f'Order nr. {name}'
     message = (
-        f'Dear {name},\n\n'
+        f'Dear fucking---{name},\n\n'
         f'You have successfully placed an order.'
         f'Your order ID is {name}.'
     )
