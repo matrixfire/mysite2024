@@ -21,3 +21,4 @@ psycopg_binary
 django-ckeditor
 mysqlclient
 eventlet
+django-celery-results
