@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'taggit',
     'ckeditor',
+    'django_celery_results',
 
     # my apps
     'core',
@@ -178,11 +179,12 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 
 
 # reobrix/settings.py
-CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+# CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+CELERY_BROKER_URL = 'amqps://xydayzfd:T4tBPBAwl11HqSsEriTGj8sia69oIYY1@cougar.rmq.cloudamqp.com/xydayzfd'
+CELERY_RESULT_BACKEND = 'django-db'  # or another result backend
 
 
-
-CELERY_RESULT_BACKEND = 'rpc://'
+# CELERY_RESULT_BACKEND = 'rpc://'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
