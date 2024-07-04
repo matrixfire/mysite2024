@@ -68,7 +68,6 @@ def post_detail(request, year, month, day, post):
         'blog/post/detail.html',
         {
             'post': post,
-            'form': form,
             'similar_posts': similar_posts,
         },
     )

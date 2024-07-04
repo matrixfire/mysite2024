@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from .models import Slide, DIYNews
+from .models import Slide
 from django.http import Http404
 
 from django.shortcuts import render, get_object_or_404
@@ -11,11 +11,7 @@ from blog.models import Post
 from django import forms
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.postgres.search import SearchVector
-from django.contrib.postgres.search import (
-    SearchVector,
-    SearchQuery,
-    SearchRank
-)
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 
 
@@ -57,7 +53,6 @@ def index(request):
     slide_count = slides.count()
     print(f"Number of slides: {slide_count}")
 
-    diy_news_list = DIYNews.objects.all()  # Retrieve all DIYNews objects
     latest_classic_image_posts = Post.objects.filter(post_type=Post.PostType.CLASSIC_IMAGE).order_by('-created')[:4]  # Latest 4 classic image posts
 
 
@@ -65,7 +60,6 @@ def index(request):
         'new_arrivals': new_arrivals,
         'popular_products': popular_products,
         'slides': slides,
-        'diy_news_list': diy_news_list,
         'latest_classic_image_posts': latest_classic_image_posts,  # Add classic image posts to the context
     }
     return render(request, 'core/index.html', context)

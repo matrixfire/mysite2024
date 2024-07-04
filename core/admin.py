@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Slide, DIYNews
+from .models import Slide
 
 
 # Register your models here.
@@ -11,9 +11,4 @@ from .models import Slide, DIYNews
 #     list_editable = ['title', 'subtitle']
     
 admin.site.register(Slide)
-
-@admin.register(DIYNews)
-class DIYNewsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'image_tag')
-    readonly_fields = ('image_tag',)
 
