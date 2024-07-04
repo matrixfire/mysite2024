@@ -20,3 +20,5 @@ django-localflavor==4.0
 psycopg_binary
 django-ckeditor
 mysqlclient
+eventlet
+django-celery-results

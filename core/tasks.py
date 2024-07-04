@@ -12,7 +12,7 @@ def test(name):
 
     subject = f'Order nr. {name}'
     message = (
-        f'Dear {name},\n\n'
+        f'Dear fucking---{name},\n\n'
         f'You have successfully placed an order.'
         f'Your order ID is {name}.'
     )
@@ -23,5 +23,5 @@ def test(name):
 
 
 @shared_task
-def fuck(x):
-    return x + 10000000
+def fucking_print(name):
+    print("Fucking insane! ", name)
