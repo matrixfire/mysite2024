@@ -20,3 +20,8 @@ def test(name):
         subject, message, 'amazingtransition1@qq.com', ["matrixbox@qq.com"]
     )
     return mail_sent
+
+
+@shared_task
+def fuck(x):
+    return x + 10000000

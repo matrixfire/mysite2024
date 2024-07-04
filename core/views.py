@@ -68,7 +68,7 @@ def index(request):
 
 
 
-from .tasks import test
+from .tasks import test, fuck
 
 def f(name):
     print("testing before")
@@ -82,9 +82,11 @@ def f(name):
 def about_us(request):
     # f("fuckfuckfuck")
     # launch asynchronous task
-    print(f"fucking test1")
+    print(f"fucking test111")
+    fuck.delay(12)
     test.delay("tesing this celery rabbitmq...")
-    print(f"fucking test2")
+    test.delay_on_commit("tesing this celery rabbitmq!!!...")
+    print(f"fucking test222")
     return render(request, 'core/about-us.html')
 
 
