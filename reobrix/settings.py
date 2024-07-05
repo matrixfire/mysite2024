@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'taggit',
     'ckeditor',
     'django_celery_results',
+    'django_recaptcha',
 
     # my apps
     'core',
@@ -208,3 +209,10 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+
+
+
+
+# Add reCAPTCHA keys
+RECAPTCHA_PUBLIC_KEY = '6LdCAQkqAAAAAEOG66b6hMOsEE_F1-huNeaUbCE7'
+RECAPTCHA_PRIVATE_KEY = '6LdCAQkqAAAAAPpOLoVTHDJp-AWIo5l2_dOo6fep'

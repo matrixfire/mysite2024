@@ -200,14 +200,14 @@
               <div class="container section-98 section-md-110">
                 <h1 class="text-between text-white">Upcoming Products</h1>
                 <div class="row justify-content-sm-center">
-                  {% for news in diy_news_list %}
+                  {% for blog in upcoming_products_blog_list %}
                   <div class="col-md-6 col-lg-5 col-xl-3">
                     <!-- Post Event-->
                     <article class="post post-event-type-2">
                       <!-- Post media-->
                       <header class="post-media novi-excluded">
-                        <a href="{{ news.get_absolute_url }}">
-                          <img src="{{ news.cover_image.url }}" width="270" height="310" alt="{{ news.title }}">
+                        <a href="{{ blog.get_absolute_url }}">
+                          <img src="{{ blog.classic_image.url }}" width="270" height="310" alt="{{ blog.title }}">
                           <span class="icon fa fa-info-circle novi-icon"></span>
                         </a>
                       </header>
@@ -216,7 +216,7 @@
                         <!-- Post Body-->
                         <div class="post-body">
                           <!-- Post Title-->
-                          <h5 class="offset-top-10"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h5>
+                          <h5 class="offset-top-10"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h5>
                         </div>
                       </section>
                     </article>
@@ -319,30 +319,62 @@
   </div>
 </section>
 
-<section class="section-98 section-md-top-110 section-md-bottom-124 novi-background"></section>
-<!-- HTML structure for the newsletter subscription -->
-<div class="container">
-  <div class="row justify-content-center">
-      <div class="col-md-6">
-          <div class="card shadow-sm">
-              <div class="card-body">
-                  <h5 class="card-title text-center mb-4">Join Our Newsletter!</h5>
-                  <!-- Subscription form -->
-                  <form method="post" action="">
-                      {% csrf_token %}
-                      <div class="input-group mb-3">
-                          <input type="email" class="form-control" placeholder="Your Email Address" name="email" required>
-                          <button class="btn btn-primary" type="submit">Subscribe</button>
-                      </div>
-                  </form>
-                  <!-- End of form -->
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
 
+
+
+
+<!-- subscribe.html -->
+<section class="section-98 section-md-top-110 section-md-bottom-124 novi-background">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-center mb-4">Join Our Newsletter!</h5>
+            <!-- Subscription form -->
+            <form method="post" action="">
+              {% csrf_token %}
+              {{ form.non_field_errors }}
+              <div class="input-group mb-3">
+                <input type="email" class="form-control" placeholder="Your Email Address" name="email" required>
+                {{ form.email.errors }}
+                <button class="btn btn-primary" type="submit">Subscribe</button>
+              </div>
+              <div class="mb-3">
+                {{ form.captcha }}
+                {{ form.captcha.errors }}
+              </div>
+            </form>
+            <!-- End of form -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- Include reCAPTCHA script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('form');
+      const emailInput = form.querySelector('input[name="email"]');
+      const submitButton = form.querySelector('button[type="submit"]');
+  
+      form.addEventListener('submit', function (event) {
+          const emailValue = emailInput.value;
+          const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+          
+          if (!emailPattern.test(emailValue)) {
+              event.preventDefault();
+              alert('Please enter a valid email address.');
+          }
+      });
+  });
+  </script>
+  
+
+
 
 
       <!-- Another type of  Blog Posts-->

@@ -2,12 +2,12 @@ from django.http import HttpResponse
 from .models import Slide
 from django.http import Http404
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from shop.models import Product, Collection
 from blog.models import Post
 
 
-
+from taggit.models import Tag
 from django import forms
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.postgres.search import SearchVector
@@ -16,6 +16,11 @@ from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 
 from .tasks import test, fucking_print
+
+
+
+from django.contrib import messages
+from .forms import SubscriberForm
 
 
 # def index_(request):
@@ -65,11 +70,16 @@ def index(request):
 
     latest_classic_image_posts = latest_classic_image_posts[:4]  # Limit to 4 items
 
+    upcoming_products_blog_list = Post.objects.filter(tags__name__in=["upcoming_products"])
+
+
     context = {
         'new_arrivals': new_arrivals,
         'popular_products': popular_products,
         'slides': slides,
         'latest_classic_image_posts': latest_classic_image_posts,
+        'upcoming_products_blog_list': upcoming_products_blog_list,
+        
     }
     return render(request, 'core/index.html', context)
 
@@ -81,9 +91,10 @@ def about_us(request):
     # f("fuckfuckfuck")
     # launch asynchronous task
     print(f"fucking test111")
-    fuck.delay(12)
-    test.delay("tesing this celery rabbitmq...")
-    fucking_print.delay("okokokok")
+    try:
+        test.delay("tesing this celery rabbitmq...")
+    except:
+        print("Celery...failed.")
     print(f"fucking test2")
     return render(request, 'core/about-us.html')
 
@@ -179,3 +190,23 @@ def shop(request):
 
 def single_product(request):
     return render(request, 'core/single-product.html')
+
+
+
+
+
+
+
+def subscribe(request):
+    if request.method == 'POST':
+        form = SubscriberForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Thank you for subscribing!')
+            return redirect('subscribe')
+        else:
+            messages.error(request, 'There was an error with your submission.')
+    else:
+        form = SubscriberForm()
+
+    return render(request, 'subscribe.html', {'form': form})

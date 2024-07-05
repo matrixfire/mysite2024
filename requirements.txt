@@ -22,3 +22,4 @@ django-ckeditor
 mysqlclient
 eventlet
 django-celery-results
+django-recaptcha

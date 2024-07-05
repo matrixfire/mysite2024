@@ -16,5 +16,6 @@ urlpatterns = [
     path('search-results/', views.search_results, name='search_results'),
     path('shop/', views.shop, name='shop'),
     path('single-product/', views.single_product, name='single_product'),
+    path('subscribe/', views.subscribe, name='subscribe'),
     
 ]
