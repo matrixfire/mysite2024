@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
+  <style>
+    /* external css: flickity.css */
+    * {
+      box-sizing: border-box;
+    }
+
+    .Container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+
+    .carousel {
+      background: #fafafa;
+      margin-bottom: 40px;
+      overflow: visible; /* To show part of the next and previous cells */
+    }
+
+    .carousel-cell {
+      width: 80%; /* Adjust width to show part of the neighboring cells */
+      height: 200px;
+      margin-right: 10px;
+      background: #8c8;
+      border-radius: 5px;
+      counter-increment: carousel-cell;
+      overflow: hidden; /* To ensure the image fits within the border-radius */
+      position: relative;
+    }
+
+    .carousel-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the image covers the entire cell area */
+    }
+
+    /* cell number */
+    .carousel-cell:before {
+      display: block;
+      text-align: center;
+      content: counter(carousel-cell);
+      line-height: 200px;
+      font-size: 80px;
+      color: white;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent overlay */
+    }
+
+    .carousel-nav .carousel-cell {
+      height: 80px;
+      width: 100px;
+    }
+
+    .carousel-nav .carousel-cell img {
+      height: 100%;
+    }
+
+    .carousel-nav .carousel-cell:before {
+      font-size: 50px;
+      line-height: 80px;
+    }
+
+    .carousel-nav .carousel-cell.is-nav-selected {
+      background: #ed2;
+    }
+  </style>
+</head>
+<body>
+  <div class="Container">
+    <h1>Flickityw - asNavFor and Sync</h1>
+    <!-- Flickity HTML init -->
+    <div class="carousel carousel-main" data-flickity='{ "sync": ".carousel-nav", "prevNextButtons": false, "contain": true, "groupCells": true, "wrapAround": true }'>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+    </div>
+    <div class="carousel carousel-nav" data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false, "wrapAround": true }'>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+      <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <script src="https://unpkg.com/flickity-sync@2.0.0/flickity-sync.js"></script>
+</body>
+</html>

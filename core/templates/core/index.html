@@ -1,6 +1,89 @@
 {% extends "core/base.html" %}
 {% load static %}
 
+{% block extra_css %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
+<style>
+  /* external css: flickity.css */
+  * {
+    box-sizing: border-box;
+  }
+
+  .container-flicker {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  
+  .container-flicker .carousel-nav {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  body {
+    font-family: sans-serif;
+  }
+
+  .carousel {
+    background: #fafafa;
+    margin-bottom: 40px;
+    overflow: visible; /* To show part of the next and previous cells */
+  }
+
+  .carousel-cell {
+    width: 80%; /* Adjust width to show part of the neighboring cells */
+    height: 200px;
+    margin-right: 10px;
+    background: #8c8;
+    border-radius: 5px;
+    overflow: hidden; /* To ensure the image fits within the border-radius */
+    position: relative;
+  }
+
+  .carousel-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire cell area */
+  }
+
+  /* cell number */
+  .carousel-cell:before {
+    display: block;
+    text-align: center;
+    line-height: 200px;
+    font-size: 80px;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent overlay */
+  }
+
+  .carousel-nav .carousel-cell {
+    height: 80px;
+    width: 100px;
+  }
+
+  .carousel-nav .carousel-cell img {
+    height: 100%;
+  }
+
+  .carousel-nav .carousel-cell:before {
+    font-size: 50px;
+    line-height: 80px;
+  }
+
+  .carousel-nav .carousel-cell.is-nav-selected {
+    background: #ed2;
+  }
+</style>
+
+{% endblock %}
+
+
 {% block content %}
  
 
@@ -21,8 +104,8 @@
           <h5 class="text-regular text-white offset-top-10">For Unique Occasions</h5>
           <div class="container offset-top-14 offset-md-top-66">
             <div class="row justify-content-sm-center grid-group-xs">
-              <div class="col-lg-5"><a class="btn btn-block btn-primary btn-ellipse" href="shop.html">shop now</a></div>
-              <div class="col-lg-5"><a class="btn btn-block btn-default btn-ellipse btn-anis-effect" href="blog.html">view blog</a></div>
+              <div class="col-lg-5"><a class="btn btn-block btn-primary btn-ellipse" href="{% url 'core:shop' %}">shop now</a></div>
+              <div class="col-lg-5"><a class="btn btn-block btn-default btn-ellipse btn-anis-effect" href="{% url 'core:blog' %}">view blog</a></div>
             </div>
           </div>
         </div>
@@ -190,13 +273,72 @@
 
 
 
+
+
+<section class="context-dark">
+  <div class="parallax-container" data-parallax-img="{% static 'core/images/background-2-1920x1184.jpg' %}">
+    <div class="parallax-content">
+      <div class="section-98 section-md-124 bg-overlay-gray-darkest">
+        <div class="container">
+          <div class="row justify-content-center grid-group-md">
+            <div class="col-md-8 col-lg-4"><span class="icon novi-icon icon-circle icon-bordered icon-carrot-filled icon-outlined mdi mdi-monitor"></span>
+              <div>
+                <h4 class="text-uppercase offset-top-30 font-weight-bold">Handmade</h4>
+                <p>We teach basics of handmade craft that are quite easy to learn and practise. However, we help experienced handmaders as well.</p>
+              </div>
+            </div>
+            <div class="col-md-8 col-lg-4"><span class="icon novi-icon icon-circle icon-bordered icon-carrot-filled icon-outlined mdi mdi-rocket"></span>
+              <div>
+                <h4 class="text-uppercase offset-top-30 font-weight-bold">design</h4>
+                <p>If you are into design, but do not have access to expensive materials and cloth, our tutorials and lessons we conduct may be useful for you.</p>
+              </div>
+            </div>
+            <div class="col-md-8 col-lg-4"><span class="icon novi-icon icon-circle icon-bordered icon-carrot-filled icon-outlined mdi mdi-xml"></span>
+              <div>
+                <h4 class="text-uppercase offset-top-30 font-weight-bold">workshops</h4>
+                <p>Our masters carry out weekly workshops that are free to participate even if you don’t know anything about handmade art.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-98 section-md-top-110 section-md-bottom-124 novi-background"></section>
+<!-- HTML structure for the newsletter subscription -->
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-6">
+          <div class="card shadow-sm">
+              <div class="card-body">
+                  <h5 class="card-title text-center mb-4">Join Our Newsletter!</h5>
+                  <!-- Subscription form -->
+                  <form method="post" action="">
+                      {% csrf_token %}
+                      <div class="input-group mb-3">
+                          <input type="email" class="form-control" placeholder="Your Email Address" name="email" required>
+                          <button class="btn btn-primary" type="submit">Subscribe</button>
+                      </div>
+                  </form>
+                  <!-- End of form -->
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+</section>
+
+
       <!-- Another type of  Blog Posts-->
       <section class="section-98 section-md-110 novi-background" data-preset='{"title":"Blog 1","category":"content, blog","reload":false,"id":"blog-1"}'>
-        <div class="container">
+        <div class="container-fluid">
             <h1 class="text-between">Another type of  Blog Posts</h1>
             <div class="row justify-content-sm-center">
               {% for post in latest_classic_image_posts %}
-              <div class="col-md-10 col-lg-6 offset-top-66 offset-md-top-30 offset-lg-top-0">
+              <div class="col-md-10 col-lg-3 offset-top-66 offset-md-top-30 offset-lg-top-0">
                   <!-- Post Boxed-->
                   <a class="d-block" href="{{ post.get_absolute_url }}">
                       <div class="post post-boxed">
@@ -229,17 +371,89 @@
                       </div>
                   </a>
               </div>
-              {% if forloop.counter == 2 %}
-                  <div class="row-spacer d-none d-lg-block offset-top-30"></div>
-              {% endif %}
+
           {% endfor %}
                 <div class="col-12 offset-top-66"><a class="btn btn-primary btn-ellipse" href="{% url 'blog:post_list' %}">view all blog posts</a></div>
             </div>
         </div>
     </section>
 
-
-
     
+    <section class="section-98 section-md-110 novi-background" data-preset='{"title":"Blog 1","category":"content, blog","reload":false,"id":"blog-1"}'>
+      <div class="container-flicker">
+          <h1>Flickity - asNavFor and Sync</h1>
+          
+          <!-- Flickity HTML init -->
+          <div class="carousel carousel-main" data-flickity='{ "sync": ".carousel-nav", "prevNextButtons": false, "contain": true, "groupCells": true, "wrapAround": true }'>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+          </div>
+          
+          <div class="carousel carousel-nav" data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false, "wrapAround": true }'>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+          </div>
+      </div>
+  </section>
+  
+    
+
+  <section class="section-98 section-md-110 novi-background" data-preset='{"title":"Blog 1","category":"content, blog","reload":false,"id":"blog-1"}'>
+    <div class="container-flicker">
+        <h1>Flickity - asNavFor and Sync</h1>
+        
+        <!-- Flickity HTML init -->
+        <div class="carousel carousel-main" data-flickity='{ "sync": ".carousel-nav", "prevNextButtons": false, "contain": true, "groupCells": true, "wrapAround": true }'>
+            {% for product in new_arrivals %}
+            <div class="carousel-cell">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <div class="product-info">
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.short_description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="carousel carousel-nav" data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false, "wrapAround": true }'>
+            {% for product in new_arrivals_collection %}
+            <div class="carousel-cell">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <div class="product-info">
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.short_description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock %}
+
+
+
+{% block extra_js %}
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="https://unpkg.com/flickity-sync@2.0.0/flickity-sync.js"></script>
 
 {% endblock %}
