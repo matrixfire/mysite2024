@@ -26,11 +26,9 @@ from .tasks import test, fucking_print
 # new_arrivals, popular_products = None, None
 
 
-
 def index(request):
     try:
         new_arrivals_collection = get_object_or_404(Collection, slug="new-arrivals")
-        # print(new_arrivals_collection.count) # ???
     except Http404:
         new_arrivals_collection = None
 
@@ -51,19 +49,29 @@ def index(request):
 
     slides = Slide.objects.all()  # Assuming you have a Slide model for slides
     slide_count = slides.count()
-    print(f"Number of slides: {slide_count}")
 
-    latest_classic_image_posts = Post.objects.filter(post_type=Post.PostType.CLASSIC_IMAGE).order_by('-created')[:4]  # Latest 4 classic image posts
+    latest_classic_image_posts = Post.objects.filter(post_type=Post.PostType.CLASSIC_IMAGE).order_by('-created')
+    
+    # Ensure latest_classic_image_posts has exactly 4 items
+    if latest_classic_image_posts.count() < 4:
+        # Repeat the last item to fill up to 4 items
+        if latest_classic_image_posts.exists():
+            last_post = latest_classic_image_posts.last()
+            remaining_posts_needed = 4 - latest_classic_image_posts.count()
+            for _ in range(remaining_posts_needed):
+                latest_classic_image_posts = latest_classic_image_posts | Post.objects.filter(pk=last_post.pk)
+        else:
+            latest_classic_image_posts = Post.objects.none()
 
+    latest_classic_image_posts = latest_classic_image_posts[:4]  # Limit to 4 items
 
     context = {
         'new_arrivals': new_arrivals,
         'popular_products': popular_products,
         'slides': slides,
-        'latest_classic_image_posts': latest_classic_image_posts,  # Add classic image posts to the context
+        'latest_classic_image_posts': latest_classic_image_posts,
     }
     return render(request, 'core/index.html', context)
-
 
 
 
