@@ -31,19 +31,19 @@
   }
 
   .carousel-cell {
-    width: 80%; /* Adjust width to show part of the neighboring cells */
-    height: 200px;
-    margin-right: 10px;
-    background: #8c8;
-    border-radius: 5px;
-    overflow: hidden; /* To ensure the image fits within the border-radius */
-    position: relative;
+
+
+    display: flex; /* below is for test */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
   }
 
   .carousel-cell img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the entire cell area */
+
+    max-width: 100%;  /* below is for test */
+    height: auto;
   }
 
   /* cell number */
@@ -63,8 +63,8 @@
   }
 
   .carousel-nav .carousel-cell {
-    height: 80px;
-    width: 100px;
+    height: 180px;
+    width: 150px;
   }
 
   .carousel-nav .carousel-cell img {
@@ -79,6 +79,19 @@
   .carousel-nav .carousel-cell.is-nav-selected {
     background: #ed2;
   }
+
+  .product-info {
+    margin-top: 10px;
+}
+.product-info h2 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+}
+.product-info p {
+    font-size: 1rem;
+}
+
+
 </style>
 
 {% endblock %}
@@ -385,65 +398,29 @@
           
           <!-- Flickity HTML init -->
           <div class="carousel carousel-main" data-flickity='{ "sync": ".carousel-nav", "prevNextButtons": false, "contain": true, "groupCells": true, "wrapAround": true }'>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+            {% for product in new_arrivals %}
+              <div class="carousel-cell">
+                <img src="{% static 'core/images/test.jpg' %}" alt="Test Image">
+                <div class="product-info">
+                  <h2>{{ product.name }}</h2>
+                  <p>{{ product.short_description }}</p>
+              </div>
+              </div>
+              {% endfor %}
           </div>
           
           <div class="carousel carousel-nav" data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false, "wrapAround": true }'>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
-              <div class="carousel-cell"><img src="{% static 'core/images/test.jpg' %}" alt="Test Image"></div>
+            {% for product in new_arrivals %}
+              <div class="carousel-cell">
+                <img src="{% static 'core/images/test.jpg' %}" alt="Test Image">
+                <div class="product-info">
+                  <h2>{{ product.name }}</h2>
+              </div>
+              </div>
+              {% endfor %}
           </div>
       </div>
   </section>
-  
-    
-
-  <section class="section-98 section-md-110 novi-background" data-preset='{"title":"Blog 1","category":"content, blog","reload":false,"id":"blog-1"}'>
-    <div class="container-flicker">
-        <h1>Flickity - asNavFor and Sync</h1>
-        
-        <!-- Flickity HTML init -->
-        <div class="carousel carousel-main" data-flickity='{ "sync": ".carousel-nav", "prevNextButtons": false, "contain": true, "groupCells": true, "wrapAround": true }'>
-            {% for product in new_arrivals %}
-            <div class="carousel-cell">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                <div class="product-info">
-                    <h2>{{ product.name }}</h2>
-                    <p>{{ product.short_description }}</p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        
-        <div class="carousel carousel-nav" data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false, "wrapAround": true }'>
-            {% for product in new_arrivals_collection %}
-            <div class="carousel-cell">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                <div class="product-info">
-                    <h2>{{ product.name }}</h2>
-                    <p>{{ product.short_description }}</p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
 
 
 
