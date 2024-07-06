@@ -108,6 +108,35 @@
       <div class="carousel-cell"><img src="test.jpg" alt="Test Image"></div>
     </div>
   </div>
+
+
+      <!-- Swiper-->
+      <section class="section-relative" data-preset='{"title":"Slider","category":"content, slider","reload":true,"id":"slider"}'>
+        <div class="swiper-container swiper-slider" data-loop="true" data-autoplay="true" data-slide-effect="fade" data-dragable="false" data-dots="true">
+          <div class="swiper-wrapper">
+            {% for slide in slides %}
+            <div class="swiper-slide swiper-slide-overlay-disable swiper-slide-center" data-slide-bg="{{ slide.image.url }}"></div>
+            <img src="slide.image.url" alt="">
+            {% endfor %}
+          </div>
+          <!-- Swiper Pagination-->
+          <div class="swiper-pagination swiper-pagination-type-2"></div>
+        </div>
+        <div class="section-center-absolute">
+          <div class="text-extra-big text-white font-accent">Unique creationsX</div>
+          <h5 class="text-regular text-white offset-top-10">For Unique Occasions</h5>
+          <div class="container offset-top-14 offset-md-top-66">
+            <div class="row justify-content-sm-center grid-group-xs">
+              <div class="col-lg-5"><a class="btn btn-block btn-primary btn-ellipse" href="{% url 'core:shop' %}">shop now</a></div>
+              <div class="col-lg-5"><a class="btn btn-block btn-default btn-ellipse btn-anis-effect" href="{% url 'core:blog' %}">view blog</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="https://unpkg.com/flickity-sync@2.0.0/flickity-sync.js"></script>
 </body>
