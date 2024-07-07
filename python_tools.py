@@ -227,3 +227,170 @@ t((1920, 1080), output_path, lorem_words=True)
 
 
 # generate_background_image((800, 600), 'output.png', lorem_words=True)
+
+
+
+
+################################################################################### 
+
+
+
+
+
+
+import os
+import re
+import pyperclip
+
+def get_folder_contents(folder_path, exclude_regex=[]):
+    """
+    Collects subfolders and files in a folder based on exclusion criteria.
+
+    Parameters:
+    - folder_path (str): Path to the folder to collect contents of.
+    - exclude_regex (list): List of regex patterns. Folders or files matching any of these patterns will be excluded.
+
+    Returns:
+    - tuple: A tuple containing two lists: (subfolders, files)
+      subfolders (list): List of subfolder paths.
+      files (list): List of file names.
+    """
+    subfolders = []
+    files = []
+
+    if not os.path.isdir(folder_path):
+        print(f"Error: {folder_path} is not a valid directory.")
+        return subfolders, files
+    
+    for item in os.listdir(folder_path):
+        item_path = os.path.join(folder_path, item)
+        if os.path.isdir(item_path):
+            subfolders.append(item_path)
+        elif os.path.isfile(item_path):
+            files.append(item)
+
+    # Filter out subfolders and files based on exclude_regex
+    subfolders = [folder for folder in subfolders if not any(re.search(pattern, folder) for pattern in exclude_regex)]
+    files = [file for file in files if not any(re.search(pattern, file) for pattern in exclude_regex)]
+
+    return subfolders, files
+
+def print_folder_contents(folder_path, indent=0, print_files=True, exclude_regex=[]):
+    """
+    Prints subfolders and files in a folder with hierarchical indentation.
+
+    Parameters:
+    - folder_path (str): Path to the folder to print contents of.
+    - indent (int): Indentation level for subfolders and files.
+    - print_files (bool): If True, prints both folders and files. If False, prints only subfolders.
+    - exclude_regex (list): List of regex patterns. Folders or files matching any of these patterns will be excluded.
+
+    Returns:
+    - str: The formatted string of folder contents.
+    """
+    subfolders, files = get_folder_contents(folder_path, exclude_regex)
+
+    folder_name = os.path.basename(folder_path)
+    output = f"{' ' * indent}{folder_name}\n"
+
+    if print_files:
+        for file in files:
+            output += f"{' ' * (indent + 4)}- {file}\n"
+
+    for subfolder in subfolders:
+        output += print_folder_contents(subfolder, indent + 4, print_files, exclude_regex)
+
+    return output
+
+# Example usage:
+folder_path = r"C:\Users\34950\Desktop\work\mysite2024"
+folder_path = r"C:\Users\34950\Desktop\work\mysite2024\shop\templates"
+
+
+output = print_folder_contents(folder_path, print_files=True)
+print(output)
+pyperclip.copy(output)
+
+
+######################################################################
+
+
+
+
+import os
+import re
+import pyperclip
+
+def get_folder_contents(folder_path, exclude_regex=[]):
+    """
+    Collects subfolders and files in a folder based on exclusion criteria.
+
+    Parameters:
+    - folder_path (str): Path to the folder to collect contents of.
+    - exclude_regex (list): List of regex patterns. Folders or files matching any of these patterns will be excluded.
+
+    Returns:
+    - tuple: A tuple containing two lists: (subfolders, files)
+      subfolders (list): List of subfolder paths.
+      files (list): List of file names.
+    """
+    subfolders = []
+    files = []
+
+    if not os.path.isdir(folder_path):
+        print(f"Error: {folder_path} is not a valid directory.")
+        return subfolders, files
+    
+    for item in os.listdir(folder_path):
+        item_path = os.path.join(folder_path, item)
+        if os.path.isdir(item_path):
+            subfolders.append(item_path)
+        elif os.path.isfile(item_path):
+            files.append(item)
+
+    # Filter out subfolders and files based on exclude_regex
+    subfolders = [folder for folder in subfolders if not any(re.search(pattern, folder) for pattern in exclude_regex)]
+    files = [file for file in files if not any(re.search(pattern, file) for pattern in exclude_regex)]
+
+    return subfolders, files
+
+def print_folder_contents(folder_path, indent=0, print_files=True, exclude_regex=[]):
+    """
+    Prints subfolders and files in a folder with hierarchical indentation.
+
+    Parameters:
+    - folder_path (str): Path to the folder to print contents of.
+    - indent (int): Indentation level for subfolders and files.
+    - print_files (bool): If True, prints both folders and files. If False, prints only subfolders.
+    - exclude_regex (list): List of regex patterns. Folders or files matching any of these patterns will be excluded.
+
+    Returns:
+    - str: The formatted string of folder contents.
+    """
+    subfolders, files = get_folder_contents(folder_path, exclude_regex)
+
+    folder_name = os.path.basename(folder_path)
+    output = f"{' ' * indent}{folder_name}\n"
+
+    if print_files:
+        for file in files:
+            output += f"{' ' * (indent + 4)}- {file}\n"
+
+    for subfolder in subfolders:
+        output += print_folder_contents(subfolder, indent + 4, print_files, exclude_regex)
+
+    return output
+
+# Example usage:
+folder_path = r"C:\Users\34950\Desktop\work\mysite2024"
+# folder_path = r"C:\Users\34950\Desktop\work\mysite2024\shop\templates"
+exclude_regex = [
+    r'(^|[\\/])\.git($|[\\/])',  # Exclude .git and its subfolders/files
+    r'(^|[\\/])migrations($|[\\/])',  # Exclude migrations and its subfolders/files
+    r'(^|[\\/])__pycache__($|[\\/])'  # Exclude __pycache__ and its subfolders/files
+]
+
+# output = print_folder_contents(folder_path, print_files=True)
+output = print_folder_contents(folder_path, print_files=True, exclude_regex=exclude_regex)
+print(output)
+pyperclip.copy(output)

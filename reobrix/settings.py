@@ -199,7 +199,8 @@ CELERY_TIMEZONE = 'UTC'
 
 
 
-
+PRODUCTS_PER_PAGE = 6  # Set the default number of products per page
+POSTS_PER_PAGE = 3  # Set the default number of products per page
 
 
 # Email server configuration
