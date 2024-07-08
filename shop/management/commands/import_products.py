@@ -19,43 +19,47 @@ class Command(BaseCommand):
         with open(csv_file, newline='', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                time.sleep(random.randint(1, 3))
-                if row['name']:
-                    category, created = Category.objects.get_or_create(
-                        name=row['category'],
-                        slug=slugify(row['category'])
-                    )
-                    if row['collection']:
-                        collection, created = Collection.objects.get_or_create(
-                            name=row['collection'],
-                            slug=slugify(row['collection'])
+                try:
+                    time.sleep(random.randint(1, 3))
+                    if row['name']:
+                        category, created = Category.objects.get_or_create(
+                            name=row['category'],
+                            slug=slugify(row['category'])
                         )
-                    product, created = Product.objects.get_or_create(
-                        category=category,
-                        name=row['name'],
-                        slug=slugify(row['name']),
-                        sku= row['sku'],
-                        defaults={
-                            'description': row['description'],
-                            'available': self.parse_boolean(row['available']),
-                            'handle': row['handle'],
-                        }
-                    )
-                    if row['collection']:
-                        product.collections.add(collection)
+                        if row['collection']:
+                            collection, created = Collection.objects.get_or_create(
+                                name=row['collection'],
+                                slug=slugify(row['collection'])
+                            )
+                        product, created = Product.objects.get_or_create(
+                            category=category,
+                            name=row['name'],
+                            slug=slugify(row['name']),
+                            sku= row['sku'],
+                            defaults={
+                                'description': row['description'],
+                                'available': self.parse_boolean(row['available']),
+                                'handle': row['handle'],
+                            }
+                        )
+                        if row['collection']:
+                            product.collections.add(collection)
 
-                    if row['image']:
-                        self.download_and_save_image(product, row['image'])
+                        if row['image']:
+                            self.download_and_save_image(product, row['image'])
 
-                    self.stdout.write(self.style.SUCCESS(f'Successfully imported product: {row["name"]}'))
-                else:
-                    product = Product.objects.get(handle=row['handle'])
-                    product_image, created = ProductImage.objects.get_or_create(
-                        product=product,
-                        handle=row['handle'],
-                        defaults={'image': self.download_image(row['image'])}
-                    )
-                    self.stdout.write(self.style.SUCCESS(f'Successfully imported product image for handle: {row["handle"]}'))
+                        self.stdout.write(self.style.SUCCESS(f'Successfully imported product: {row["name"]}'))
+                    else:
+                        product = Product.objects.get(handle=row['handle'])
+                        product_image, created = ProductImage.objects.get_or_create(
+                            product=product,
+                            handle=row['handle'],
+                            defaults={'image': self.download_image(row['image'])}
+                        )
+                        self.stdout.write(self.style.SUCCESS(f'Successfully imported product image for handle: {row["handle"]}'))
+                except Exception as e:
+                    print(e)
+                    continue
 
     def download_and_save_image(self, product, image_url):
         """Download an image from a URL and save it to the product's image field."""
