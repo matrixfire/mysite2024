@@ -133,6 +133,57 @@
       display: block;
       width: 100%;
     }
+
+
+
+
+
+
+
+    .yv-gallery-outer {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .yv-gallery-box {
+            display: flex;
+            flex-direction: row; /* Change to row */
+            gap: 20px;
+        }
+
+        .yv-gallery-item {
+            list-style: none;
+        }
+
+        .yv-gallery-item a {
+            display: block;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .yv-gallery-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .yv-gallery-item:hover a {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .yv-gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+
+
+
+
+    
   </style>
 
 
@@ -534,6 +585,75 @@
 
 
 
+  <div class="yv-gallery-outer yv-gallery-style-stacked yv-image-style-true yv-gallery-direction-right">
+    <ul class="list-unstyled yv-gallery-box large square">
+        <li class="yv-gallery-item image-hover-animation">
+            <a href="{{ business_info.instagram_url }}" class="yv-gallery-img no-content image-background-false" aria-label="PANTASY">
+                <img
+                    class=""
+                    src="{% static 'core/images/instagram.jpg' %}"
+                    data-aspectratio="2.4"
+                    data-sizes="auto"
+                    data-widths="[375]"
+                    width="480"
+                    height="200"
+                    data-original="{% static 'core/images/instagram.jpg' %}"
+                    alt=""
+                    lazyload="lazy"
+                    style="object-position: 50% 50%;"
+                />
+            </a>
+        </li>
+        <li class="yv-gallery-item image-hover-animation">
+            <a href=" {{ business_info.youtube_url }}" class="yv-gallery-img no-content image-background-false" aria-label="PANTASY">
+                <img
+                    class=""
+                    src="{% static 'core/images/youtube.jpg' %}"
+                    data-aspectratio="2.4"
+                    data-sizes="auto"
+                    data-widths="[375]"
+                    width="480"
+                    height="200"
+                    data-original="{% static 'core/images/youtube.jpg' %}"
+                    alt=""
+                    lazyload="lazy"
+                    style="object-position: 50% 50%;"
+                />
+            </a>
+        </li>
+        <li class="yv-gallery-item image-hover-animation">
+            <a href="{{ business_info.facebook_url }}" class="yv-gallery-img no-content image-background-false" aria-label="PANTASY">
+                <img
+                    class=""
+                    src="{% static 'core/images/facebook.jpg' %}"
+                    data-aspectratio="2.4"
+                    data-sizes="auto"
+                    data-widths="[375]"
+                    width="480"
+                    height="200"
+                    data-original="{% static 'core/images/facebook.jpg' %}"
+                    alt=""
+                    lazyload="lazy"
+                    style="object-position: 50% 50%;"
+                />
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <!-- Another type of  Blog Posts-->
       <section class="section-98 section-md-110 novi-background" data-preset='{"title":"Blog 1","category":"content, blog","reload":false,"id":"blog-1"}'>
@@ -627,5 +747,34 @@
 {% block extra_js %}
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script src="https://unpkg.com/flickity-sync@2.0.0/flickity-sync.js"></script>
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const images = document.querySelectorAll('img[lazyload="lazy"]');
+
+      const lazyLoad = (target) => {
+          const io = new IntersectionObserver((entries, observer) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      const img = entry.target;
+                      const src = img.getAttribute('data-original');
+                      img.setAttribute('src', src);
+                      observer.disconnect();
+                  }
+              });
+          });
+          io.observe(target);
+      };
+
+      images.forEach(lazyLoad);
+  });
+</script>
+
+
+
+
 
 {% endblock %}

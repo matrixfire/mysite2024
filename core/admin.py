@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Slide
+from .models import Slide, Subscriber, BusinessInfo
 
 
 # Register your models here.
@@ -11,4 +11,6 @@ from .models import Slide
 #     list_editable = ['title', 'subtitle']
     
 admin.site.register(Slide)
+admin.site.register(Subscriber)
+admin.site.register(BusinessInfo)
 

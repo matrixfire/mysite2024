@@ -394,3 +394,121 @@ exclude_regex = [
 output = print_folder_contents(folder_path, print_files=True, exclude_regex=exclude_regex)
 print(output)
 pyperclip.copy(output)
+
+
+######################################################################
+
+import os
+import requests
+from urllib.parse import urlparse
+
+def download_image(image_url, save_path):
+    """
+    Downloads an image from a given URL and saves it to a specified path.
+    
+    :param image_url: str, URL of the image to be downloaded
+    :param save_path: str, path where the image will be saved. If a directory is provided,
+                      the image will be saved in the current working directory.
+    :return: str, full path of the saved image
+    """
+    try:
+        # Check if save_path is a directory
+        if os.path.isdir(save_path):
+            # Get the image name from the URL
+            parsed_url = urlparse(image_url)
+            image_name = os.path.basename(parsed_url.path)
+            save_path = os.path.join(save_path, image_name)
+        
+        # Send a GET request to the image URL
+        response = requests.get(image_url, stream=True)
+        
+        # Check if the request was successful
+        if response.status_code == 200:
+            # Open the file in binary mode and write the content
+            with open(save_path, 'wb') as file:
+                for chunk in response.iter_content(1024):
+                    file.write(chunk)
+            print(f"Image successfully downloaded: {save_path}")
+            return save_path
+        else:
+            print(f"Failed to download image. Status code: {response.status_code}")
+            return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+# Example usage:
+if __name__ == "__main__":
+    image_url = "https://pantasy.com/cdn/shop/files/03_58872eac-0e01-4fbd-969d-680e070d84fd.jpg"
+    save_path = r"C:\Users\Administrator\Desktop\work2024\reobrix_site\reobrix2\core\static\core\images\youtube.jpg"
+    download_image(image_url, save_path)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+You are going to act as a Django expert who understands both web development and e-commerce.
+
+Here’s what I want to do: I am going to build a full-featured website using Django. This website will introduce my company and provide a shop for customers to buy products. The most important app, in my opinion, should be the shop, which will handle online sales, followed by a blog for product promotion and SEO. Ultimately, my goal is to create a website that can rival a Shopify store, allowing me to run my business independently.
+
+Below is a brief introduction to the two apps, listing the minimum features the site should have:
+
+The shop has the following features:
+
+1. **Product Catalog and Shopping Cart:**- A catalog of products.- A shopping cart implemented using sessions.- A custom context processor to make the cart accessible across all templates.
+
+2. **Order Placement:**- A form for placing orders.
+
+3. **Asynchronous Task Management:**- Proficiency in employing asynchronous tasks with Celery and RabbitMQ for handling complex background operations.
+
+4. **Payment Integration:**- Integration with the Stripe payment gateway.- A webhook endpoint for receiving payment notifications.
+
+5. **Administrative Actions and Customization:**- Custom actions in the administration site to export orders to CSV.- Custom views and templates in Django's administration interface.
+
+6. **PDF Generation and Email Integration:**- Generation of PDF files using WeasyPrint.- Integration of generated PDFs as email attachments.
+
+7. **Coupon System:**- Implementation of a coupon system using Django sessions.- Integration of the coupon system with Stripe.
+
+8. **Product Recommendation Engine:**- Development of a product recommendation engine powered by Redis to suggest products typically purchased together.
+
+9. **Internationalization and Localization:**- Marking code and template strings for translation.- Generating and compiling translation files.- Managing translations with Rosetta via a web interface.- Translating URL patterns.- Implementing a language selector for users to switch site languages.- Using django-parler for model translations.- Validating localized form fields with django-localflavor.
+
+The blog site has the following features:
+1. **Basic Blog Functionality:**- A simple blog application with data models, views, templates, and URLs.
+
+2. **SEO Optimization:**- Canonical URLs and SEO-friendly URLs for blog posts.
+
+3. **Pagination:**- Posts are paginated to improve navigation and readability.
+
+4. **User Interaction:**- Forms for users to recommend blog posts via email.- A comment system for readers to engage with posts.
+
+5. **Tagging System:**- Tags to categorize posts and improve content organization.
+
+6. **Advanced QuerySets:**- Functionality to recommend similar posts based on content similarity.
+
+7. **Custom Template Tags and Filters:**- Specialized functionalities to enhance the templates.
+
+8. **Sitemap and RSS Feed:**- A sitemap to help search engines index the site.- An RSS feed for users to subscribe to updates.
+
+9. **Full-Text Search:**- A powerful search engine using PostgreSQL to find relevant content within the blog.
+
+
+If you understand, simply say OK, I will later tell you what I want you to do.
+
+'''
