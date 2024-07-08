@@ -7,6 +7,8 @@ p = lambda input_path: [os.path.join(input_path, folder) for folder in os.listdi
 p = lambda input_path: [os.path.join(input_path, folder) for folder in os.listdir(input_path) if os.path.isdir(os.path.join(input_path, folder))] # dirs paths
 
 
+import pyperclip as p; cl=lambda lt: p.copy("\n".join(lt))
+pl = lambda lt: print("\n".join(lt))
 
 
 ###################################################################################

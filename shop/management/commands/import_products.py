@@ -25,23 +25,24 @@ class Command(BaseCommand):
                         name=row['category'],
                         slug=slugify(row['category'])
                     )
-                    collection, created = Collection.objects.get_or_create(
-                        name=row['collection'],
-                        slug=slugify(row['collection'])
-                    )
+                    if row['collection']:
+                        collection, created = Collection.objects.get_or_create(
+                            name=row['collection'],
+                            slug=slugify(row['collection'])
+                        )
                     product, created = Product.objects.get_or_create(
                         category=category,
                         name=row['name'],
-                        slug=row['slug'],
+                        slug=slugify(row['name']),
+                        sku= row['sku'],
                         defaults={
-                            'short_description': row['short_description'],
                             'description': row['description'],
-                            'price': self.parse_price(row['price']),
                             'available': self.parse_boolean(row['available']),
                             'handle': row['handle'],
                         }
                     )
-                    product.collections.add(collection)
+                    if row['collection']:
+                        product.collections.add(collection)
 
                     if row['image']:
                         self.download_and_save_image(product, row['image'])

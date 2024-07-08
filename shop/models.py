@@ -56,6 +56,7 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     tags = TaggableManager(blank=True)
+    sku = models.CharField(max_length=50, unique=True)
     handle = models.CharField(max_length=200, unique=True, default='default-handle')  # New field
 
     class Meta:
