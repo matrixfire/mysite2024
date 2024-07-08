@@ -180,6 +180,24 @@
         }
 
 
+        
+        .swiper-slide {
+            position: relative;
+            z-index: 1;
+        }
+
+        .swiper-slide a {
+            position: relative;
+            z-index: 2;
+            display: block;
+            text-align: center;
+            color: black;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+        }
 
 
 
@@ -317,46 +335,49 @@
         </div>
     </section>
 
+
+
     <section class="section-98 section-md-top-110 section-md-bottom-124 novi-background bg-lightest">
       <div class="container-fluid">
-        <h1 class="text-between">Categories</h1>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-          {% for category in categories  %}
-        <div class="swiper-slide">
-          <a href="{{ category.get_absolute_url }}"><img src="https://swiperjs.com/demos/images/nature-1.jpg" /></a>
-          <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
-        </div>
-          {% endfor %}
+          <h1 class="text-between">Categories</h1>
+          <div class="swiper mySwiper">
+              <div class="swiper-wrapper">
+                  {% for category in categories %}
+                  <div class="swiper-slide">
+                      <a href="{{ category.get_absolute_url }}">
+                          <img src="https://swiperjs.com/demos/images/nature-1.jpg" alt="{{ category.name }}">
+                          <span>{{ category.name }}</span>
+                      </a>
+                  </div>
+                  {% endfor %}
+              </div>
+              <div class="swiper-pagination"></div>
+          </div>
       </div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </div>
   </section>
-    
+  
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+  
   <!-- Initialize Swiper -->
   <script>
-    var swiper = new Swiper(".mySwiper", {
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: "auto",
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-      },
-    });
+      var swiper = new Swiper(".mySwiper", {
+          effect: "coverflow",
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: "auto",
+          coverflowEffect: {
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+          },
+          pagination: {
+              el: ".swiper-pagination",
+          },
+      });
   </script>
-
 
 
 
