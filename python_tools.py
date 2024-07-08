@@ -463,6 +463,9 @@ if __name__ == "__main__":
 
 
 '''
+prompts:
+
+
 You are going to act as a Django expert who understands both web development and e-commerce.
 
 Here’s what I want to do: I am going to build a full-featured website using Django. This website will introduce my company and provide a shop for customers to buy products. The most important app, in my opinion, should be the shop, which will handle online sales, followed by a blog for product promotion and SEO. Ultimately, my goal is to create a website that can rival a Shopify store, allowing me to run my business independently.
@@ -510,5 +513,285 @@ The blog site has the following features:
 
 
 If you understand, simply say OK, I will later tell you what I want you to do.
+
+'''
+
+
+
+
+'''
+1, Managing GitHub and Git
+   - Sign up for a GitHub account and create a repository.
+   - Initialize Git in the local project folder.
+   - Add and commit project files to the repository.
+   - Push the code to GitHub.
+   
+git init
+git add .
+git commit -m "first version"
+git branch -M main
+git remote add origin <your-origin-path>
+git push -u origin main
+
+2, Cloning our code onto PythonAnywhere
+   - Create a free account on PythonAnywhere.
+   - Open a Bash console on PythonAnywhere.
+   - Clone the GitHub repository to PythonAnywhere.
+---
+
+**PythonAnywhere Bash Setup**
+
+1. **Accessing Bash Console:**
+   - Open PythonAnywhere.
+   - Click **Dashboard** > **New console** > **$ Bash**.
+
+2. **Cloning from GitHub:**
+   - Go to your GitHub repository.
+   - Click **Code** and copy the URL.
+   - In PythonAnywhere Bash shell, run:
+     ```
+     git clone <repo-url>
+     ```
+
+---
+
+git clone https://github.com/matrixfire/mysite2024.git
+
+
+
+3, Configuring virtual environments
+   - Create a virtual environment using `mkvirtualenv`.
+   - Install required packages (Django, Pillow) in the virtual environment.
+---
+
+**Managing Virtual Environments on PythonAnywhere**
+
+1. **Creating a Virtual Environment:**
+   - To create using Python 3.8:
+     ```
+     mkvirtualenv -p python3.8 <environment name>
+     ```
+	 mkvirtualenv -p python3.10 reobrix_venv
+	 
+
+2. **Activating and Deactivating:**
+   - To deactivate the virtual environment:
+     ```
+     deactivate
+     ```
+   - To activate a virtual environment:
+     ```
+     workon <virtualenv-name>
+	 
+	 workon reobrix_venv
+	 
+	 workon reobrix_venv && cd /home/reobrix/mysite2024 && celery -A reobrix worker
+	 
+	 workon your_virtualenv && cd /path/to/your_project && celery -A your_project worker
+
+     ```
+
+---
+
+
+
+4, Setting up your web app
+   - Gather information: project path, project name, virtual environment name.
+   - Create a web app with manual configuration on PythonAnywhere.
+   - Configure the WSGI file to point to the Django project.
+   - Update `ALLOWED_HOSTS` in `settings.py` and reload the web app.
+
+---
+
+**Setting up Django Web App on PythonAnywhere**
+
+1. **Prepare Information:**
+   - "A": Get the path to your Django project's top folder using `pwd` in Bash, e.g., `/home/danielgara/moviereviews/`.(the folder that contains "manage.py")
+   - "B": Note your project's name (folder containing `settings.py`), e.g., `moviereviews`.
+   - "C": Remember your virtualenv name, e.g., `moviereviewsenv`.
+
+A: /home/reobrix/mysite2024
+B: reobrix
+C: reobrix_venv
+
+
+
+2. **PythonAnywhere Setup:**
+   - Open PythonAnywhere dashboard.
+   - Go to **Web** > **Add a new web app**.
+   - Choose **Manual configuration** under Python Web framework.
+   - Select Python version (e.g., Python 3.8) and click **Next**.
+   - enter the name of your virtualenv（i.e. "C" info） in the Virtualenv section
+   - Enter project folder path(i.e. "A" info) in **Source code** and **Working directory**.
+
+3. **Configure WSGI File:**
+   - Open `wsgi.py` and modify to:
+     ```python
+	# +++++++++++ DJANGO +++++++++++
+	# To use your own django app use code like this:
+     import os
+     import sys
+
+     path = '/home/danielgara/moviereviews' # "A" info
+     if path not in sys.path:
+         sys.path.append(path)
+
+     os.environ['DJANGO_SETTINGS_MODULE'] = 'moviereviews.settings' # "B" info
+
+     from django.core.wsgi import get_wsgi_application
+     application = get_wsgi_application()
+     ```
+
+4. **Update ALLOWED_HOSTS:**
+   - Navigate to **Files** > find `settings.py` in `moviereviews/`.
+   - Modify `ALLOWED_HOSTS`:
+     ```python
+     DEBUG = True
+     ALLOWED_HOSTS = ['*']
+     ```
+
+5. **Reload and Test:**
+   - Go to **Web** tab, click **Reload** for your domain.
+   - Visit your project's URL to see the home page.
+
+---
+
+mysql -u reobrix -h reobrix.mysql.pythonanywhere-services.com -p 'reobrix$default'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+		'TEST': {'NAME': config('TEST_DB_NAME'),}
+    }
+}
+
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '<your_username>$<your_database_name>',
+        'USER': '<your_username>',
+        'PASSWORD': '<your_mysql_password>',
+        'HOST': '<your_mysql_hostname>',
+		'TEST': {
+            'NAME': '<your username>$test_<your database name>',
+        }
+    }
+}
+
+
+
+
+
+
+
+reobrix
+reobrix.mysql.pythonanywhere-services.com
+
+
+5, Configuring static files
+   - Define `STATIC_URL` and `STATIC_ROOT` in `settings.py`.
+   - Run `python manage.py collectstatic` to gather static files.
+   - Set up static file mappings on PythonAnywhere.
+
+---
+
+**Configuring Static Files in Django on PythonAnywhere**
+
+1. **Update `settings.py`:**
+   - Add the following line:
+     ```python
+     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+     ```
+   - This sets a central location (`STATIC_ROOT`) for collecting all static files.
+
+2. **Collect Static Files:**
+   - In the Bash console (inside virtualenv), navigate to your project folder:
+     ```
+     cd moviereviews/
+     ```
+   - Run the command to collect static files:
+     ```
+     python manage.py collectstatic
+     ```
+   - This gathers static files from app folders and admin, copying them to `STATIC_ROOT`.
+
+3. **Configure Static Files on PythonAnywhere:**
+   - Go to PythonAnywhere dashboard **Web** tab.
+   - Under **Static files**:
+     - Enter `STATIC_URL` (typically `/static/`) in the **URL** section.
+     - Enter full path from `STATIC_ROOT` in the **Path** section (e.g., `/home/username/moviereviews/static`).
+
+4. **Reload Web App:**
+   - Click **Reload** on the **Web** tab in PythonAnywhere.
+   - Your static images should now appear correctly on your site.
+
+---
+
+
+---
+
+**Production Configuration and .gitignore Setup**
+
+1. **Setting DEBUG for Production:**
+   - Go to PythonAnywhere dashboard.
+   - Open `settings.py` for your project.
+   - Set `DEBUG = False`.
+   - Save the file and reload the web app.
+
+2. **Creating .gitignore:**
+   - Create a `.gitignore` file in your project root folder.
+   - Add the following lines to ignore specific files:
+     ```
+     __pycache__/
+     db.sqlite3
+     .DS_Store
+     ```
+   - These files include cached Python files, database storage, and macOS folder settings.
+
+---
+
+
+
+
+6, Changing db.sqlite3 to MySQL or PostgresSQL
+
+   - Use MySQL or PostgreSQL for larger projects.
+   - Follow PythonAnywhere's documentation for database setup.
+   - Recreate superuser and run migrations for the new database.
+
+---
+
+**Switching Database to MySQL or PostgreSQL**
+
+1. **Setting Up MySQL:**
+   - Refer to PythonAnywhere's documentation for setting up MySQL:
+     - Free MySQL setup: [PythonAnywhere MySQL Documentation](https://help.pythonanywhere.com/pages/UsingMySQL/)
+     - PostgreSQL setup requires a paid account.
+
+2. **After Database Setup:**
+   - Once MySQL or PostgreSQL is set up:
+     - Create a new superuser for the new database:
+       ```
+       python manage.py createsuperuser
+       ```
+     - Make migrations for database changes:
+       ```
+       python manage.py makemigrations
+       ```
+     - Apply migrations to the database:
+       ```
+       python manage.py migrate
+       ```
+
+---
+
+This note provides a detailed guide on deploying a Django project to PythonAnywhere, covering GitHub management, virtual environment setup, web app configuration, static file management, and database migration.
+
 
 '''

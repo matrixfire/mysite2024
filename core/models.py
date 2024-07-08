@@ -26,7 +26,8 @@ class Subscriber(models.Model):
     
 
 class BusinessInfo(models.Model):
-    company_name = models.CharField(max_length=255)
+    # company_name = models.CharField(max_length=255)
+    brand_name = models.CharField(max_length=255)
     # address = models.TextField() # {{ business_info.facebook_url }} {{ business_info.youtube_url }} {{ business_info.instagram_url }}
     # phone_numbers = models.TextField(help_text="Separate multiple numbers with commas")
     # service_emails = models.TextField(help_text="Separate multiple emails with commas")
@@ -39,7 +40,7 @@ class BusinessInfo(models.Model):
     # Add more fields as needed for your business information
 
     def __str__(self):
-        return self.company_name
+        return self.brand_name
 
     class Meta:
         verbose_name_plural = "Business Information"
