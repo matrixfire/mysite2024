@@ -55,6 +55,7 @@ def index(request):
     slides = Slide.objects.all()  # Assuming you have a Slide model for slides
     slide_count = slides.count()
 
+
     latest_classic_image_posts = Post.objects.filter(post_type=Post.PostType.CLASSIC_IMAGE).order_by('-created')
     
     # Ensure latest_classic_image_posts has exactly 4 items
@@ -78,8 +79,7 @@ def index(request):
         'popular_products': popular_products,
         'slides': slides,
         'latest_classic_image_posts': latest_classic_image_posts,
-        'upcoming_products_blog_list': upcoming_products_blog_list,
-        
+        'upcoming_products_blog_list': upcoming_products_blog_list,        
     }
     return render(request, 'core/index.html', context)
 

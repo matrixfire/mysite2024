@@ -8,6 +8,7 @@ class Category(models.Model):
     # Represents a category of products
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
+    image = models.ImageField(upload_to='products/', blank=True)
 
     class Meta:
         ordering = ['name']  # Order categories by name

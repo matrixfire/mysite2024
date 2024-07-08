@@ -322,9 +322,10 @@
         <h1 class="text-between">Categories</h1>
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-          {% for product in new_arrivals  %}
+          {% for category in categories  %}
         <div class="swiper-slide">
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          <a href="{{ category.get_absolute_url }}"><img src="https://swiperjs.com/demos/images/nature-1.jpg" /></a>
+          <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
         </div>
           {% endfor %}
       </div>
