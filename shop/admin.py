@@ -5,8 +5,12 @@ from .models import Category, Product, Collection, ProductImage
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug']
+    list_display = ['name', 'slug', 'order']  # Add 'order' to list display
+    list_editable = ['order']  # Make 'order' editable directly from list display
     prepopulated_fields = {'slug': ('name',)}
+
+    class Meta:
+        model = Category
 
 
 @admin.register(Collection)
@@ -33,7 +37,7 @@ class ProductAdmin(admin.ModelAdmin):
         'updated',
     ]
     list_filter = ['available', 'created', 'updated']
-    list_editable = ['price', 'available']
+    list_editable = ['price', 'available', ]
     prepopulated_fields = {'slug': ('name',)}
     inlines = [ProductImageInline]  # Include ProductImageInline to manage images
 

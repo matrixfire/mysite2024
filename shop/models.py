@@ -9,9 +9,10 @@ class Category(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     image = models.ImageField(upload_to='products/', blank=True)
+    order = models.IntegerField(default=0)
 
     class Meta:
-        ordering = ['name']  # Order categories by name
+        ordering = ['-order', 'name']  # Order categories by name
         indexes = [models.Index(fields=['name'])]  # Index on the name field
         verbose_name = 'category'
         verbose_name_plural = 'categories'

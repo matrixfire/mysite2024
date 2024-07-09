@@ -479,11 +479,45 @@ print(f"The encoding of the file is {encoding}")
 
 
 
+#############################################################################################
+'''
+Django folders set up automatically
+'''
+
+import os
+
+def setup_django_app(app_path):
+    # Extract app name from the path
+    app_name = os.path.basename(app_path)
 
 
+    urls_path = os.path.join(app_path, 'urls.py')
+    forms_path = os.path.join(app_path, 'forms.py')
+    templates_path = os.path.join(app_path, 'templates', app_name)
+    static_path = os.path.join(app_path, 'static', app_name)
 
+    if not os.path.exists(urls_path):
+        with open(urls_path, 'w') as urls_file:
+            urls_file.write(f"""
+from django.urls import path
+from . import views
 
+app_name = '{app_name}'
 
+urlpatterns = [
+    path('', views.index, name='index'),
+    # Add other paths here
+]
+""")
+ 
+    if not os.path.exists(forms_path):
+        open(forms_path, 'a').close()
+
+    #  Create templates and static directories if they don't exist
+    for directory in (templates_path, static_path):
+        os.makedirs(directory, exist_ok=True)
+
+dj = setup_django_app
 
 
 
