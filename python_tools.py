@@ -498,7 +498,7 @@ Here’s what I want to do: I am going to build a full-featured website using Dj
 
 Below is a brief introduction to the two apps, listing the minimum features the site should have:
 
-The shop has the following features:
+The shop app has the following features:
 
 1. **Product Catalog and Shopping Cart:**- A catalog of products.- A shopping cart implemented using sessions.- A custom context processor to make the cart accessible across all templates.
 
@@ -518,7 +518,7 @@ The shop has the following features:
 
 9. **Internationalization and Localization:**- Marking code and template strings for translation.- Generating and compiling translation files.- Managing translations with Rosetta via a web interface.- Translating URL patterns.- Implementing a language selector for users to switch site languages.- Using django-parler for model translations.- Validating localized form fields with django-localflavor.
 
-The blog site has the following features:
+The blog app has the following features:
 1. **Basic Blog Functionality:**- A simple blog application with data models, views, templates, and URLs.
 
 2. **SEO Optimization:**- Canonical URLs and SEO-friendly URLs for blog posts.
