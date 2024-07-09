@@ -345,7 +345,8 @@
                   {% for category in categories %}
                   <div class="swiper-slide">
                       <a href="{{ category.get_absolute_url }}">
-                          <img src="https://swiperjs.com/demos/images/nature-1.jpg" alt="{{ category.name }}">
+                        
+                          <img src="{% if category.image %}{{ category.image.url }}{% else %}https://swiperjs.com/demos/images/nature-1.jpg{% endif %}" alt="{{ category.name }}">
                           <span>{{ category.name }}</span>
                       </a>
                   </div>

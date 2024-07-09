@@ -6,6 +6,25 @@ from django.core.management.base import BaseCommand
 from django.utils.text import slugify
 from shop.models import Category, Collection, Product, ProductImage
 import time, random
+import chardet
+
+
+def detect_file_encoding(file_path):
+    """
+    Detect the encoding of a given file.
+    
+    Parameters:
+    file_path (str): The path to the file.
+    
+    Returns:
+    str: The detected encoding of the file.
+    """
+    with open(file_path, 'rb') as f:
+        result = chardet.detect(f.read())
+    encoding = result['encoding']     
+    print(f"The encoding of the file is {encoding}")    
+    return encoding
+
 
 
 class Command(BaseCommand):
@@ -16,6 +35,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         csv_file = kwargs['csv_file']
+        detect_file_encoding(csv_file)
         with open(csv_file, newline='', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             for row in reader:
@@ -38,7 +58,7 @@ class Command(BaseCommand):
                             sku= row['sku'],
                             defaults={
                                 'description': row['description'],
-                                'available': self.parse_boolean(row['available']),
+                                'available': True, # self.parse_boolean(row['available']),
                                 'handle': row['handle'],
                             }
                         )
@@ -59,6 +79,8 @@ class Command(BaseCommand):
                         self.stdout.write(self.style.SUCCESS(f'Successfully imported product image for handle: {row["handle"]}'))
                 except Exception as e:
                     print(e)
+                    if row['name']:
+                        self.stdout.write(self.style.ERROR(f'Error for {row['name']}: {e}'))
                     continue
 
     def download_and_save_image(self, product, image_url):

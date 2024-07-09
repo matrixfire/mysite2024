@@ -448,6 +448,30 @@ if __name__ == "__main__":
 
 
 
+#############################################################################################
+
+import chardet
+
+def detect_file_encoding(file_path):
+    """
+    Detect the encoding of a given file.
+    
+    Parameters:
+    file_path (str): The path to the file.
+    
+    Returns:
+    str: The detected encoding of the file.
+    """
+    with open(file_path, 'rb') as f:
+        result = chardet.detect(f.read())
+    encoding = result['encoding']     
+    print(f"The encoding of the file is {encoding}")    
+    return encoding
+
+# Usage example
+file_path = r"C:\Users\Administrator\Desktop\work2024\reobrix_site\reobrix2\p.csv"
+encoding = detect_file_encoding(file_path)
+print(f"The encoding of the file is {encoding}")
 
 
 
