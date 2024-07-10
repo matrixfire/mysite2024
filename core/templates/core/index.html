@@ -347,7 +347,6 @@
                   {% for category in categories %}
                   <div class="swiper-slide">
                       <a href="{{ category.get_absolute_url }}">
-                        
                           <img src="{% if category.image %}{{ category.image.url }}{% else %}https://swiperjs.com/demos/images/nature-1.jpg{% endif %}" alt="{{ category.name }}">
                           <span>{{ category.name }}</span>
                       </a>
@@ -376,12 +375,26 @@
               modifier: 1,
               slideShadows: true,
           },
-          pagination: {
-              el: ".swiper-pagination",
+          loop: true, // Enable looping
+          autoplay: {
+              delay: 0, // Set to 0 for continuous autoplay
+              disableOnInteraction: false,
           },
+          speed: 2000, // Adjust this for a smoother transition (higher value for slower transition)
+      });
+  
+      // Pause on hover
+      document.querySelector('.mySwiper').addEventListener('mouseenter', function() {
+          swiper.autoplay.stop();
+      });
+  
+      // Resume on mouse leave
+      document.querySelector('.mySwiper').addEventListener('mouseleave', function() {
+          swiper.autoplay.start();
       });
   </script>
-
+  
+  
 
 
     <section class="section-98 section-md-top-110 section-md-bottom-124 novi-background bg-lightest">
