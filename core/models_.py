@@ -48,6 +48,15 @@ class DIYNews(models.Model):
     image_tag.short_description = 'Cover Image'
 
 
+class BusinessPost(models.Model):
+    title = models.CharField(max_length=250)
+    image = models.ImageField(upload_to='business/', blank=True)
+    body = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
 
 
 # class Carousel(models.Model):

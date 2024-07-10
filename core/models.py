@@ -24,14 +24,9 @@ class Subscriber(models.Model):
     def __str__(self):
         return self.email
     
-
+    
 class BusinessInfo(models.Model):
-    # company_name = models.CharField(max_length=255)
     brand_name = models.CharField(max_length=255)
-    # address = models.TextField() # {{ business_info.facebook_url }} {{ business_info.youtube_url }} {{ business_info.instagram_url }}
-    # phone_numbers = models.TextField(help_text="Separate multiple numbers with commas")
-    # service_emails = models.TextField(help_text="Separate multiple emails with commas")
-    # youtube_urls = models.TextField(help_text="Separate multiple URLs with commas")
     facebook_url = models.URLField(blank=True, null=True)
     youtube_url = models.URLField(blank=True, null=True)
     instagram_url = models.URLField(blank=True, null=True)
@@ -44,3 +39,13 @@ class BusinessInfo(models.Model):
 
     class Meta:
         verbose_name_plural = "Business Information"
+
+
+class BusinessPost(models.Model):
+    business_info = models.ForeignKey(BusinessInfo, related_name='posts', on_delete=models.CASCADE)
+    title = models.CharField(max_length=250)
+    image = models.ImageField(upload_to='business/', blank=True)
+    body = models.TextField()
+
+    def __str__(self):
+        return self.title
