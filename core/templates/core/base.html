@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html class="wow-animation" lang="en">
-  <head>
+<head>
     <title>{% block title %}My Website{% endblock %}</title>
     {% load static %}
     <meta charset="utf-8">
@@ -10,168 +10,177 @@
     <meta name="keywords" content="Intense web design multipurpose template">
     <meta name="date" content="Apr 26">
     <link rel="icon" href="{% static 'core/images/favicon.ico' %}" type="image/x-icon">
-    <!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Dancing+Script:700%7CLato:300,300italic,400,700,900"> -->
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeE9wgqAAAAAIZxRqqi-c42G4fmVwAZCV_z8rGC"></script>
-
-
-
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
-    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
+    <style>
+        .ie-panel { 
+            display: none;
+            background: #212121;
+            padding: 10px 0;
+            box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
+            clear: both;
+            text-align:center;
+            position: relative;
+            z-index: 1;
+        }
+        html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel { display: block; }
+
+        .content-container {
+    max-width: 1600px; /* Adjust this value as needed */
+    margin: 0 auto;
+    padding: 0 15px; /* Optional: adds some padding to the sides */
+    background-color: white; /* Ensures the background color of the content remains white */
+}
+
+
+
+    </style>
     {% block extra_css %}{% endblock %}
-  </head>
-  <body>
+</head>
+<body>
     <!-- IE Panel-->
-    <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"> <img src="{% static 'core/images/ie8-panel/warning_bar_0000_us.jpg' %}" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <div class="ie-panel">
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/">
+            <img src="{% static 'core/images/ie8-panel/warning_bar_0000_us.jpg' %}" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.">
+        </a>
+    </div>
     <!-- Page-->
     <div class="page text-center">
-      <!-- Page Header-->
-      <header class="page-head" data-preset='{"title":"Header","category":"header","reload":true,"id":"header"}'>
-        {% block header %}
-        <!-- RD Navbar Transparent-->
-        <div class="rd-navbar-wrap">
-          <nav class="rd-navbar rd-navbar-logo-center novi-background rd-navbar-light" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-stick-up-offset="110px" data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
-            <div class="rd-navbar-inner">
-              <div class="container">
-                <div class="rd-navbar-top-block row justify-content-xl-center align-items-xl-center">
-                  <div class="col-xl-3">
-                    <p class="d-none d-xl-block">Get in touch: <span class="mdi novi-icon"></span><a href="mailto:service@reobrix.com">service@reobrix.com</a></p>
-                  </div>
-                  <div class="col-xl-6 text-center">
-                    <!--Navbar Brand-->
-                    <div class="rd-navbar-brand"><a href="#"><img width='221' height='32' src="{% static 'core/images/ttt.jpg' %}" alt=''/></a></div>
-                  </div>
-                  <div class="col-xl-3">
-                    <div class="form-search-wrap">
-                      <!-- RD Search Form-->
-                      <form class="form-search rd-search" action="{% url 'core:search_results' %}" method="GET">
-                        <div class="form-group">
-                          <label class="form-label form-search-label form-label-sm" for="rd-navbar-form-search-widget">Search Products</label>
-                          <input class="form-search-input input-sm form-control form-control-gray-lightest input-sm" id="rd-navbar-form-search-widget" type="text" name="query" autocomplete="off">
+        <!-- Page Header-->
+        <header class="page-head" data-preset='{"title":"Header","category":"header","reload":true,"id":"header"}'>
+            {% block header %}
+            <!-- RD Navbar Transparent-->
+            <div class="rd-navbar-wrap">
+                <nav class="rd-navbar rd-navbar-logo-center novi-background rd-navbar-light" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-stick-up-offset="110px" data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
+                    <div class="rd-navbar-inner">
+                        <div class="container">
+                            <div class="rd-navbar-top-block row justify-content-xl-center align-items-xl-center">
+                                <div class="col-xl-3">
+                                    <p class="d-none d-xl-block">
+                                        Get in touch: 
+                                        <span class="mdi novi-icon"></span>
+                                        <a href="mailto:service@reobrix.com">service@reobrix.com</a>
+                                    </p>
+                                </div>
+                                <div class="col-xl-6 text-center">
+                                    <!--Navbar Brand-->
+                                    <div class="rd-navbar-brand">
+                                        <a href="#">
+                                            <img width='221' height='32' src="{% static 'core/images/ttt.jpg' %}" alt=''/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3">
+                                    <div class="form-search-wrap">
+                                        <!-- RD Search Form-->
+                                        <form class="form-search rd-search" action="{% url 'core:search_results' %}" method="GET">
+                                            <div class="form-group">
+                                                <label class="form-label form-search-label form-label-sm" for="rd-navbar-form-search-widget">Search Products</label>
+                                                <input class="form-search-input input-sm form-control form-control-gray-lightest input-sm" id="rd-navbar-form-search-widget" type="text" name="query" autocomplete="off">
+                                            </div>
+                                            <button class="form-search-submit" type="submit"><span class="mdi mdi-magnify novi-icon"></span></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- RD Navbar Panel-->
+                            <div class="rd-navbar-panel">
+                                <!-- RD Navbar Toggle-->
+                                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap"><span></span></button>
+                                <!-- RD Navbar Top Panel Toggle-->
+                                <button class="rd-navbar-search-toggle" data-rd-navbar-toggle=".rd-navbar, .form-search-wrap"><span></span></button>
+                            </div>
                         </div>
-                        <button class="form-search-submit" type="submit"><span class="mdi mdi-magnify novi-icon"></span></button>
-                      </form>
-                    </div>
-                  </div>
-
-                <!-- RD Navbar Panel-->
-                <div class="rd-navbar-panel">
-                  <!-- RD Navbar Toggle-->
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap"><span></span></button>
-                  <!-- RD Navbar Top Panel Toggle-->
-                  <button class="rd-navbar-search-toggle" data-rd-navbar-toggle=".rd-navbar, .form-search-wrap"><span></span></button>
-                </div>
-              </div>
-              <div class="rd-navbar-menu-wrap">
-                <div class="container">
-                  <div class="rd-navbar-nav-wrap">
-                    <div class="rd-navbar-mobile-scroll">
-                      <!--Navbar Brand Mobile-->
-                      <div class="rd-navbar-mobile-brand"><a href="{% url 'core:index' %}"><img width='221' height='32' src="{% static 'core/images/ttt.jpg' %}" alt=''/></a></div>
-                      <!-- RD Navbar Nav-->
-                      <ul class="rd-navbar-nav">
-                        <li class="active"><a href="{% url 'core:index' %}"><span>Home</span></a>
-                        </li>
-                        <li><a href="{% url 'core:shop' %}"><span>Shop</span></a>
-                          <ul class="rd-navbar-dropdown">
-                            <li><a href="{% url 'core:single_product' %}"><span class="text-middle">Single Product</span></a>
-                            </li>
-                            <li><a href="{% url 'core:checkout' %}"><span class="text-middle">Checkout</span></a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li><a href="{% url 'core:blog' %}"><span>Blog</span></a>
-                          <ul class="rd-navbar-dropdown">
-                            <li><a href="{% url 'core:blog_single_post' %}"><span class="text-middle">Single Blog Post</span></a>
-                            </li>
-                            <li><a href="{% url 'core:search_results' %}"><span class="text-middle">Search Results</span></a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li><a href="{% url 'core:about_us' %}"><span>About</span></a>
-                        </li>
-                        <li><a href="{% url 'core:contacts' %}"><span>Contacts</span></a>
-                        </li>
-                      
-                      </ul>
-                      <!-- <div id="subheader">
-                        <div class="cart">
-                          {% with total_items=cart|length %}
-                            {% if total_items > 0 %}
-                              Your cart:
-                              <a href="{% url "cart:cart_detail" %}">
-                                {{ total_items }} item{{ total_items|pluralize }},
-                                ${{ cart.get_total_price }}
-                              </a>
-                            {% elif not order %}
-                              Your cart is empty.
-                            {% endif %}
-                          {% endwith %}
+                        <div class="rd-navbar-menu-wrap">
+                            <div class="container">
+                                <div class="rd-navbar-nav-wrap">
+                                    <div class="rd-navbar-mobile-scroll">
+                                        <!--Navbar Brand Mobile-->
+                                        <div class="rd-navbar-mobile-brand">
+                                            <a href="{% url 'core:index' %}">
+                                                <img width='221' height='32' src="{% static 'core/images/ttt.jpg' %}" alt=''/>
+                                            </a>
+                                        </div>
+                                        <!-- RD Navbar Nav-->
+                                        <ul class="rd-navbar-nav">
+                                            <li class="active"><a href="{% url 'core:index' %}"><span>Home</span></a></li>
+                                            <li><a href="{% url 'core:shop' %}"><span>Shop</span></a>
+                                                <ul class="rd-navbar-dropdown">
+                                                    <li><a href="{% url 'core:single_product' %}"><span class="text-middle">Single Product</span></a></li>
+                                                    <li><a href="{% url 'core:checkout' %}"><span class="text-middle">Checkout</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="{% url 'core:blog' %}"><span>Blog</span></a>
+                                                <ul class="rd-navbar-dropdown">
+                                                    <li><a href="{% url 'core:blog_single_post' %}"><span class="text-middle">Single Blog Post</span></a></li>
+                                                    <li><a href="{% url 'core:search_results' %}"><span class="text-middle">Search Results</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="{% url 'core:about_us' %}"><span>About</span></a></li>
+                                            <li><a href="{% url 'core:contacts' %}"><span>Contacts</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div> -->
                     </div>
-                  </div>
-                </div>
-              </div>
+                </nav>
             </div>
-          </nav>
-        </div>
-        {% endblock %}
-      </header>
-
-      <main>
-        {% block content %}{% endblock %}
-      </main>
-
-      <!-- Page Footers-->
-      <!-- Footer variant 4-->
-      <footer class="section-relative section-34 page-footer bg-gray-base context-dark novi-background" data-preset='{"title":"Footer","category":"footer","reload":false,"id":"footer"}'>
-        {% block footer %}
-        <div class="container">
-          <div class="row justify-content-md-center text-xl-left">
-            <div class="col-md-12">
-              <div class="row justify-content-sm-center">
-                <div class="col-sm-12 col-lg-8 order-lg-2 text-lg-right">
-                  <div>
-                    <ul class="list-inline list-inline-dashed p text-darker list-inline-md list-inline-dashed-wide">
-                      <li class="list-inline-item"><a href="#">Support</a></li>
-                    </ul>
-                  </div>
-                  <ul class="list-inline list-inline-white offset-top-10 text-darker">
-                    <li class="list-inline-item"><a class="novi-icon fa fa-facebook" href="{{ business_info.facebook_url }}"></a></li>
-                    <li class="list-inline-item"><a class="novi-icon fa fa-youtube" href="{{ business_info.youtube_url }}"></a></li>
-                    <li class="list-inline-item"><a class="novi-icon fa fa-linkedin" href="#"></a></li>
-                    <li class="list-inline-item"><a class="novi-icon fa fa-instagram" href="{{ business_info.instagram_url }}"></a></li>
-                  </ul>
+            {% endblock %}
+        </header>
+        <div class="content-container">
+          <main>
+              {% block content %}{% endblock %}
+          </main>
+      </div>
+        <!-- Page Footer-->
+        <footer class="section-relative section-34 page-footer bg-gray-base context-dark novi-background" data-preset='{"title":"Footer","category":"footer","reload":false,"id":"footer"}'>
+            {% block footer %}
+            <div class="container">
+                <div class="row justify-content-md-center text-xl-left">
+                    <div class="col-md-12">
+                        <div class="row justify-content-sm-center">
+                            <div class="col-sm-12 col-lg-8 order-lg-2 text-lg-right">
+                                <div>
+                                    <ul class="list-inline list-inline-dashed p text-darker list-inline-md list-inline-dashed-wide">
+                                        <li class="list-inline-item"><a href="#">Support</a></li>
+                                    </ul>
+                                </div>
+                                <ul class="list-inline list-inline-white offset-top-10 text-darker">
+                                    <li class="list-inline-item"><a class="novi-icon fa fa-facebook" href="{{ business_info.facebook_url }}"></a></li>
+                                    <li class="list-inline-item"><a class="novi-icon fa fa-youtube" href="{{ business_info.youtube_url }}"></a></li>
+                                    <li class="list-inline-item"><a class="novi-icon fa fa-linkedin" href="#"></a></li>
+                                    <li class="list-inline-item"><a class="novi-icon fa fa-instagram" href="{{ business_info.instagram_url }}"></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-12 col-lg-4 order-lg-1 offset-top-34 offset-lg-top-0">
+                                <!-- Footer brand-->
+                                <div class="footer-brand">
+                                    <a href="{% url 'core:index' %}">
+                                        <img width='221' height='32' style='margin-left: -6px;' src="{% static 'core/images/ttt.jpg' %}" alt=''/>
+                                    </a>
+                                </div>
+                                <p class="small text-darker offset-top-4">&copy; <span id="copyright-year"></span>. <a href="{% url 'core:privacy' %}">Privacy Policy</a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-12 col-lg-4 order-lg-1 offset-top-34 offset-lg-top-0">
-                  <!-- Footer brand-->
-                  <div class="footer-brand"><a href="{% url 'core:index' %}"><img width='221' height='32' style='margin-left: -6px;' src="{% static 'core/images/ttt.jpg' %}" alt=''/></a></div>
-                  <p class="small text-darker offset-top-4">&copy; <span id="copyright-year"></span> . <a href="{% url 'core:privacy' %}">Privacy Policy</a></p>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-        {% endblock %}
-      </footer>
+            {% endblock %}
+        </footer>
     </div>
-    
     <!-- Global Mailform Output-->
-    <div class="snackbars" id="form-output-global"> </div>
-    <!-- Java script-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
     <script src="{% static 'core/js/core.min.js' %}"></script>
     <script src="{% static 'core/js/script.js' %}"></script>
-
     <script>
-      function onClick(e) {
-        e.preventDefault();
-        grecaptcha.enterprise.ready(async () => {
-          const token = await grecaptcha.enterprise.execute('6LeE9wgqAAAAAIZxRqqi-c42G4fmVwAZCV_z8rGC', {action: 'LOGIN'});
+        grecaptcha.enterprise.ready(function() {
+            grecaptcha.enterprise.execute('6LeE9wgqAAAAAIZxRqqi-c42G4fmVwAZCV_z8rGC', {action: 'homepage'}).then(function(token) {
+                // Add your logic to handle the token
+            });
         });
-      }
     </script>
-
-    
-     {% block extra_js %}{% endblock %}
-  </body>
+    {% block extra_js %}{% endblock %}
+</body>
 </html>
