@@ -43,7 +43,7 @@ def index(request):
         popular_collection = None
 
     if new_arrivals_collection:
-        new_arrivals = Product.objects.filter(collections=new_arrivals_collection, available=True).order_by('-created')[:4]
+        new_arrivals = Product.objects.filter(collections=new_arrivals_collection, available=True).order_by('-created')[:]
     else:
         new_arrivals = []
 
