@@ -206,7 +206,49 @@
     
   </style>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
 
+  <style>
+    img.fuck {
+        max-width: 10%;
+        height: auto;
+        width: 500px;
+    }
+    .slick-next, .slick-prev {
+      z-index: 100;
+      width: 66px;
+      height: 39px;
+    }
+    .slick-prev {
+      left: 25px;
+    }
+    .slick-next {
+      right: 25px;
+    }
+
+    .slick-next:before, .slick-prev:before {
+      font-size: 45px;
+    }
+
+    .newswiperx div {
+      padding: 10px;
+    }
+
+    .newswiperx img {
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.5s ease;
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .newswiperx img:hover {
+      transform: scale(1.1); /* Zoom effect */
+    }
+
+
+  </style>
 
 {% endblock %}
 
@@ -260,25 +302,10 @@
         <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">
           <!-- New Arrivals Tab-->
           <div>
-            <div class="row">
+            <div class="row newswiperx">
               {% for product in new_arrivals %}
-              <div class="col-md-6 col-lg-3">
-                <!-- Product-->
-                <div class="product product-grid product-grid-type-2">
-                  <!-- Product Image-->
-                  <div class="product-image">
-                    <a class="big" href="{{ product.get_absolute_url }}">
-                      <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}">
-                    </a>
-                    {% if product.tags.name == 'Sale' %}
-                    <span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
-                    {% endif %}
-                  </div>
-                  <!-- Product Title-->
-                  <div class="product-title offset-top-4 text-primary">
-                    <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-                  </div>
-                </div>
+              <div>
+                <a><img class="img-fluid product-image-area fuck" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
               </div>
               {% endfor %}
             </div>
@@ -712,6 +739,27 @@
     images.forEach(lazyLoad);
   });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
+<script>
+  $(document).ready(function() {
+    $('.newswiperx').slick({
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      autoplay: false,
+      autoplaySpeed: 2000,
+      dots: true,
+      arrows: true
+    });
+
+    $('.newswiperx').on('swipe', function(event, slick, direction){
+console.log(direction);
+// left
+});
+  });
+
+</script>
 
 {% endblock %}
