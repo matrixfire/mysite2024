@@ -242,72 +242,74 @@
         </a>
       </div> 
 
-
-
-      <!-- Our Shop-->
-      <section class="section-98 section-md-top-110 section-md-bottom-124 novi-background">
-        <div class="container">
-            <h1 class="text-between">Our Shop</h1>
-            <div class="offset-top-30">
-                <!-- Tabs Classic-->
-                <div class="responsive-tabs responsive-tabs-classic" data-type="horizontal">
-                    <ul class="resp-tabs-list tabs-1 text-center tabs-group-default" data-group="tabs-group-default">
-                        <li>New Arrivals</li>
-                        <li>Popular</li>
-                    </ul>
-                    <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">
-                        <!-- New Arrivals Tab-->
-                        <div>
-                            <div class="row">
-                                {% for product in new_arrivals %}
-                                <div class="col-md-6 col-lg-3">
-                                    <!-- Product-->
-                                    <div class="product product-grid product-grid-type-2">
-                                        <!-- Product Image-->
-                                        <div class="product-image">
-                                            <a class="big" href="{{ product.get_absolute_url }}"><img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
-                                            
-                                            {% if product.tags.name == 'Sale' %}
-                                            <span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
-                                            {% endif %}
-                                        </div>
-                                        <!-- Product Title-->
-                                        <div class="product-title offset-top-4 text-primary">
-                                            <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <!-- Popular Products Tab-->
-                        <div>
-                            <div class="row">
-                                {% for product in popular_products %}
-                                <div class="col-md-6 col-lg-3">
-                                    <!-- Product-->
-                                    <div class="product product-grid product-grid-type-2">
-                                        <!-- Product Image-->
-                                        <div class="product-image">
-                                            <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}">
-                                            {% if product.tags.name == 'Sale' %}
-                                            <span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
-                                            {% endif %}
-                                        </div>
-                                        <!-- Product Title-->
-                                        <div class="product-title offset-top-4 text-primary">
-                                            <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
+ <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+<!-- Our Shop-->
+<section class="section-98 section-md-top-110 section-md-bottom-124 novi-background">
+  <div class="container">
+    <h1 class="text-between">Our Shop</h1>
+    <div class="offset-top-30">
+      <!-- Tabs Classic-->
+      <div class="responsive-tabs responsive-tabs-classic" data-type="horizontal">
+        <!-- Tab Headers -->
+        <ul class="resp-tabs-list tabs-1 text-center tabs-group-default" data-group="tabs-group-default">
+          <li>New Arrivals</li>
+          <li>Popular</li>
+        </ul>
+        <!-- Tab Content -->
+        <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">
+          <!-- New Arrivals Tab-->
+          <div>
+            <div class="row">
+              {% for product in new_arrivals %}
+              <div class="col-md-6 col-lg-3">
+                <!-- Product-->
+                <div class="product product-grid product-grid-type-2">
+                  <!-- Product Image-->
+                  <div class="product-image">
+                    <a class="big" href="{{ product.get_absolute_url }}">
+                      <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </a>
+                    {% if product.tags.name == 'Sale' %}
+                    <span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
+                    {% endif %}
+                  </div>
+                  <!-- Product Title-->
+                  <div class="product-title offset-top-4 text-primary">
+                    <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                  </div>
                 </div>
+              </div>
+              {% endfor %}
             </div>
+          </div>
+          <!-- Popular Products Tab-->
+          <div>
+            <div class="row">
+              {% for product in popular_products %}
+              <div class="col-md-6 col-lg-3">
+                <!-- Product-->
+                <div class="product product-grid product-grid-type-2">
+                  <!-- Product Image-->
+                  <div class="product-image">
+                    <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% if product.tags.name == 'Sale' %}
+                    <span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
+                    {% endif %}
+                  </div>
+                  <!-- Product Title-->
+                  <div class="product-title offset-top-4 text-primary">
+                    <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
@@ -377,7 +379,7 @@
 
 
 
-
+ <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
     
  <!-- THIS IS FOR FUCKING CATEGORIES -->
     <section class="section-98 section-md-top-110 section-md-bottom-124 novi-background bg-lightest">
@@ -473,6 +475,8 @@
         </div>
       </section>
 
+ <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
 
        <!-- THIS IS FOR FUCKING BLOGS!! -->
       <!-- Latest Blog Posts-->
@@ -524,7 +528,7 @@
     </section>
 
 
-
+ <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 
 <!-- subscribe.html -->
 <section class="section-98 section-md-top-110 section-md-bottom-124 novi-background bg-lightest">
@@ -577,7 +581,7 @@
   </script>
   
 
-
+ <!-- THIS IS FOR FUCKING SNS -->
   <section class="section-98 section-md-top-110 section-md-bottom-124 novi-background">
     <div class="container">
   <div class="yv-gallery-outer yv-gallery-style-stacked yv-image-style-true yv-gallery-direction-right">
