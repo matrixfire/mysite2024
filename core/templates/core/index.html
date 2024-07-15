@@ -649,68 +649,63 @@
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script src="https://unpkg.com/flickity-sync@2.0.0/flickity-sync.js"></script>
 
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  
-  <!-- Initialize Swiper -->
-  <script>
-      var swiper = new Swiper(".mySwiper", {
-          effect: "coverflow",
-          grabCursor: true,
-          centeredSlides: true,
-          slidesPerView: "auto",
-          coverflowEffect: {
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-          },
-          loop: true, // Enable looping
-          autoplay: {
-              delay: 0, // Set to 0 for continuous autoplay
-              disableOnInteraction: false,
-          },
-          speed: 2000, // Adjust this for a smoother transition (higher value for slower transition)
-      });
-  
-      // Pause on hover
-      document.querySelector('.mySwiper').addEventListener('mouseenter', function() {
-          swiper.autoplay.stop();
-      });
-  
-      // Resume on mouse leave
-      document.querySelector('.mySwiper').addEventListener('mouseleave', function() {
-          swiper.autoplay.start();
-      });
-  </script>
-  
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-
+<!-- Initialize Swiper -->
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-      const images = document.querySelectorAll('img[lazyload="lazy"]');
+  var swiper = new Swiper(".mySwiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    loop: true, // Enable looping
+    autoplay: {
+      delay: 0, // Set to 0 for continuous autoplay
+      disableOnInteraction: false,
+    },
+    speed: 2000, // Adjust this for a smoother transition (higher value for slower transition)
+  });
 
-      const lazyLoad = (target) => {
-          const io = new IntersectionObserver((entries, observer) => {
-              entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                      const img = entry.target;
-                      const src = img.getAttribute('data-original');
-                      img.setAttribute('src', src);
-                      observer.disconnect();
-                  }
-              });
-          });
-          io.observe(target);
-      };
+  // Pause on hover
+  document.querySelector('.mySwiper').addEventListener('mouseenter', function() {
+    swiper.autoplay.stop();
+  });
 
-      images.forEach(lazyLoad);
+  // Resume on mouse leave
+  document.querySelector('.mySwiper').addEventListener('mouseleave', function() {
+    swiper.autoplay.start();
   });
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll('img[lazyload="lazy"]');
 
+    const lazyLoad = (target) => {
+      const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            const src = img.getAttribute('data-original');
+            img.setAttribute('src', src);
+            observer.disconnect();
+          }
+        });
+      });
+      io.observe(target);
+    };
 
+    images.forEach(lazyLoad);
+  });
+</script>
 
 
 {% endblock %}
