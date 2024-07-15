@@ -302,25 +302,10 @@
         <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">
           <!-- New Arrivals Tab-->
           <div>
-            <div class="row">
+            <div class="row newswiperx">
               {% for product in new_arrivals %}
-              <div class="col-md-6 col-lg-3">
-                <!-- Product-->
-                <div class="product product-grid product-grid-type-2">
-                  <!-- Product Image-->
-                  <div class="product-image">
-                    <a class="big" href="{{ product.get_absolute_url }}">
-                      <img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}">
-                    </a>
-                    {% if product.tags.name == 'Sale' %}
-                    <span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
-                    {% endif %}
-                  </div>
-                  <!-- Product Title-->
-                  <div class="product-title offset-top-4 text-primary">
-                    <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-                  </div>
-                </div>
+              <div>
+                <a><img class="img-fluid product-image-area fuck" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
               </div>
               {% endfor %}
             </div>
@@ -355,76 +340,11 @@
 </section>
 
 
-<div class="newswiperx">
-
-    {% for product in new_arrivals %}
-    <div>
-      <a><img class="img-fluid product-image-area fuck" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
-    </div>
-    {% endfor %}
-</div>
-
 
 
  <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 
  
-
-  <!-- Swiper -->
-  <div class="swiper mySwiper_">
-    <div class="swiper-wrapper">
-
-        {% for product in new_arrivals %}
-        <div class="col-md-6 col-lg-3 swiper-slide">
-            <!-- Product-->
-            <div class="product product-grid product-grid-type-2">
-                <!-- Product Image-->
-                <div class="product-image">
-                    <a class="big" href="{{ product.get_absolute_url }}"><img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
-                    
-                    {% if product.tags.name == 'Sale' %}
-                    <span class="product-label label-custom label-lg-custom label-rounded-custom label-danger">Sale</span>
-                    {% endif %}
-                </div>
-                <!-- Product Title-->
-                <div class="product-title offset-top-4 text-primary">
-                    <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}                                        
- 
-    </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
-
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper(".mySwiper_", {
-      slidesPerView: 4,
-      spaceBetween: 30,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  </script>        
-
-
-
-
-
-
-
 
 
 
