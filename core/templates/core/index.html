@@ -430,10 +430,7 @@
 
 
 
-
-      <!-- Classic Gallery Carousel-->
-      <!-- Embed Video-->
-      <!-- Classic Soundcloud Player-->
+ <!-- THIS IS FOR FUCKING I DONT EVEN KNOW WHAT THE FUCK IT IS?!! -->
       <!-- Upcoming Products-->
       <section class="context-dark" data-preset='{"title":"Content block 2","category":"content, parallax","reload":true,"id":"content-block-2"}'>
         <div class="parallax-container" data-parallax-img="{% static 'core/images/home-04-1920x1230.jpg' %}">
@@ -477,7 +474,7 @@
       </section>
 
 
-      
+       <!-- THIS IS FOR FUCKING BLOGS!! -->
       <!-- Latest Blog Posts-->
       <section class="section-98 section-md-110 novi-background" data-preset='{"title":"Blog 1","category":"content, blog","reload":false,"id":"blog-1"}'>
         <div class="container">
@@ -525,42 +522,6 @@
             </div>
         </div>
     </section>
-
-
-
-
-
-<section class="context-dark">
-  <div class="parallax-container" data-parallax-img="{% static 'core/images/background-2-1920x1184.jpg' %}">
-    <div class="parallax-content">
-      <div class="section-98 section-md-124 bg-overlay-gray-darkest">
-        <div class="container">
-          <div class="row justify-content-center grid-group-md">
-            <div class="col-md-8 col-lg-4"><span class="icon novi-icon icon-circle icon-bordered icon-carrot-filled icon-outlined mdi mdi-monitor"></span>
-              <div>
-                <h4 class="text-uppercase offset-top-30 font-weight-bold">Handmade</h4>
-                <p>We teach basics of handmade craft that are quite easy to learn and practise. However, we help experienced handmaders as well.</p>
-              </div>
-            </div>
-            <div class="col-md-8 col-lg-4"><span class="icon novi-icon icon-circle icon-bordered icon-carrot-filled icon-outlined mdi mdi-rocket"></span>
-              <div>
-                <h4 class="text-uppercase offset-top-30 font-weight-bold">design</h4>
-                <p>If you are into design, but do not have access to expensive materials and cloth, our tutorials and lessons we conduct may be useful for you.</p>
-              </div>
-            </div>
-            <div class="col-md-8 col-lg-4"><span class="icon novi-icon icon-circle icon-bordered icon-carrot-filled icon-outlined mdi mdi-xml"></span>
-              <div>
-                <h4 class="text-uppercase offset-top-30 font-weight-bold">workshops</h4>
-                <p>Our masters carry out weekly workshops that are free to participate even if you don’t know anything about handmade art.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 
 
@@ -677,102 +638,6 @@
 
 </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!-- Another type of  Blog Posts-->
-      <section class="section-98 section-md-110 novi-background" data-preset='{"title":"Blog 1","category":"content, blog","reload":false,"id":"blog-1"}'>
-        <div class="container-fluid">
-            <h1 class="text-between">Another type of  Blog Posts</h1>
-            <div class="row justify-content-sm-center">
-              {% for post in latest_classic_image_posts %}
-              <div class="col-md-10 col-lg-3 offset-top-66 offset-md-top-30 offset-lg-top-0">
-                  <!-- Post Boxed-->
-                  <a class="d-block" href="{{ post.get_absolute_url }}">
-                      <div class="post post-boxed">
-                          <!-- Post media-->
-                          <header class="post-media novi-excluded">
-                              <img class="img-fluid" width="570" height="321" src="{{ post.classic_image.url }}" alt="{{ post.title }}">
-                          </header>
-                          <!-- Post content-->
-                          <section class="post-content text-left novi-excluded">
-                              <div class="post-tags group-xs">
-                                  {% for tag in post.tags.all %}
-                                      <span class="label-custom label-lg-custom label-primary">{{ tag.name }}</span>
-                                  {% endfor %}
-                              </div>
-                              <div class="post-body">
-                                  <!-- Post Title-->
-                                  <div class="post-title">
-                                      <h4 class="text-regular">{{ post.title }}</h4>
-                                  </div>
-                                  <div class="post-meta small">
-                                      <ul class="list-inline list-inline-sm p">
-                                          <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">{{ post.author }}</span></li>
-                                          <li class="list-inline-item"><span class="text-middle icon-xxs mdi mdi-clock novi-icon"></span>
-                                              <time class="font-italic text-warning text-middle" datetime="{{ post.publish|date:"Y-m-d" }}">{{ post.publish|timesince }} ago</time>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </section>
-                      </div>
-                  </a>
-              </div>
-
-          {% endfor %}
-                <div class="col-12 offset-top-66"><a class="btn btn-primary btn-ellipse" href="{% url 'blog:post_list' %}">view all blog posts</a></div>
-            </div>
-        </div>
-    </section>
-
-    
-    <section class="section-98 section-md-110 novi-background bg-lightest" data-preset='{"title":"Blog 1","category":"content, blog","reload":false,"id":"blog-1"}'>
-      <div class="container-flicker">
-          <h1>Flickity - asNavFor and Sync</h1>
-          
-          <!-- Flickity HTML init -->
-          <div class="carousel carousel-main" data-flickity='{ "sync": ".carousel-nav", "prevNextButtons": false, "contain": true, "groupCells": true, "wrapAround": true }'>
-            {% for product in new_arrivals %}
-              <div class="carousel-cell">
-                <img src="{% static 'core/images/test.jpg' %}" alt="Test Image">
-                <div class="product-info">
-                  <h2>{{ product.name }}</h2>
-                  <p>{{ product.short_description }}</p>
-              </div>
-              </div>
-              {% endfor %}
-          </div>
-          
-          <div class="carousel carousel-nav" data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false, "wrapAround": true }'>
-            {% for product in new_arrivals %}
-              <div class="carousel-cell">
-                <img src="{% static 'core/images/test.jpg' %}" alt="Test Image">
-                <div class="product-info">
-                  <h2>{{ product.name }}</h2>
-              </div>
-              </div>
-              {% endfor %}
-          </div>
-      </div>
-  </section>
-
-
-
-
-
-  
 
 
 
