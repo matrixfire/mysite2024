@@ -221,7 +221,7 @@
       height: 39px;
     }
     .slick-prev {
-      left: 25px;
+      left: 45px;
     }
     .slick-next {
       right: 25px;
@@ -321,7 +321,7 @@
           <div class="row newswiperx">
             {% for product in new_arrivals %}
             <div>
-              <a><img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+              <a href="{{ product.get_absolute_url }}"><img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
             </div>
             {% endfor %}
           </div>
@@ -331,7 +331,7 @@
           <div class="row newswiperx2">
             {% for product in popular_products %}
             <div>
-              <a><img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+              <a href="{{ product.get_absolute_url }}"><img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
             </div>
             {% endfor %}
           </div>
