@@ -519,7 +519,29 @@ urlpatterns = [
 
 dj = setup_django_app
 
+###############################################################################################################
+import os
 
+def remove_link_tag(folder_path):
+    # The specific link tag to remove
+    link_tag_to_remove = '<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Dancing+Script:700%7CLato:300,300italic,400,700,900">'
+
+    # Walk through the directory
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(".html"):
+                file_path = os.path.join(root, file)
+
+                # Read the file
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    file_contents = f.read()
+
+                # Remove the specific link tag
+                updated_contents = file_contents.replace(link_tag_to_remove, '')
+
+                # Write the updated contents back to the file
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(updated_contents)
 
 
 '''
