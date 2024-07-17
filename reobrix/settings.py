@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'taggit',
     'ckeditor',
+    'ckeditor_uploader',
     'django_celery_results',
     'django_recaptcha',
 
@@ -220,3 +221,24 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 # Add reCAPTCHA keys
 RECAPTCHA_PUBLIC_KEY = '6LdCAQkqAAAAAEOG66b6hMOsEE_F1-huNeaUbCE7'
 RECAPTCHA_PRIVATE_KEY = '6LdCAQkqAAAAAPpOLoVTHDJp-AWIo5l2_dOo6fep'
+
+
+
+
+
+# Settings for CKEditor in your Django settings file
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        'toolbar': 'full',
+        'extraPlugins': ','.join([
+            'codesnippet',
+            'widget',
+            'dialog',
+            'mathjax',  # add other plugins as needed
+        ]),
+        'codeSnippet_theme': 'monokai_sublime',  # Example code snippet theme
+    },
+}

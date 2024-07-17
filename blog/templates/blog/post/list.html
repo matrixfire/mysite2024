@@ -41,191 +41,57 @@
               {% endif %}
 
 
-                {% for post in posts %}
-                {% if post.post_type == post.PostType.CLASSIC_IMAGE %}
-                <!-- Type 1: Classic Post with Image -->
-                <div class="offset-top-41 offset-md-top-66">
-                  <!-- Post Classic-->
-                  <article class="post post-classic">
-                    <!-- Post media-->
-                    <header class="post-media novi-excluded">
-                      <div>
-                        <a class="thumbnail-classic" href="{{ post.get_absolute_url }}" target="_self">
-                          <figure>
-                            <img width="770" height="434" src="{{ post.classic_image.url }}" alt="{{ post.title }}">
-                          </figure>
-                        </a>
+              {% for post in posts %}
+              <!-- Type 1: Classic Post with Image -->
+              <div class="offset-top-41 offset-md-top-66">
+                <!-- Post Classic-->
+                <article class="post post-classic">
+                  <!-- Post media-->
+                  {% if post.featured_image %}
+                  <header class="post-media novi-excluded">
+                    <div>
+                      <a class="thumbnail-classic" href="{{ post.get_absolute_url }}" target="_self">
+                        <figure>
+                          <img width="770" height="434" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                        </figure>
+                      </a>
+                    </div>
+                  </header>
+                  {% endif %}
+                  <!-- Post content-->
+                  <section class="post-content text-left novi-excluded offset-top-41">
+                    <div class="unit unit-sm flex-md-row flex-md-row-reverse">
+                      <div class="unit-body">
+                        <!-- Post Meta-->
+                        <div class="post-meta text-dark">
+                          <span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
+                          <time class="text-middle small" datetime="{{ post.publish|date:'Y-m-d' }}">{{ post.publish|date:'m/d/Y' }}</time>
+                        </div>
+                        <!-- Post Title-->
+                        <h3 class="text-regular offset-top-10"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                        <!-- Post Body-->
+                        <div class="post-body">
+                          <p>{{ post.body|safe|truncatewords_html:30 }}</p>
+                        </div>
+                        <!-- Post Tags-->
+                        <p class="text-dark text-md-right"><small>{% for tag in post.tags.all %}<a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
                       </div>
-                    </header>
-                    <!-- Post content-->
-                    <section class="post-content text-left novi-excluded offset-top-41">
-                      <div class="unit unit-sm flex-md-row flex-md-row-reverse">
-                        <div class="unit-body">
-                          <!-- Post Meta-->
-                          <div class="post-meta text-dark">
-                            <span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
-                            <time class="text-middle small" datetime="{{ post.publish|date:'Y-m-d' }}">{{ post.publish|date:'m/d/Y' }}</time>
-                          </div>
-                          <!-- Post Title-->
-                          <h3 class="text-regular offset-top-10"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                          <!-- Post Body-->
-                          <div class="post-body">
-                            <p>{{ post.body|truncatewords:30 }}</p>
-                          </div>
-                          <!-- Post Tags-->
-                          <p class="text-dark text-md-right"><small>{% for tag in post.tags.all %}<a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
-                        </div>
-                        <div class="unit-right">
-                          <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
-                            <div class="unit-left"><img class="rounded-circle" src="{% if post.author_image %}{{ post.author_image.url }}{% else %}{% static "blog/img/small_logo.jpg" %}{% endif %}" alt="{{ post.author.get_full_name }}" width="70" height="70"></div>
-                            <div class="unit-body">
-                              <p class="text-dark">
-                                <cite class="small text-normal">{{ post.author.get_full_name }}</cite>
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-                  </article>
-                </div>
-                <hr class="hr bg-lighter offset-top-41 offset-md-top-66">
-                {% elif post.post_type == post.PostType.CLASSIC_NO_IMAGE %}
-                <!-- Type 2: Classic Post without Image -->
-                <div class="offset-top-41 offset-md-top-66">
-                  <!-- Post Classic-->
-                  <article class="post post-classic">
-                    <!-- Post content-->
-                    <section class="post-content text-left novi-excluded">
-                      <div class="unit unit-sm flex-md-row flex-md-row-reverse">
-                        <div class="unit-body">
-                          <!-- Post Meta-->
-                          <div class="post-meta text-dark">
-                            <span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
-                            <time class="text-middle small" datetime="{{ post.publish|date:'Y-m-d' }}">{{ post.publish|date:'m/d/Y' }}</time>
-                          </div>
-                          <!-- Post Title-->
-                          <h3 class="text-regular offset-top-10"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                          <!-- Post Body-->
-                          <div class="post-body">
-                            <p>{{ post.body|truncatewords:30 }}</p>
-                          </div>
-                          <!-- Post Tags-->
-                          <p class="text-dark text-md-right"><small>{% for tag in post.tags.all %}<a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
-                        </div>
-                        <div class="unit-right">
-                          <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
-                            <div class="unit-left"><img class="rounded-circle" src="{% if post.author_image %}{{ post.author_image.url }}{% else %}{% static "blog/img/small_logo.jpg" %}{% endif %}" alt="{{ post.author.get_full_name }}" width="70" height="70"></div>
-                            <div class="unit-body">
-                              <p class="text-dark">
-                                <cite class="small text-normal">{{ post.author.get_full_name }}</cite>
-                              </p>
-                            </div>
+                      <div class="unit-right">
+                        <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
+                          <div class="unit-left"><img class="rounded-circle" src="{% if post.author_image %}{{ post.author_image.url }}{% else %}{% static "blog/img/small_logo.jpg" %}{% endif %}" alt="{{ post.author.get_full_name }}" width="70" height="70"></div>
+                          <div class="unit-body">
+                            <p class="text-dark">
+                              <cite class="small text-normal">{{ post.author.get_full_name }}</cite>
+                            </p>
                           </div>
                         </div>
                       </div>
-                    </section>
-                  </article>
-                </div>
-                <hr class="hr bg-lighter offset-top-41 offset-md-top-66">
-                {% elif post.post_type == post.PostType.VIDEO %}
-                <!-- Type 3: Post with Embedded Video -->
-                <div class="offset-top-41 offset-md-top-66">
-                  <!-- Post Classic-->
-                  <article class="post post-classic">
-                    <!-- Post media-->
-                    <header class="post-media novi-excluded">
-                      <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="{{ post.get_embed_url }}" allowfullscreen></iframe>
-                      </div>
-
-
-                    </header>
-                    <!-- Post content-->
-                    <section class="post-content text-left novi-excluded offset-top-41">
-                      <div class="unit unit-sm flex-md-row flex-md-row-reverse">
-                        <div class="unit-body">
-                          <!-- Post Meta-->
-                          <div class="post-meta text-dark">
-                            <span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
-                            <time class="text-middle small" datetime="{{ post.publish|date:'Y-m-d' }}">{{ post.publish|date:'m/d/Y' }}</time>
-                          </div>
-                          <!-- Post Title-->
-                          <h3 class="text-regular offset-top-10"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                          <!-- Post Body-->
-                          <div class="post-body">
-                            <p>{{ post.body|truncatewords:30 }}</p>
-                          </div>
-                          <!-- Post Tags-->
-                          <p class="text-dark text-md-right"><small>{% for tag in post.tags.all %}<a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
-                        </div>
-                        <div class="unit-right">
-                          <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
-                            <div class="unit-left"><img class="rounded-circle" src="{% if post.author_image %}{{ post.author_image.url }}{% else %}{% static "blog/img/small_logo.jpg" %}{% endif %}" alt="{{ post.author.get_full_name }}" width="70" height="70"></div>
-                            <div class="unit-body">
-                              <p class="text-dark">
-                                <cite class="small text-normal">{{ post.author.get_full_name }}</cite>
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-                  </article>
-                </div>
-                <hr class="hr bg-lighter offset-top-41 offset-md-top-66">
-                {% elif post.post_type == post.PostType.CAROUSEL %}
-                <!-- Type 4: Post with Carousel of Images -->
-                <div class="offset-top-41 offset-md-top-66 owl-carousel-height-auto">
-                  <!-- Post Classic-->
-                  <article class="post post-classic">
-                    <!-- Post media-->
-                    <header class="post-media novi-excluded">
-                      <!-- Owl Carousel-->
-                      <div class="owl-carousel owl-carousel-classic" data-items="1" data-dots="true" data-nav="true" data-nav-class='["owl-prev mdi mdi-chevron-left", "owl-next mdi mdi-chevron-right"]' data-lightgallery="group">
-                        {% for image in post.carousel_images.all %}
-                        <a class="thumbnail-classic" data-lightgallery="item" href="{{ image.url }}">
-                          <figure>
-                            <img width="770" height="434" src="{{ image.url }}" alt="{{ post.title }}">
-                          </figure>
-                        </a>
-                        {% endfor %}
-                      </div>
-                    </header>
-                    <!-- Post content-->
-                    <section class="post-content text-left novi-excluded offset-top-41">
-                      <div class="unit unit-sm flex-md-row flex-md-row-reverse">
-                        <div class="unit-body">
-                          <!-- Post Meta-->
-                          <div class="post-meta text-dark">
-                            <span class="text-middle icon-xxs text-primary mdi mdi-arrow-right novi-icon"></span>
-                            <time class="text-middle small" datetime="{{ post.publish|date:'Y-m-d' }}">{{ post.publish|date:'m/d/Y' }}</time>
-                          </div>
-                          <!-- Post Title-->
-                          <h3 class="text-regular offset-top-10"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                          <!-- Post Body-->
-                          <div class="post-body">
-                            <p>{{ post.body|truncatewords:30 }}</p>
-                          </div>
-                          <!-- Post Tags-->
-                          <p class="text-dark text-md-right"><small>{% for tag in post.tags.all %}<a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</small></p>
-                        </div>
-                        <div class="unit-right">
-                          <div class="unit flex-row align-items-center flex-md-column unit-spacing-xs">
-                            <div class="unit-left"><img class="rounded-circle" src="{% if post.author_image %}{{ post.author_image.url }}{% else %}{% static "blog/img/small_logo.jpg" %}{% endif %}" alt="{{ post.author.get_full_name }}" width="70" height="70"></div>
-                            <div class="unit-body">
-                              <p class="text-dark">
-                                <cite class="small text-normal">{{ post.author.get_full_name }}</cite>
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-                  </article>
-                </div>
-                <hr class="hr bg-lighter offset-top-41 offset-md-top-66">
-                {% endif %}
+                    </div>
+                  </section>
+                </article>
+              </div>
+              <hr class="hr bg-lighter offset-top-41 offset-md-top-66">
+              
               {% endfor %}
               
 
@@ -233,7 +99,7 @@
 
 
               <!-- My pagination -->    
-              {% include "pagination.html" with page=posts %}
+              {% include "pagination2.html" with page=posts %}
 
 
 
