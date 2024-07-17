@@ -23,13 +23,6 @@ from django.contrib import messages
 from .forms import SubscriberForm
 
 
-# def index_(request):
-#     """The home page for reobrix."""
-#     slides = Slide.objects.all()
-#     return render(request, 'core/index.html', {"slides": slides})
-
-# new_arrivals, popular_products = None, None
-
 
 def index(request):
     try:
@@ -90,11 +83,11 @@ def index(request):
 def about_us(request):
     # f("fuckfuckfuck")
     # launch asynchronous task
-    print(f"fucking test111")
-    try:
-        test.delay("tesing this celery rabbitmq...")
-    except:
-        print("Celery...failed.")
+    # print(f"fucking test111")
+    # try:
+    #     test.delay("tesing this celery rabbitmq...")
+    # except:
+    #     print("Celery...failed.")
     print(f"fucking test2")
     return render(request, 'core/about-us.html')
 
@@ -190,9 +183,6 @@ def shop(request):
 
 def single_product(request):
     return render(request, 'core/single-product.html')
-
-
-
 
 
 
