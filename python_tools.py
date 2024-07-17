@@ -544,6 +544,133 @@ def remove_link_tag(folder_path):
                     f.write(updated_contents)
 
 
+
+
+######################################
+
+from selenium import webdriver
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from PIL import Image
+import io
+import time
+
+def initialize_driver():
+    """
+    Initialize the Firefox driver with options for headless mode if needed.
+    Returns the initialized WebDriver instance.
+    """
+    options = FirefoxOptions()
+    # options.add_argument("--headless")  # Uncomment if you want to run Firefox in headless mode
+    service = FirefoxService()
+    return webdriver.Firefox(service=service, options=options)
+
+def switch_to_tab(driver, tab_index):
+    """
+    Switches to the tab specified by tab_index (0-based index).
+    """
+    driver.switch_to.window(driver.window_handles[tab_index])
+
+def take_full_page_screenshot_(driver, file_path='full_page_screenshot.png'):
+    """
+    Takes a full-page screenshot of the current webpage displayed in the driver.
+    Saves the screenshot as 'file_path'.
+    """
+    # Maximize the window to ensure full-page screenshot
+    driver.maximize_window()
+
+    # Get the total height of the page
+    total_height = driver.execute_script("return document.body.scrollHeight")
+
+    # Initialize a list to store the screenshot parts
+    screenshot_parts = []
+
+    # Scroll and take screenshots
+    viewport_height = driver.execute_script("return window.innerHeight")
+    for i in range(0, total_height, viewport_height):
+        driver.execute_script(f"window.scrollTo(0, {i});")
+        time.sleep(2)  # Give the page time to load
+        screenshot_parts.append(driver.get_screenshot_as_png())
+
+    # Stitch the screenshots together
+    stitched_image = Image.new('RGB', (driver.execute_script("return document.body.scrollWidth"), total_height))
+    offset = 0
+    for part in screenshot_parts:
+        image = Image.open(io.BytesIO(part))
+        stitched_image.paste(image, (0, offset))
+        offset += image.height
+
+    # Save the final stitched image
+    stitched_image.save(file_path)
+
+    print(f"Full page screenshot saved as '{file_path}'")
+
+
+def take_full_page_screenshot(driver, file_path='full_page_screenshot.png'):
+    """
+    Takes a smoother full-page screenshot of the current webpage displayed in the driver.
+    Saves the screenshot as 'file_path'.
+    """
+    # Maximize the window to ensure full-page screenshot
+    driver.maximize_window()
+
+    # Get the total height of the page
+    total_height = driver.execute_script("return document.body.scrollHeight")
+
+    # Initialize a list to store the screenshot parts
+    screenshot_parts = []
+
+    # Define scroll increment (adjust as needed)
+    scroll_increment = 500  # Scroll by 500 pixels each time
+
+    # Scroll and take screenshots
+    for i in range(0, total_height, scroll_increment):
+        driver.execute_script(f"window.scrollTo(0, {i});")
+        time.sleep(0.5)  # Adjust wait time as needed (e.g., 0.5 seconds)
+        screenshot_parts.append(driver.get_screenshot_as_png())
+
+    # Stitch the screenshots together
+    stitched_image = Image.new('RGB', (driver.execute_script("return document.body.scrollWidth"), total_height))
+    offset = 0
+    for part in screenshot_parts:
+        image = Image.open(io.BytesIO(part))
+        stitched_image.paste(image, (0, offset))
+        offset += image.height
+
+    # Save the final stitched image
+    stitched_image.save(file_path)
+
+    print(f"Full page screenshot saved as '{file_path}'")
+
+
+
+if __name__ == "__main__":
+    # Initialize the driver
+    driver = initialize_driver()
+
+    # Open the desired website
+    driver.get('https://www.dedao.cn/')
+
+    # Switch to the third tab (index 2)
+    switch_to_tab(driver, 2)
+
+    # Take a full-page screenshot of the third tab
+    take_full_page_screenshot(driver, 'third_tab_screenshot.png')
+
+    # Close the browser
+    driver.quit()
+
+
+
+
+
+
+
+
+
+
+
+
 '''
 prompts:
 
