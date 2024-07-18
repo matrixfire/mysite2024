@@ -664,9 +664,60 @@ if __name__ == "__main__":
 
 
 
+#####################################################################################################
 
 
+import os
+import subprocess
+import sys
 
+def create_django_project(base_path, project_name):
+    project_path = os.path.join(base_path, project_name)
+    # 1, Create the project directory
+    os.makedirs(project_path, exist_ok=True)
+    print(f"Created project directory: {project_path}")
+    # 2, Create virtual environment
+    subprocess.check_call([sys.executable, '-m', 'venv', os.path.join(project_path, 'myenv')])
+    print("Virtual environment created")
+    # 3, Activate virtual environment
+    activate_script = os.path.join(project_path, 'myenv', 'Scripts', 'activate')
+    activate_command = f'{activate_script} && '
+    # 4, Install Django
+    subprocess.check_call(f"{activate_command}pip install Django -i https://pypi.tuna.tsinghua.edu.cn/simple", shell=True)
+    print("Django installed")
+    # 5, Create Django project
+    subprocess.check_call(f"{activate_command}django-admin startproject {project_name} {project_path}", shell=True)
+    print("Django project created")
+    # 6, Create Django app
+    os.chdir(project_path)
+    subprocess.check_call(f"{activate_command}python manage.py startapp core", shell=True)
+    print("Django app 'core' created")
+    # 7, Add 'core' app to settings.py
+    settings_path = os.path.join(project_path, project_name, 'settings.py')
+    with open(settings_path, 'r') as file:
+        settings = file.readlines()
+    
+    installed_apps_index = None
+    for i, line in enumerate(settings):
+        if 'INSTALLED_APPS' in line:
+            installed_apps_index = i
+            break
+    
+    if installed_apps_index is not None:
+        for i in range(installed_apps_index, len(settings)):
+            if ']' in settings[i]:
+                settings[i] = settings[i].replace(']', "    'core',\n]")
+                break
+
+    with open(settings_path, 'w') as file:
+        file.writelines(settings)
+    
+    print("Added 'core' app to INSTALLED_APPS in settings.py")
+
+if __name__ == "__main__":
+    base_path = r"C:\Users\Administrator\Desktop\work2024"
+    project_name = "dj_test"
+    create_django_project(base_path, project_name)
 
 
 
