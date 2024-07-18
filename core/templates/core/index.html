@@ -397,49 +397,48 @@
 
 
 
-
- <!-- THIS IS FOR FUCKING I DONT EVEN KNOW WHAT THE FUCK IT IS?!! -->
-      <!-- Upcoming Products-->
-      <section class="context-dark" data-preset='{"title":"Content block 2","category":"content, parallax","reload":true,"id":"content-block-2"}'>
-        <div class="parallax-container" data-parallax-img="{% static 'core/images/test.svg' %}">
-          <div class="parallax-content">
-            <div class="bg-overlay-gray-darkest">
-              <div class="container section-98 section-md-110">
-                <h1 class="text-between text-white">Upcoming Products</h1>
-                <div class="row justify-content-sm-center">
-                  {% for blog in upcoming_products_blog_list %}
-                  <div class="col-md-6 col-lg-5 col-xl-3">
-                    <!-- Post Event-->
-                    <article class="post post-event-type-2">
-                      <!-- Post media-->
-                      <header class="post-media novi-excluded">
-                        <a href="{{ blog.get_absolute_url }}">
-                          <img src="{{ blog.classic_image.url }}" width="270" height="310" alt="{{ blog.title }}">
-                          <span class="icon fa fa-info-circle novi-icon"></span>
-                        </a>
-                      </header>
-                      <!-- Post content-->
-                      <section class="post-content text-left novi-excluded offset-top-10">
-                        <!-- Post Body-->
-                        <div class="post-body">
-                          <!-- Post Title-->
-                          <h5 class="offset-top-10"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h5>
-                        </div>
-                      </section>
-                    </article>
+<!-- Upcoming Products-->
+<section class="context-dark" data-preset='{"title":"Content block 2","category":"content, parallax","reload":true,"id":"content-block-2"}'>
+  <div class="parallax-container" data-parallax-img="{% static 'core/images/test.svg' %}">
+    <div class="parallax-content">
+      <div class="bg-overlay-gray-darkest">
+        <div class="container section-98 section-md-110">
+          <h1 class="text-between text-white">Upcoming Products</h1>
+          <div class="row justify-content-sm-center">
+            {% for blog in upcoming_products_blog_list %}
+            <div class="col-md-6 col-lg-5 col-xl-3">
+              <!-- Post Event-->
+              <article class="post post-event-type-2">
+                <!-- Post media-->
+                <header class="post-media novi-excluded">
+                  <a href="{{ blog.get_absolute_url }}">
+                    <img src="{{ blog.classic_image.url }}" width="270" height="310" alt="{{ blog.title }}">
+                    <span class="icon fa fa-info-circle novi-icon"></span>
+                  </a>
+                </header>
+                <!-- Post content-->
+                <section class="post-content text-left novi-excluded offset-top-10">
+                  <!-- Post Body-->
+                  <div class="post-body">
+                    <!-- Post Title-->
+                    <h5 class="offset-top-10"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h5>
                   </div>
-                  {% endfor %}
-                </div>
-                <div class="row justify-content-sm-center offset-top-66">
-                  <div class="col-sm-10 col-md-6 col-lg-5 col-xl-4 inset-left-50 inset-sm-left-80 inset-right-50 inset-sm-right-80">
-                    <a class="btn btn-block btn-default btn-ellipse" href="#">view all Products</a>
-                  </div>
-                </div>
-              </div>
+                </section>
+              </article>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="row justify-content-sm-center offset-top-66">
+            <div class="col-sm-10 col-md-6 col-lg-5 col-xl-4 inset-left-50 inset-sm-left-80 inset-right-50 inset-sm-right-80">
+              <a class="btn btn-block btn-default btn-ellipse" href="#">view all Products</a>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
 
  <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 
