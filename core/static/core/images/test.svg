@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1230">
+  <defs>
+    <pattern id="gridPattern" patternUnits="userSpaceOnUse" width="40" height="40">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e0e0e0" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#f8f9fa" />
+  <rect width="100%" height="100%" fill="url(#gridPattern)" />
+
+  <!-- AK47-like Block Gun -->
+  <g transform="translate(100, 100) scale(0.8)">
+    <!-- Stock -->
+    <rect x="0" y="20" width="60" height="20" fill="#8B4513" stroke="#333" stroke-width="0.5" />
+    <rect x="0" y="40" width="40" height="20" fill="#A0522D" stroke="#333" stroke-width="0.5" />
+    <!-- Body -->
+    <rect x="60" y="20" width="100" height="20" fill="#4a4a4a" stroke="#333" stroke-width="0.5" />
+    <rect x="80" y="40" width="80" height="20" fill="#5a5a5a" stroke="#333" stroke-width="0.5" />
+    <!-- Grip -->
+    <rect x="120" y="60" width="20" height="40" fill="#8B4513" stroke="#333" stroke-width="0.5" />
+    <!-- Magazine -->
+    <rect x="100" y="60" width="20" height="40" fill="#b8860b" stroke="#333" stroke-width="0.5" />
+    <rect x="100" y="100" width="20" height="20" fill="#daa520" stroke="#333" stroke-width="0.5" />
+    <!-- Barrel -->
+    <rect x="160" y="30" width="80" height="10" fill="#5a5a5a" stroke="#333" stroke-width="0.5" />
+    <!-- Gas Tube -->
+    <rect x="160" y="20" width="60" height="10" fill="#4a4a4a" stroke="#333" stroke-width="0.5" />
+    <!-- Front Sight -->
+    <rect x="230" y="20" width="10" height="20" fill="#333" stroke="#333" stroke-width="0.5" />
+    <!-- Dust Cover -->
+    <rect x="60" y="10" width="100" height="10" fill="#5a5a5a" stroke="#333" stroke-width="0.5" />
+    <!-- Rear Sight -->
+    <rect x="150" y="0" width="10" height="20" fill="#333" stroke="#333" stroke-width="0.5" />
+    <!-- Charging Handle -->
+    <rect x="140" y="10" width="20" height="10" fill="#333" stroke="#333" stroke-width="0.5" />
+  </g>
+
+  <!-- Space Shuttle -->
+  <g transform="translate(1500, 200) scale(1.2)">
+    <!-- Main Body -->
+    <rect x="40" y="0" width="120" height="40" fill="#f0f0f0" stroke="#333" stroke-width="0.5" />
+    <rect x="0" y="40" width="200" height="40" fill="#f0f0f0" stroke="#333" stroke-width="0.5" />
+    <!-- Cockpit -->
+    <rect x="140" y="20" width="40" height="20" fill="#87CEEB" stroke="#333" stroke-width="0.5" />
+    <!-- Wings -->
+    <rect x="40" y="80" width="120" height="20" fill="#A9A9A9" stroke="#333" stroke-width="0.5" />
+    <!-- Tail -->
+    <rect x="0" y="0" width="40" height="80" fill="#A9A9A9" stroke="#333" stroke-width="0.5" />
+    <!-- Thrusters -->
+    <rect x="0" y="80" width="20" height="20" fill="#FFA500" stroke="#333" stroke-width="0.5" />
+    <rect x="20" y="80" width="20" height="20" fill="#FFA500" stroke="#333" stroke-width="0.5" />
+    <rect x="180" y="80" width="20" height="20" fill="#FFA500" stroke="#333" stroke-width="0.5" />
+    <!-- NASA Logo (simplified) -->
+    <rect x="80" y="20" width="40" height="20" fill="#0B3D91" stroke="#333" stroke-width="0.5" />
+    <rect x="90" y="25" width="20" height="10" fill="#FF0000" stroke="#333" stroke-width="0.5" />
+  </g>
+
+  <!-- Fighter Jet -->
+  <g transform="translate(300, 500) scale(1.2)">
+    <!-- Main Body -->
+    <rect x="40" y="20" width="160" height="20" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <rect x="60" y="40" width="120" height="20" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <!-- Cockpit -->
+    <rect x="160" y="0" width="40" height="20" fill="#87CEEB" stroke="#333" stroke-width="0.5" />
+    <!-- Wings -->
+    <rect x="80" y="60" width="100" height="20" fill="#4682B4" stroke="#333" stroke-width="0.5" />
+    <rect x="100" y="80" width="60" height="20" fill="#4682B4" stroke="#333" stroke-width="0.5" />
+    <!-- Tail -->
+    <rect x="20" y="0" width="40" height="40" fill="#4682B4" stroke="#333" stroke-width="0.5" />
+    <!-- Nose -->
+    <rect x="200" y="20" width="40" height="20" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <!-- Engines -->
+    <rect x="0" y="40" width="40" height="20" fill="#B22222" stroke="#333" stroke-width="0.5" />
+    <rect x="20" y="60" width="20" height="20" fill="#B22222" stroke="#333" stroke-width="0.5" />
+  </g>
+
+  <!-- Tank -->
+  <g transform="translate(1000, 800) scale(1.5)">
+    <!-- Main Body -->
+    <rect x="20" y="40" width="180" height="40" fill="#4B5320" stroke="#333" stroke-width="0.5" />
+    <!-- Turret -->
+    <rect x="80" y="20" width="80" height="20" fill="#4B5320" stroke="#333" stroke-width="0.5" />
+    <!-- Cannon -->
+    <rect x="160" y="30" width="60" height="10" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <!-- Tracks -->
+    <rect x="0" y="80" width="220" height="20" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <rect x="10" y="70" width="20" height="10" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <rect x="50" y="70" width="20" height="10" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <rect x="90" y="70" width="20" height="10" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <rect x="130" y="70" width="20" height="10" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <rect x="170" y="70" width="20" height="10" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+  </g>
+
+  <!-- Pirate Ship -->
+  <g transform="translate(100, 900) scale(1.2)">
+    <!-- Hull -->
+    <rect x="20" y="60" width="200" height="40" fill="#8B4513" stroke="#333" stroke-width="0.5" />
+    <rect x="0" y="80" width="240" height="20" fill="#8B4513" stroke="#333" stroke-width="0.5" />
+    <!-- Sails -->
+    <rect x="60" y="0" width="20" height="60" fill="#A0522D" stroke="#333" stroke-width="0.5" />
+    <rect x="80" y="20" width="60" height="40" fill="#F0F8FF" stroke="#333" stroke-width="0.5" />
+    <rect x="160" y="0" width="20" height="60" fill="#A0522D" stroke="#333" stroke-width="0.5" />
+    <rect x="180" y="20" width="60" height="40" fill="#F0F8FF" stroke="#333" stroke-width="0.5" />
+    <!-- Crow's Nest -->
+    <rect x="50" y="-20" width="40" height="20" fill="#A0522D" stroke="#333" stroke-width="0.5" />
+    <!-- Cannons -->
+    <rect x="40" y="70" width="20" height="10" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <rect x="100" y="70" width="20" height="10" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <rect x="160" y="70" width="20" height="10" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <!-- Jolly Roger (simplified) -->
+    <rect x="140" y="30" width="20" height="20" fill="#000" stroke="#333" stroke-width="0.5" />
+  </g>
+
+  <!-- Robot -->
+  <g transform="translate(1600, 600) scale(0.8)">
+    <!-- Head -->
+    <rect x="60" y="0" width="80" height="60" fill="#C0C0C0" stroke="#333" stroke-width="0.5" />
+    <rect x="80" y="20" width="20" height="20" fill="#00BFFF" stroke="#333" stroke-width="0.5" />
+    <rect x="120" y="20" width="20" height="20" fill="#00BFFF" stroke="#333" stroke-width="0.5" />
+    <!-- Body -->
+    <rect x="40" y="60" width="120" height="80" fill="#A9A9A9" stroke="#333" stroke-width="0.5" />
+    <rect x="60" y="80" width="80" height="40" fill="#4682B4" stroke="#333" stroke-width="0.5" />
+    <!-- Arms -->
+    <rect x="0" y="60" width="40" height="20" fill="#C0C0C0" stroke="#333" stroke-width="0.5" />
+    <rect x="0" y="80" width="20" height="60" fill="#C0C0C0" stroke="#333" stroke-width="0.5" />
+    <rect x="160" y="60" width="40" height="20" fill="#C0C0C0" stroke="#333" stroke-width="0.5" />
+    <rect x="180" y="80" width="20" height="60" fill="#C0C0C0" stroke="#333" stroke-width="0.5" />
+    <!-- Legs -->
+    <rect x="60" y="140" width="20" height="60" fill="#A9A9A9" stroke="#333" stroke-width="0.5" />
+    <rect x="120" y="140" width="20" height="60" fill="#A9A9A9" stroke="#333" stroke-width="0.5" />
+    <!-- Feet -->
+    <rect x="40" y="200" width="60" height="20" fill="#C0C0C0" stroke="#333" stroke-width="0.5" />
+    <rect x="100" y="200" width="60" height="20" fill="#C0C0C0" stroke="#333" stroke-width="0.5" />
+  </g>
+
+  <!-- Airplane -->
+  <g transform="translate(700, 100) scale(0.9)">
+    <!-- Main Body -->
+    <rect x="40" y="20" width="200" height="40" fill="#F0F8FF" stroke="#333" stroke-width="0.5" />
+    <!-- Nose -->
+    <rect x="240" y="30" width="40" height="20" fill="#F0F8FF" stroke="#333" stroke-width="0.5" />
+    <!-- Tail -->
+    <rect x="0" y="0" width="40" height="60" fill="#4682B4" stroke="#333" stroke-width="0.5" />
+    <!-- Wings -->
+    <rect x="100" y="0" width="120" height="20" fill="#4682B4" stroke="#333" stroke-width="0.5" />
+    <rect x="120" y="60" width="80" height="20" fill="#4682B4" stroke="#333" stroke-width="0.5" />
+    <!-- Engines -->
+    <rect x="80" y="60" width="40" height="20" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <rect x="200" y="60" width="40" height="20" fill="#2F4F4F" stroke="#333" stroke-width="0.5" />
+    <!-- Windows -->
+    <rect x="60" y="30" width="160" height="10" fill="#87CEEB" stroke="#333" stroke-width="0.5" />
+  </g>
+</svg>
