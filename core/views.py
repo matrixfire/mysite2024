@@ -49,7 +49,7 @@ def index(request):
     slide_count = slides.count()
 
 
-    # latest_classic_image_posts = Post.objects.filter(post_type=Post.PostType.CLASSIC_IMAGE).order_by('-created')
+    latest_classic_image_posts = Post.objects.filter(post_type=Post.PostType.CLASSIC_IMAGE).order_by('-created')
     
     # Ensure latest_classic_image_posts has exactly 4 items
     # if latest_classic_image_posts.count() < 4:
@@ -62,7 +62,7 @@ def index(request):
     #     else:
     #         latest_classic_image_posts = Post.objects.none()
 
-    # latest_classic_image_posts = latest_classic_image_posts[:4]  # Limit to 4 items
+    latest_classic_image_posts = latest_classic_image_posts[:4]  # Limit to 4 items
 
     # upcoming_products_blog_list = Post.objects.filter(tags__name__in=["upcoming_products"])
 
@@ -71,7 +71,7 @@ def index(request):
         'new_arrivals': new_arrivals,
         'popular_products': popular_products,
         'slides': slides,
-        # 'latest_classic_image_posts': latest_classic_image_posts,
+        'latest_classic_image_posts': latest_classic_image_posts,
         # 'upcoming_products_blog_list': upcoming_products_blog_list,        
     }
     return render(request, 'core/index.html', context)
