@@ -49,7 +49,7 @@ def index(request):
     slide_count = slides.count()
 
 
-    latest_classic_image_posts = Post.objects.filter(post_type=Post.PostType.CLASSIC_IMAGE).order_by('-created')
+    latest_classic_image_posts = Post.objects.filter().order_by('-created')
     
     # Ensure latest_classic_image_posts has exactly 4 items
     # if latest_classic_image_posts.count() < 4:
