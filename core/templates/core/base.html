@@ -34,6 +34,14 @@
 
 
 
+.rd-navbar-dropdown {
+    max-height: 300px; /* You can adjust this height */
+    overflow-y: auto; /* Adds vertical scrollbar */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    padding-right: 15px; /* Optional: adds padding to prevent content from being cut off by the scrollbar */
+}
+
+
     </style>
     {% block extra_css %}{% endblock %}
 </head>
@@ -106,6 +114,7 @@
                                             <li class="active"><a href="{% url 'core:index' %}"><span>Home</span></a></li>
                                             <li><a href="{% url 'core:shop' %}"><span>Products</span></a>
                                                 <ul class="rd-navbar-dropdown">
+                                                    <li><a href="{% url 'core:shop' %}"><span class="text-middle"><b>View All</b></span></a></li>
                                                     {% for category in categories %}
                                                     <li><a href="{{ category.get_absolute_url }}"><span class="text-middle">{{ category.name }}</span></a></li>
                                                     {% endfor %}
