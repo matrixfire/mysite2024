@@ -412,7 +412,7 @@
                 <!-- Post media-->
                 <header class="post-media novi-excluded">
                   <a href="{{ blog.get_absolute_url }}">
-                    <img src="{{ blog.classic_image.url }}" width="270" height="310" alt="{{ blog.title }}">
+                    <img src="{{ blog.featured_image.url }}" width="270" height="310" alt="{{ blog.title }}">
                     <span class="icon fa fa-info-circle novi-icon"></span>
                   </a>
                 </header>
@@ -449,14 +449,14 @@
         <div class="container">
             <h1 class="text-between">Latest Blog Posts</h1>
             <div class="row justify-content-sm-center">
-              {% for post in latest_classic_image_posts %}
+              {% for post in latest_featured_image_posts %}
               <div class="col-md-10 col-lg-6 offset-top-66 offset-md-top-30 offset-lg-top-0">
                   <!-- Post Boxed-->
                   <a class="d-block" href="{{ post.get_absolute_url }}">
                       <div class="post post-boxed">
                           <!-- Post media-->
                           <header class="post-media novi-excluded">
-                              <img class="img-fluid" width="570" height="321" src="{{ post.classic_image.url }}" alt="{{ post.title }}">
+                              <img class="img-fluid" width="570" height="321" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
                           </header>
                           <!-- Post content-->
                           <section class="post-content text-left novi-excluded">
