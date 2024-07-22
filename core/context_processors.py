@@ -1,4 +1,5 @@
 # core/context_processors.py
+from django.urls import resolve
 
 from .models import BusinessInfo
 
@@ -10,4 +11,13 @@ def business_info(request):
     
     return {
         'business_info': business_info
+    }
+
+
+
+
+def current_view_name(request):
+    current_url = resolve(request.path_info)
+    return {
+        'current_view_name': current_url.url_name
     }
