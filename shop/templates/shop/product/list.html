@@ -15,7 +15,9 @@
                   <div class="product product-grid product-grid-type-2">
                     <!-- Product Image-->
                     <div class="product-image">
+                      <a href="{{ product.get_absolute_url }}">
                       <img class="img-fluid product-image-area" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'shop/img/no_image.png' %}{% endif %}" alt="{{ product.name }}">
+                      </a>
                       <!-- Product Label-->
                       {% if product.available %}
                       <span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>

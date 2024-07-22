@@ -85,7 +85,7 @@ def post_search(request):
     
     # Paginate the posts list, using the value from settings
     posts_per_page = getattr(settings, 'POSTS_PER_PAGE', 3)  # Default to 6 if setting is not defined
-    paginator = Paginator(post_list, posts_per_page)
+    paginator = Paginator(results, posts_per_page)
     page_number = request.GET.get('page', 1)
     tags = Tag.objects.all()  # Get all tags
 

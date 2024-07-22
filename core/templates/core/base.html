@@ -10,8 +10,12 @@
     <meta name="keywords" content="Intense web design multipurpose template">
     <meta name="date" content="Apr 26">
     <link rel="icon" href="{% static 'core/images/favicon.ico' %}" type="image/x-icon">
+    
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeE9wgqAAAAAIZxRqqi-c42G4fmVwAZCV_z8rGC"></script>
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <style>
         .ie-panel { 
             display: none;
@@ -59,6 +63,7 @@
 .rd-navbar-nav > li > a:hover .dropdown-arrow {
     fill: #333; /* Adjust hover color as needed */
 }
+
 
 
     </style>
@@ -151,6 +156,7 @@
                                             </li>
                                             <li class="{% if current_view_name == 'about_us' %}active{% endif %}"><a href="{% url 'core:about_us' %}"><span>About</span></a></li>
                                             <li class="{% if current_view_name == 'contacts' %}active{% endif %}"><a href="{% url 'core:contacts' %}"><span>Contacts</span></a></li>
+                                            <li class=""><a href="#"><span>Join us</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
