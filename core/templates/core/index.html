@@ -312,7 +312,7 @@
           <div class="row newswiperx">
             {% for product in new_arrivals %}
             <div>
-              <a href="{{ product.get_absolute_url }}"><img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+              <a href="{{ product.get_absolute_url }}"><img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}" width="235" height="314"></a>
             </div>
             {% endfor %}
           </div>
@@ -322,7 +322,7 @@
           <div class="row newswiperx2">
             {% for product in popular_products %}
             <div>
-              <a href="{{ product.get_absolute_url }}"><img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+              <a href="{{ product.get_absolute_url }}"><img class="img-fluid product-image-area" src="{{ product.image.url }}" alt="{{ product.name }}" width="235" height="314"></a>
             </div>
             {% endfor %}
           </div>
@@ -412,7 +412,14 @@
                 <!-- Post media-->
                 <header class="post-media novi-excluded">
                   <a href="{{ blog.get_absolute_url }}">
-                    <img src="{{ blog.featured_image.url }}" width="270" height="310" alt="{{ blog.title }}">
+                    {% comment %}
+                    <!-- <img src="{{ blog.featured_image.url }}" width="270" height="310" alt="{{ blog.title }}"> -->
+                    {% endcomment %}
+                    {% if blog.featured_image %}
+                    <img class="img-fluid" width="289" height="200" src="{{ blog.featured_image.url }}" alt="{{ blog.title }}">
+                    {% else %}
+                        <img class="img-fluid" width="289" height="200" src="{% static 'core/images/t.webp' %}" alt="Placeholder">
+                    {% endif %}   
                     <span class="icon fa fa-info-circle novi-icon"></span>
                   </a>
                 </header>
@@ -456,7 +463,11 @@
                       <div class="post post-boxed">
                           <!-- Post media-->
                           <header class="post-media novi-excluded">
-                              <img class="img-fluid" width="570" height="321" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                              {% if post.featured_image %}
+                              <img class="img-fluid" width="289" height="200" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                          {% else %}
+                              <img class="img-fluid" width="289" height="200" src="{% static 'core/images/t.webp' %}" alt="Placeholder">
+                          {% endif %}                              
                           </header>
                           <!-- Post content-->
                           <section class="post-content text-left novi-excluded">
