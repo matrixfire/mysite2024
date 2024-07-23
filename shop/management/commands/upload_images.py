@@ -47,3 +47,4 @@ class Command(BaseCommand):
 
 # Example usage:
 # python manage.py upload_images path/to/your/input.csv
+# python manage.py upload_images product_imgs.csv
