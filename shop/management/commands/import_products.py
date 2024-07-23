@@ -80,7 +80,7 @@ class Command(BaseCommand):
                 except Exception as e:
                     print(e)
                     if row['name']:
-                        self.stdout.write(self.style.ERROR(f'Error for {row['name']}: {e}'))
+                        self.stdout.write(self.style.ERROR(f'Error for {row["name"]}: {e}'))
                     continue
 
     def download_and_save_image(self, product, image_url):
@@ -114,3 +114,4 @@ class Command(BaseCommand):
 
 # Example usage:
 # python manage.py import_products path/to/your/input.csv
+# python manage.py import_products products.csv
