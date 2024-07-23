@@ -483,7 +483,7 @@
                                   </div>
                                   <div class="post-meta small">
                                       <ul class="list-inline list-inline-sm p">
-                                          <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">{{ post.author }}</span></li>
+                                          <li class="list-inline-item font-italic text-middle">by&nbsp;<span class="text-warning">{{ post.author|title }}</span></li>
                                           <li class="list-inline-item"><span class="text-middle icon-xxs mdi mdi-clock novi-icon"></span>
                                               <time class="font-italic text-warning text-middle" datetime="{{ post.publish|date:"Y-m-d" }}">{{ post.publish|timesince }} ago</time>
                                           </li>
