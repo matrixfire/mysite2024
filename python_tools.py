@@ -660,7 +660,20 @@ if __name__ == "__main__":
     # Close the browser
     driver.quit()
 
+driver = initialize_driver()
 
+# Open the desired website
+driver.get('https://www.dedao.cn/')
+
+TAB = 2
+# Switch to the third tab (index 2)
+switch_to_tab(driver, TAB-1)
+
+# Take a full-page screenshot of the third tab
+take_full_page_screenshot(driver, 'third_tab_screenshot.png')
+
+# Close the browser
+driver.quit()
 
 
 
