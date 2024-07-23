@@ -172,7 +172,7 @@
                                             </li>
                                             <li class="{% if current_view_name == 'about_us' %}active{% endif %}"><a href="{% url 'core:about_us' %}"><span>About</span></a></li>
                                             <li class="{% if current_view_name == 'contacts' %}active{% endif %}"><a href="{% url 'core:contacts' %}"><span>Contacts</span></a></li>
-                                            <li><a href="#"><span>Join us</span>
+                                            <li class="{% if current_view_name == 'join_us' %}active{% endif %}"><a href="{% url 'core:join_us' %}"><span>Join us</span>
                                                 <svg class="fire-icon" viewBox="-33 0 255 255" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
                                                     <defs>
                                                         <style>

@@ -109,6 +109,11 @@ def contacts(request):
     return render(request, 'core/contacts.html')
 
 
+
+def join_us(request):
+    return render(request, 'core/join-us.html')
+
+
 # def index(request):
 #     return render(request, 'core/index.html')
 
