@@ -66,7 +66,7 @@ class Command(BaseCommand):
                             product.collections.add(collection)
 
                         if row['image']:
-                            self.download_and_save_image(product, row['image'])
+                            self.download_and_save_image(product, row['image'].split('?')[0])
 
                         self.stdout.write(self.style.SUCCESS(f'Successfully imported product: {row["name"]}'))
                     else:
