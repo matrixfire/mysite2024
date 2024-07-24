@@ -165,10 +165,12 @@
                                                 </ul>
                                             </li>
                                             <li class="{% if current_view_name == 'post_list' %}active{% endif %}"><a href="{% url 'core:blog' %}"><span>Blog</span></a>
+                                                {% comment %}
                                                 <ul class="rd-navbar-dropdown">
                                                     <li><a href="{% url 'core:blog_single_post' %}"><span class="text-middle">Single Blog Post</span></a></li>
                                                     <li><a href="{% url 'core:search_results' %}"><span class="text-middle">Search Results</span></a></li>
                                                 </ul>
+                                                {% endcomment %}
                                             </li>
                                             <li class="{% if current_view_name == 'about_us' %}active{% endif %}"><a href="{% url 'core:about_us' %}"><span>About</span></a></li>
                                             <li class="{% if current_view_name == 'contacts' %}active{% endif %}"><a href="{% url 'core:contacts' %}"><span>Contacts</span></a></li>
@@ -235,7 +237,7 @@
                                         <img width='221' height='32' style='margin-left: -6px;' src="{% static 'core/images/logo浅色.png' %}" alt=''/>
                                     </a>
                                 </div>
-                                <p class="small text-darker offset-top-4">&copy; <span id="copyright-year"></span>. <a href="{% url 'core:privacy' %}">Privacy Policy</a></p>
+                                <p class="small text-darker offset-top-4">&copy; <span id="copyright-year"></span>. <a href="#">Privacy Policy</a></p>
                             </div>
                         </div>
                     </div>
