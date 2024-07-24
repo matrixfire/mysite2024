@@ -10,7 +10,7 @@
           <div class="row justify-content-lg-center justify-content-xl-end">
             <div class="col-lg-8 inset-lg-right-30">
               <!-- Classic Gallery Carousel-->
-              <!-- Embed Video-->
+              <!-- Embed Video--> 
               <!-- Classic Soundcloud Player-->
               <!-- Blog Classic-->
               <section class="novi-excluded">
@@ -31,6 +31,7 @@
                 <!-- Post Classic-->
                 <article class="post post-classic">
                   <!-- Post media-->
+                  {% comment %}
                   {% if post.featured_image %}
                   <header class="post-media novi-excluded">
                     <div>
@@ -42,6 +43,7 @@
                     </div>
                   </header>
                   {% endif %}
+                  {% endcomment %}
                   <!-- Post content-->
                   <section class="post-content text-left novi-excluded offset-top-41">
                     <div class="unit unit-sm flex-md-row flex-md-row-reverse">
