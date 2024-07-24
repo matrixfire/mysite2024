@@ -40,6 +40,7 @@ class BusinessInfo(models.Model):
     class Meta:
         verbose_name_plural = "Business Information"
 
+
 class BusinessPost(models.Model):
     business_info = models.OneToOneField(BusinessInfo, related_name='post', on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
