@@ -45,7 +45,8 @@ class BusinessPost(models.Model):
     business_info = models.OneToOneField(BusinessInfo, related_name='post', on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
     image = models.ImageField(upload_to='business/', blank=True)
-    body = models.TextField()
+    body = models.TextField(blank=True)
+    home_page_body = models.TextField(blank=True)
 
     def __str__(self):
         return self.title
