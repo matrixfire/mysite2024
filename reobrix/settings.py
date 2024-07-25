@@ -36,6 +36,8 @@ ALLOWED_HOSTS = ['*'] # ALLOWED_HOSTS = [] # if local
 
 CART_SESSION_ID = 'cart'
 
+CART_MAX_QUANTITY = 20 # my custom settings
+
 
 
 

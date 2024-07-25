@@ -734,6 +734,23 @@ if __name__ == "__main__":
 
 
 
+##################################################
+import os
+
+def find_text(folder_path, search_string, file_extension="html"):
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(f".{file_extension}"):
+                file_path = os.path.join(root, file)
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                    occurrences = content.count(search_string)
+                    if occurrences > 0:
+                        print(f"File: {os.path.abspath(file_path)}")
+                        print(f"Occurrences of '{search_string}': {occurrences}")
+
+# Usage example:
+find_text("/path/to/your/folder", "your_search_string")
 
 '''
 prompts:

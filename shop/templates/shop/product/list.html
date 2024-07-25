@@ -16,7 +16,7 @@
                     <!-- Product Image-->
                     <div class="product-image">
                       <a href="{{ product.get_absolute_url }}">
-                      <img class="img-fluid product-image-area" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'shop/img/no_image.png' %}{% endif %}" alt="{{ product.name }}">
+                      <img class="img-fluid product-image-area" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'core/images/no_image.png' %}{% endif %}" alt="{{ product.name }}">
                       </a>
                       <!-- Product Label-->
                       {% if product.available %}

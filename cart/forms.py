@@ -1,6 +1,8 @@
 from django import forms
+from django.conf import settings
 
-PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 21)]
+# PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 21)]
+PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, getattr(settings, 'CART_MAX_QUANTITY', 20) + 1)]
 
 
 class CartAddProductForm(forms.Form):
