@@ -8,7 +8,7 @@
           <div class="row">
             <div class="col-lg-9">
 
-              <div class="row justify-content-sm-center">
+              <div class="row justify-content-sm-center" id="products">
                 {% for product in products %}
                 <div class="col-sm-8 col-md-6 col-xl-4">
                   <!-- Product-->
@@ -54,4 +54,82 @@
         </div>
       </section>
 
+
+      <script>
+        // Start with the first page
+        let page = 1;
+        // Replace this with the actual category slug from your Django template context
+        const categorySlug = "{{ category.slug|escapejs }}";
+    
+        // If scrolled to bottom, load the next set of products
+        window.onscroll = () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight*0.8) {
+                load();
+            }
+        };
+    
+        // Load next set of products
+        function load() {
+            // Construct the base URL properly
+            const baseUrl = "{% url 'shop:product_list_by_category' category_slug='dummy_slug' %}".replace('dummy_slug', categorySlug);
+    
+            // Get new products and add them to the DOM
+            fetch(`${baseUrl}?page=${page + 1}`, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.products.length > 0) {
+                    data.products.forEach(product => add_product(product));
+                    page += 1;
+                }
+                if (!data.has_next) {
+                    // No more pages to load, display the message
+                    display_end_message();
+                    window.onscroll = null; // No more pages to load
+                }
+            })
+            .catch(error => console.error('Error loading more products:', error));
+        }
+    
+        // Add a new product with given content to the DOM
+        function add_product(product) {
+            // Create product container
+            const productDiv = document.createElement('div');
+            productDiv.className = 'col-sm-8 col-md-6 col-xl-4';
+    
+            // Create product element
+            const productElement = `
+                <div class="product product-grid product-grid-type-2">
+                    <div class="product-image">
+                        <a href="${product.url}">
+                            <img class="img-fluid product-image-area" src="${product.image_url}" alt="${product.name}">
+                        </a>
+                        ${product.available ? '<span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>' : ''}
+                    </div>
+                    <div class="product-title offset-top-4 text-primary">
+                        <a class="big" href="${product.url}">${product.name}</a>
+                    </div>
+                </div>
+            `;
+    
+            productDiv.innerHTML = productElement;
+    
+            // Add product to DOM
+            document.querySelector('#products').append(productDiv);
+        }
+    
+        // Display a message when no more products are available
+        function display_end_message() {
+            const endMessage = document.createElement('div');
+            endMessage.className = 'end-message';
+            endMessage.innerText = 'No more products to load';
+            document.querySelector('#products').append(endMessage);
+        }
+    </script>
+    
+    
+    
 {% endblock %}
