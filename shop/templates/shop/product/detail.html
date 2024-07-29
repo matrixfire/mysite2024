@@ -169,8 +169,17 @@
               </ul>
               <div class="resp-tabs-container text-left tabs-group-default" data-group="tabs-group-default">
                 <div>
-                  Intense Handmade provides a wide variety of products for sewing, painting, carving, and scrapbooking since 2005. As a trusted partner of many art supplies manufacturers, we also offer our clients painting sets and consumables for them. On our website you can easily find products from US Art Supply, Winson & Newton, Koi, Artist’s Loft, Liquitex, and other renowned companies. We take care of the quality of our products, performing regular checkups of every new item we receive from our partners. It eliminates a possibility of receiving defective goods and guarantees reliability of our services.
-                  Painting sets and consumables available on our website allow you to express your creativity without any limitations. When you order them for your handmade craft at Intense, you can be sure in our dedication to supplying you with the products of the highest quality. Our painting sets are offered at prices that even the enthusiasts in handmade craft and design will find affordable. Our company organizes delivery using the facilities of America’s most trusted service – USPS. If you’d like to discuss any aspect of ordering painting sets or other products at our store, feel free to contact our managers.
+                  {% if product.short_description %}
+                  {{ product.short_description }}
+                  {% else %}
+                  Welcome to Reobrix, the premier name in high-quality, LEGO-like building blocks based in China. We specialize in crafting innovative building sets designed to spark creativity and offer an unparalleled building experience for enthusiasts of all ages. Our diverse product collections cater to a wide range of interests, featuring everything from the Block Gun Collection and Submarine Series to the Military Aircraft Collection and Power Engineering Series.
+
+At Reobrix, we are passionate about fostering a culture of creativity and excellence. Our meticulously designed models, including the stunning Reobrix Cathedral of Notre Dame, the UCS-Style Star Shuttle, and the Scorpion Submachine Gun, offer not only an engaging assembly experience but also exquisite display pieces.
+
+Our products reach over 150 countries through e-commerce, shopping malls, supermarkets, and specialty stores, earning us a reputation for quality and detail. We're excited to collaborate with influencers by offering free samples for them to create captivating videos and photos, showcasing our products to a wider audience. Additionally, we welcome talented MOC designers to contribute their creations, with opportunities for compensation and collaboration.
+
+Discover more and explore our offerings at [Reobrix.com](https://reobrix.com/). Join us in building something extraordinary!
+                  {% endif %}
                 </div>
                 <div>
                                 <!-- Media Elements-->
