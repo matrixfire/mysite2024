@@ -81,3 +81,53 @@ def product_detail(request, id, slug):
             'similar_products': similar_products,
         }
     )
+
+
+
+from django.http import JsonResponse
+
+def product_list_json(request, category_slug=None, collection_slug=None):
+    category = None
+    collection = None
+    products = Product.objects.filter(available=True)
+
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+
+    if collection_slug:
+        collection = get_object_or_404(Collection, slug=collection_slug)
+        products = products.filter(collections=collection)
+
+    products_per_page = getattr(settings, 'PRODUCTS_PER_PAGE', 6)
+    paginator = Paginator(products, products_per_page)
+    page_number = request.GET.get('page', 1)
+    print(page_number)
+
+    try:
+        products_page = paginator.page(page_number)
+        print("xxx0")
+    except PageNotAnInteger:
+        products_page = paginator.page(1)
+        print("xxx1")
+    except EmptyPage:
+        products_page = []
+        print("xxx2")
+
+    product_list = [
+        {
+            'id': product.id,
+            'name': product.name,
+            'slug': product.slug,
+            'price': str(product.price),  # Convert Decimal to string
+            'image_url': product.image.url if product.image else None,
+            'absolute_url': product.get_absolute_url(),
+            'available': product.available,
+        }
+        for product in products_page
+    ]
+
+    return JsonResponse({
+        'products': product_list,
+        'has_next': products_page.has_next() if products_page else False,
+    })

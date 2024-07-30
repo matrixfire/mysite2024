@@ -2,56 +2,103 @@
 {% load static %}
 
 {% block shop_content %}
-
-      <section class="section-98 section-md-124 novi-background" data-preset='{"title":"Shop block","category":"shop","reload":false,"id":"shop-block"}'>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-9">
-
-              <div class="row justify-content-sm-center">
-                {% for product in products %}
-                <div class="col-sm-8 col-md-6 col-xl-4">
-                  <!-- Product-->
-                  <div class="product product-grid product-grid-type-2">
-                    <!-- Product Image-->
-                    <div class="product-image">
-                      <a href="{{ product.get_absolute_url }}">
-                      <img class="img-fluid product-image-area" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'shop/img/no_image.png' %}{% endif %}" alt="{{ product.name }}">
-                      </a>
-                      <!-- Product Label-->
-                      {% if product.available %}
-                      <span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
-                      {% endif %}
-                    </div>
-              
-                    <div class="product-title offset-top-4 text-primary">
-                      <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
-
+<section class="section-98 section-md-124 novi-background" data-preset='{"title":"Shop block","category":"shop","reload":false,"id":"shop-block"}'>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="row justify-content-sm-center" id="products">
+          {% for product in products %}
+          <div class="col-sm-8 col-md-6 col-xl-4 product-item">
+            <!-- Product-->
+            <div class="product product-grid product-grid-type-2">
+              <!-- Product Image-->
+              <div class="product-image">
+                <a href="{{ product.get_absolute_url }}">
+                <img class="img-fluid product-image-area" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'shop/img/no_image.png' %}{% endif %}" alt="{{ product.name }}">
+                </a>
+                <!-- Product Label-->
+                {% if product.available %}
+                <span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>
+                {% endif %}
               </div>
-
-
-
-
-
-              {% include "pagination2.html" with page=products %}
-
-
-
-
+              <div class="product-title offset-top-4 text-primary">
+                <a class="big" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+              </div>
             </div>
-
-
-
-            {% include "shop/sidebar.html" with categories=categories %}
-            
-
-
           </div>
+          {% endfor %}
         </div>
-      </section>
+        {% include "pagination2.html" with page=products %}
+      </div>
+      {% include "shop/sidebar.html" with categories=categories %}
+    </div>
+  </div>
+</section>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    let page = 1;
+    let loading = false;
+    const productsContainer = document.getElementById('products');
+
+    function loadMoreProducts() {
+        if (loading) return;
+        loading = true;
+        page += 1;
+
+        const url = new URL(window.location.href);
+        let fetchUrl = `/shop/json/?page=${page}`;
+
+        if (url.pathname.includes('/collection/')) {
+            const collectionSlug = url.pathname.split('/')[3];
+            fetchUrl = `/shop/json/collection/${collectionSlug}/?page=${page}`;
+        } else if (url.pathname.includes('/shop/') && url.pathname.split('/').length > 3) {
+            console.log(url.pathname.split('/').length, "is fucking length");
+            const categorySlug = url.pathname.split('/')[2];
+            console.log(url.pathname.split('/'), categorySlug);
+            fetchUrl = `/shop/json/category/${categorySlug}/?page=${page}`;
+        }
+
+        fetch(fetchUrl)
+            .then(response => response.json())
+            .then(data => {
+                data.products.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.className = 'col-sm-8 col-md-6 col-xl-4 product-item';
+                    productElement.innerHTML = `
+                        <div class="product product-grid product-grid-type-2">
+                            <div class="product-image">
+                                <a href="${product.absolute_url}">
+                                <img class="img-fluid product-image-area" src="${product.image_url ? product.image_url : '{% static 'shop/img/no_image.png' %}'}" alt="${product.name}">
+                                </a>
+                                ${product.available ? '<span class="product-label label-custom label-lg-custom label-rounded-custom label-info">New</span>' : ''}
+                            </div>
+                            <div class="product-title offset-top-4 text-primary">
+                                <a class="big" href="${product.absolute_url}">${product.name}</a>
+                            </div>
+                        </div>
+                    `;
+                    productsContainer.appendChild(productElement);
+                });
+
+                if (!data.has_next) {
+                    window.removeEventListener('scroll', handleScroll);
+                }
+                loading = false;
+            })
+            .catch(error => {
+                console.error('Error fetching products:', error);
+                loading = false;
+            });
+    }
+
+    function handleScroll() {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500 && !loading) {
+            loadMoreProducts();
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+});
+</script>
 {% endblock %}
