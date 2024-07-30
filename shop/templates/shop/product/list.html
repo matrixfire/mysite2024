@@ -1,6 +1,27 @@
 {% extends "shop/base_shop.html" %}
 {% load static %}
 
+
+{% block extra_css %}
+
+<style>
+.fixed-sidebar {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 66px; /* Adjust this to the distance from the top of the viewport */
+    width: 100%; /* Adjust to match the width of your sidebar */
+}
+
+@media (max-width: 992px) {
+    .fixed-sidebar {
+        position: static; /* Reset for smaller screens */
+    }
+}
+
+</style>
+{% endblock %}
+
+
 {% block shop_content %}
 <section class="section-98 section-md-124 novi-background" data-preset='{"title":"Shop block","category":"shop","reload":false,"id":"shop-block"}'>
   <div class="container">
@@ -28,6 +49,10 @@
           </div>
           {% endfor %}
         </div>
+        <!-- Loading Animation -->
+        <div id="loading-animation" style="display: none; text-align: center;">
+          <img src="{% static 'shop/img/loading.gif' %}" alt="Loading..." style="width: 50px; height: 50px;">
+        </div>
         {% include "pagination2.html" with page=products %}
       </div>
       {% include "shop/sidebar.html" with categories=categories %}
@@ -40,11 +65,13 @@ document.addEventListener('DOMContentLoaded', function () {
     let page = 1;
     let loading = false;
     const productsContainer = document.getElementById('products');
+    const loadingAnimation = document.getElementById('loading-animation');
 
     function loadMoreProducts() {
         if (loading) return;
         loading = true;
         page += 1;
+        loadingAnimation.style.display = 'block';
 
         const url = new URL(window.location.href);
         let fetchUrl = `/shop/json/?page=${page}`;
@@ -53,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const collectionSlug = url.pathname.split('/')[3];
             fetchUrl = `/shop/json/collection/${collectionSlug}/?page=${page}`;
         } else if (url.pathname.includes('/shop/') && url.pathname.split('/').length > 3) {
-            console.log(url.pathname.split('/').length, "is fucking length");
             const categorySlug = url.pathname.split('/')[2];
             console.log(url.pathname.split('/'), categorySlug);
             fetchUrl = `/shop/json/category/${categorySlug}/?page=${page}`;
@@ -85,10 +111,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     window.removeEventListener('scroll', handleScroll);
                 }
                 loading = false;
+                loadingAnimation.style.display = 'none';
             })
             .catch(error => {
                 console.error('Error fetching products:', error);
                 loading = false;
+                loadingAnimation.style.display = 'none';
             });
     }
 
