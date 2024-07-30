@@ -544,6 +544,41 @@ def remove_link_tag(folder_path):
                     f.write(updated_contents)
 
 
+import os
+import re
+
+def remove_link_tags(folder_path):
+    # Define a regex pattern to match <link> tags with href starting with "//fonts.googleapis.com/"
+    link_tag_pattern = re.compile(r'<link\s+rel="stylesheet"\s+type="text/css"\s+href="//fonts\.googleapis\.com/[^"]*"\s*/?>', re.IGNORECASE)
+
+    # Walk through the directory
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(".html"):
+                file_path = os.path.join(root, file)
+
+                # Read the file
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    file_contents = f.read()
+
+                # Find all matching link tags
+                matches = link_tag_pattern.findall(file_contents)
+                if matches:
+                    print(f"Found {len(matches)} link tag(s) to remove in file: {file_path}")
+
+                # Remove all matching link tags
+                updated_contents = re.sub(link_tag_pattern, '', file_contents)
+
+                # Write the updated contents back to the file
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(updated_contents)
+
+                if matches:
+                    print(f"Removed {len(matches)} link tag(s) from file: {file_path}")
+
+# Example usage
+remove_link_tags('/path/to/your/folder')
+
 
 
 ######################################
