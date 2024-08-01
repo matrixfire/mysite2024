@@ -272,8 +272,9 @@
           <div class="swiper-pagination swiper-pagination-type-2"></div>
         </div>
         <div class="section-center-absolute">
-          <div class="text-extra-big text-white font-accent">Reobrix Bricks</div>
-          <h5 class="text-regular text-white offset-top-10">Design, Build, Excel</h5>
+          <div class="text-extra-big text-white font-accent" style="font-size: 62px;">Join the Reobrix Family</div>
+          <!-- <h5 class="text-regular text-white offset-top-10">Design, Build, Excel</h5> -->
+          <h5 class="text-regular text-white offset-top-10">We are currently seeking motivated distributors in various countries. Become a partner and grow your business by selling Reobrix products.</h5>
           <div class="container offset-top-14 offset-md-top-66">
             <div class="row justify-content-sm-center grid-group-xs">
               <div class="col-lg-5"><a class="btn btn-block btn-primary btn-ellipse" href="{% url "core:shop" %}">Products</a></div>
@@ -405,7 +406,7 @@
             </div>
           </div>
           <div class="col-sm-10 col-lg-6">
-            <img class="img-fluid d-none d-lg-inline-block offset-top-10" src="{% if business_info.post.image %}{{ business_info.post.image.url }}{% else %}{% static "core/images/test.jpg" %}{% endif %}" width="573" height="517" alt="">
+            <img class="img-fluid d-none d-lg-inline-block offset-top-10" src="{% if business_info.post.image %}{{ business_info.post.image.url }}{% else %}{% static "core/images/reobrix_factory.png" %}{% endif %}" width="573" height="517" alt="">
           </div>
         </div>
       </div>
@@ -576,7 +577,7 @@
   });
   </script>
   
-
+{% comment %}
  <!-- THIS IS FOR FUCKING SNS -->
   <section class="section-98 section-md-top-110 section-md-bottom-124 novi-background">
     <div class="container">
@@ -638,6 +639,12 @@
 
 </div>
 </section>
+{% endcomment %}
+
+<div>
+  {{ content.content|safe }}  <!-- Render the rich text content -->
+</div>
+
 
 
 

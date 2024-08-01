@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Slide, Subscriber, BusinessInfo, BusinessPost
+from .models import Slide, Subscriber, BusinessInfo, BusinessPost, HomepageContent
 
 
 # Register your models here.
@@ -29,3 +29,8 @@ class BusinessInfoAdmin(admin.ModelAdmin):
 class BusinessPostAdmin(admin.ModelAdmin):
     list_display = ['title', 'business_info']
     search_fields = ['title', 'business_info__brand_name']
+
+
+@admin.register(HomepageContent)
+class HomepageContentAdmin(admin.ModelAdmin):
+    pass

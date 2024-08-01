@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from .models import Slide
+from .models import Slide, HomepageContent
 from django.http import Http404
 
 from django.shortcuts import render, get_object_or_404, redirect
@@ -50,6 +50,8 @@ def index(request):
 
 
     latest_featured_image_posts = Post.objects.filter(tags__name__in=["homepage_post"]).order_by('-created')
+
+    homepage_content = HomepageContent.objects.first()  # Get the first (or only) HomepageContent object
     
     # Ensure latest_classic_image_posts has exactly 4 items
     # if latest_classic_image_posts.count() < 4:
@@ -73,7 +75,8 @@ def index(request):
         'popular_products': popular_products,
         'slides': slides,
         'latest_featured_image_posts': latest_featured_image_posts,
-        'upcoming_products_blog_list': upcoming_products_blog_list,        
+        'upcoming_products_blog_list': upcoming_products_blog_list,
+        'content': homepage_content,       
     }
     return render(request, 'core/index.html', context)
 

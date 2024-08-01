@@ -50,3 +50,7 @@ class BusinessPost(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class HomepageContent(models.Model):
+    content = RichTextField()  # This field will use the WYSIWYG editor
