@@ -662,12 +662,15 @@ $document.ready( function () {
 	// RD Search
 
 	// UI To Top
+	
+	/*
 	if ( !isNoviBuilder && isDesktop ) {
 		$().UItoTop( {
 			easingType: 'easeOutQuart',
 			containerClass: 'ui-to-top icon icon-xs icon-circle icon-darker-filled mdi mdi-chevron-up'
 		} );
 	}
+	*/
 
 	// RD Mailform
 	if ( plugins.rdMailForm.length ) {
