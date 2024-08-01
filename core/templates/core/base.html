@@ -81,7 +81,18 @@
     margin-left: 4px;  /* Space between the text and the icon */
 }
 
+.svg-container {
+        display: flex;
+        align-items: center;
+    }
 
+    .svg-container img {
+        margin-right: 10px; /* Adjust spacing as needed */
+    }
+
+    img {
+    max-width: 100%; /* This can affect SVGs if used globally */
+}
     </style>
     {% block extra_css %}{% endblock %}
 </head>
@@ -114,7 +125,8 @@
                                     <!--Navbar Brand-->
                                     <div class="rd-navbar-brand">
                                         <a href="{% url "core:index" %}">
-                                            <img width='221' height='32' src="{% static 'core/images/logo深色.png' %}" alt=''/>
+                                            <!-- <img width='221' height='32' src="{% static 'core/images/logo_reobrix1.png' %}" alt=''/> -->
+                                            <img height='32' src="{% static 'core/images/logo_reobrix1.png' %}" alt=''/>
                                         </a>
                                     </div>
                                 </div>
@@ -146,7 +158,7 @@
                                         <!--Navbar Brand Mobile-->
                                         <div class="rd-navbar-mobile-brand">
                                             <a href="{% url 'core:index' %}">
-                                                <img width='221' height='32' src="{% static 'core/images/logo浅色.png' %}" alt=''/>
+                                                <img width='221' height='32' src="{% static 'core/images/logo_reobrix2.png' %}" alt=''/>
                                             </a>
                                         </div>
                                         <!-- RD Navbar Nav-->
@@ -234,7 +246,7 @@
                                 <!-- Footer brand-->
                                 <div class="footer-brand">
                                     <a href="{% url 'core:index' %}">
-                                        <img width='221' height='32' style='margin-left: -6px;' src="{% static 'core/images/logo浅色.png' %}" alt=''/>
+                                        <img height='32' style='margin-left: -6px;' src="{% static 'core/images/logo_reobrix2.png' %}" alt=''/>
                                     </a>
                                 </div>
                                 <p class="small text-darker offset-top-4">&copy; <span id="copyright-year"></span>. <a href="#">Privacy Policy</a></p>
