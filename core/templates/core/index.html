@@ -264,13 +264,14 @@
 }
 
 .zoom-img img {
-  display: block; /* Removes extra space below the image */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for zoom and shadow effects */
+  display: inline-block; /* Removes extra space below the image */
+  /*transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for zoom and shadow effects */
+  transition: 0.35s all ease;;
 }
 
 .zoom-img:hover img {
-  transform: scale(1.1); /* Scales up the image by 10% on hover */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Adds a subtle shadow for depth */
+  transform: scale(1.05); /* Scales up the image by 10% on hover */
+
 }
 
 
