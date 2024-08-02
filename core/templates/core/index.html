@@ -251,6 +251,29 @@
     }
 
 
+
+
+
+
+/* CSS for image zoom effect and spacing */
+.zoom-img {
+  display: block; /* Ensures images behave like block elements */
+  overflow: hidden; /* Hides any part of the image that enlarges beyond the container */
+  margin: 10px; /* Adds spacing around each image */
+  padding: 10px;
+}
+
+.zoom-img img {
+  display: block; /* Removes extra space below the image */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for zoom and shadow effects */
+}
+
+.zoom-img:hover img {
+  transform: scale(1.1); /* Scales up the image by 10% on hover */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Adds a subtle shadow for depth */
+}
+
+
 </style>
 
 
@@ -645,7 +668,39 @@
   {{ content.content|safe }}  <!-- Render the rich text content -->
 </div>
 
-
+<!-- They trust us -->
+<section class="section section-relative section-90 section-lg-110 bg-default novi-background" data-preset='{"title":"Clients","category":"about","reload":false,"id":"clients"}'>
+  <div class="container">
+    <h3>Clients Trust Us</h3>
+    <p>We cooperate with renowned businesses and international companies all over the world.<br class="d-none d-lg-inline-block"> Some of our partners and loyal customers are listed below.</p>
+    <div class="row row-60 justify-content-sm-center offset-top-60 offset-lg-top-90">
+      <div class="col-sm-6 col-lg-3">
+        <a class="img-link zoom-img" href="#"><img class="img-fluid" src="{% static 'test/images/partner-01-145x63.png' %}" width="145" height="63" alt=""></a>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <a class="img-link zoom-img" href="#"><img class="img-fluid" src="{% static 'test/images/partner-02-145x63.png' %}" width="145" height="63" alt=""></a>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <a class="img-link zoom-img" href="#"><img class="img-fluid" src="{% static 'test/images/partner-03-145x63.png' %}" width="145" height="63" alt=""></a>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <a class="img-link zoom-img" href="#"><img class="img-fluid" src="{% static 'test/images/partner-04-145x63.png' %}" width="145" height="63" alt=""></a>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <a class="img-link zoom-img" href="#"><img class="img-fluid" src="{% static 'test/images/partner-05-145x63.png' %}" width="145" height="63" alt=""></a>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <a class="img-link zoom-img" href="#"><img class="img-fluid" src="{% static 'test/images/partner-06-145x63.png' %}" width="145" height="63" alt=""></a>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <a class="img-link zoom-img" href="#"><img class="img-fluid" src="{% static 'test/images/partner-07-145x63.png' %}" width="145" height="63" alt=""></a>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <a class="img-link zoom-img" href="#"><img class="img-fluid" src="{% static 'test/images/partner-08-145x63.png' %}" width="145" height="63" alt=""></a>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 {% endblock %}
