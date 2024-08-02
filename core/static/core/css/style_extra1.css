@@ -1,5 +1,4 @@
-
-
+/* Base Styles */
 main#blog-section {
     padding: 2rem;
     max-width: 1200px;
@@ -13,14 +12,14 @@ main#blog-section {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: flex-start;
-    gap: 2rem; /* Increased gap between image and text */
+    gap: 2rem; /* Gap between image and text */
 }
 
 .blog-section .content-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Default layout for larger screens */
     align-items: flex-start;
-    gap: 2rem; /* Increased gap between image and text */
+    gap: 2rem;
 }
 
 .blog-section .blog-image {
@@ -46,3 +45,43 @@ main#blog-section {
     color: #555;
 }
 
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .blog-section {
+        flex-direction: column; /* Stack elements vertically on small screens */
+        align-items: center;
+    }
+
+    .blog-section .content-wrapper {
+        flex-direction: column; /* Stack elements vertically */
+        gap: 1rem; /* Adjust gap for vertical stacking */
+    }
+
+    .blog-section .blog-image {
+        width: 100%; /* Full width on small screens */
+        margin-bottom: 1rem; /* Margin below image for spacing */
+    }
+
+    .blog-section .text-content {
+        width: 100%; /* Full width on small screens */
+        padding-left: 0; /* Remove left padding */
+    }
+
+    .blog-section .text-content h2 {
+        font-size: 1.25rem; /* Adjust font size for smaller screens */
+    }
+
+    .blog-section .text-content p {
+        font-size: 0.875rem; /* Adjust font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-section .text-content h2 {
+        font-size: 1.125rem; /* Further adjust font size */
+    }
+
+    .blog-section .text-content p {
+        font-size: 0.75rem; /* Further adjust font size */
+    }
+}
