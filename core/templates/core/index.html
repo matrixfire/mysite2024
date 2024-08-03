@@ -275,6 +275,72 @@
 }
 
 
+
+
+
+
+
+
+.section--divider {
+            background-color: #f9f9f9;
+            padding: 20px 0;
+        }
+
+        .page-width {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-promotions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .grid-item {
+            flex: 1 1 calc(33.333% - 20px);
+            box-sizing: border-box;
+        }
+
+        .footer-promotion {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer__grid-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .h3 {
+            font-size: 1.5em;
+            margin: 15px 0;
+        }
+
+        .text-spacing p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .grid-item {
+                flex: 1 1 100%;
+            }
+        }
+
+
+
+
+
+
+
 </style>
 
 
@@ -717,6 +783,62 @@
       </div>
   </article>
 </main>
+
+
+
+<div class="section--divider">
+  <div class="page-width footer-promotions">
+      <div class="grid-item">
+          <div class="footer-promotion color-scheme-none">
+              <a href="{% url 'core:shop' %}" class="footer__grid-image" aria-label="100% Authentic Products">
+                  <div class="image-wrap">
+                      <img class="lazyload grid__image-cover" 
+                          src="https://cdn.shopify.com/s/files/1/0632/2939/5192/files/reobrix-service1.png?v=1722666576" 
+                          alt="100% Authentic Products">
+                  </div>
+              </a>
+              <div class="h3">100% Authentic Products</div>
+              <div class="rte-setting rte--block text-spacing">
+                  <p>We work worldwide with toy distributors and enthusiasts, providing after-sales support for returns, refunds, and missing bricks.
+
+                  </p>
+              </div>
+          </div>
+      </div>
+      <div class="grid-item">
+          <div class="footer-promotion color-scheme-none">
+              <a href="{% url 'core:join_us' %}" class="footer__grid-image" aria-label="Talk to An Expert">
+                  <div class="image-wrap">
+                      <img class="lazyload grid__image-cover" 
+                          src="https://cdn.shopify.com/s/files/1/0632/2939/5192/files/reobrix-service2.png?v=1722666576" 
+                          alt="Talk to An Expert">
+                  </div>
+              </a>
+              <div class="h3">Talk to an Expert</div>
+              <div class="rte-setting rte--block text-spacing">
+                  <p>Chat with our Reobrix experts online for building help. For issues, email us with images and a description of the problem.</p>
+              </div>
+          </div>
+      </div>
+      <div class="grid-item">
+          <div class="footer-promotion color-scheme-3">
+              <a href="{% url 'core:join_us' %}" class="footer__grid-image" aria-label="Become Our Partnership">
+                  <div class="image-wrap">
+                      <img class="lazyload grid__image-cover" 
+                          src="https://cdn.shopify.com/s/files/1/0632/2939/5192/files/reorbrix-global-logo.jpg?v=1722665784" 
+                          alt="Become Our Partnership">
+                  </div>
+              </a>
+              <div class="h3">Become Our Partnership</div>
+              <div class="rte-setting rte--block text-spacing">
+                  <p>We are always looking for quality retailers, distributors, and wholesalers who are interested in carrying Reobrix products to your local market.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
 
 
 
