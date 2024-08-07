@@ -30847,7 +30847,7 @@ fieldset[disabled] .navbar-inverse .pagination-classic > li + li:not(:last-child
   top: 0;
   background: rgba(33, 33, 33, 0.2);
   transition: 1.2s;
-  transition-delay: 0.6s;
+  transition-delay: 1000.6s;
   z-index: 1;
 }
 .swiper-slide .rd-video.rd-video-bg {
