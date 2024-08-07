@@ -584,7 +584,7 @@ $zindex-modal:             1050;
 
 $grid-breakpoints: (
 	xs: 0,
-	sm: 480px,
+	sm: 320px,
 	md: 768px,
 	lg: 992px,
 	xl: 1200px,
@@ -1599,7 +1599,7 @@ $countdown-custom-section-inset-top:        10px;
 $countdown-custom-section-width:            60px;
 $countdown-custom-section-height:           60px;
 $countdown-custom-section-border-radius:    50%;
-//** 480
+//** 320
 $countdown-custom-xs-section-inset-top:     25px;
 $countdown-custom-xs-section-width:         92px;
 $countdown-custom-xs-section-height:        92px;
@@ -1621,7 +1621,7 @@ $countdown-custom-period-line-height:       1;
 $countdown-custom-sm-period-size:           16px;
 //** offsets
 $countdown-custom-offset-left:              5px;
-//** 480
+//** 320
 $countdown-custom-xs-offset-left:           10px;
 //** 768
 $countdown-custom-sm-offset-left:           22px;
@@ -1668,7 +1668,7 @@ $box-comment-img-width:                                 40px;
 $box-comment-img-height:                                40px;
 $box-comment-img-border-radius:                         50%;
 $box-comment-body-size:                                 $font-size-sm;
-//** 480
+//** 320
 $box-comment-img-xs-width:                              60px;
 $box-comment-img-xs-height:                             60px;
 //** Box Comment classic
@@ -1678,7 +1678,7 @@ $box-comment-classic-offset-top:                        16px;
 $box-comment-classic-before-after-position-left:        19px;
 $box-comment-classic-before-after-background:           $gray-500;
 $box-comment-classic-before-after-width:                1px;
-//** 480
+//** 320
 $box-comment-classic-xs-width:                          30px;
 $box-comment-classic-xs-height:                         30px;
 $box-comment-classic-xs-offset-top:                     5px;
@@ -1704,7 +1704,7 @@ $box-comment-boxed-body-offset-top:                     10px;
 $box-comment-boxed-media-body-padding:                  15px 20px 15px 30px;
 $box-comment-boxed-media-body-border-radius:            $border-radius-small;
 $box-comment-boxed-media-body-border:                   1px solid $gray-500;
-//** 480
+//** 320
 $box-comment-boxed-img-xs-offset-right:                 -50px;
 $box-comment-boxed-img-xs-padding:                      4px;
 $box-comment-boxed-media-body-xs-padding:               20px 30px 20px 50px;
@@ -1775,7 +1775,7 @@ $to-top-position-right:     15px;
 $to-top-position-bottom:    15px;
 $to-top-hover-color:        $white;
 $to-top-hover-background:   $primary;
-//** 480
+//** 320
 $to-top-position-xs-right:  40px;
 $to-top-position-xs-bottom: 40px;
 
