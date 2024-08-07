@@ -941,6 +941,135 @@ add_text_to_image(
 
 
 
+import os
+import re
+
+def search_in_files(directory, file_extension, search_string, regex=False, ignore_case=True):
+    """
+    Searches for a string in files with a given extension within a directory and its subfolders.
+
+    Args:
+        directory (str): The directory to search in.
+        file_extension (str): The file extension to search in (e.g., 'scss').
+        search_string (str): The string to search for.
+        regex (bool): Whether to interpret the search string as a regular expression (default is False).
+        ignore_case (bool): Whether to ignore case in the search (default is True).
+    """
+    # Prepare search pattern based on whether regex is used or not
+    if regex:
+        flags = re.IGNORECASE if ignore_case else 0
+        search_pattern = re.compile(search_string, flags)
+    else:
+        search_pattern = re.compile(re.escape(search_string), re.IGNORECASE if ignore_case else 0)
+    
+    for root, _, files in os.walk(directory):
+        for file in files:
+            if file.endswith(f'.{file_extension}'):
+                file_path = os.path.join(root, file)
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                        if search_pattern.search(content):
+                            print(f"Found in: {file_path}")
+                except (IOError, UnicodeDecodeError) as e:
+                    print(f"Error reading {file_path}: {e}")
+
+# Example usage
+if __name__ == "__main__":
+    search_in_files(
+        directory=r"C:\Users\Administrator\Desktop\work2024\web_sources\dist\intense-handmade\scss\plugins",
+        file_extension='scss',
+        search_string='rd-navbar-top-block',
+        regex=False,
+        ignore_case=True
+    )
+
+
+
+
+
+import fitz  # PyMuPDF
+import sys
+
+def extract_pages(pdf_path, start_page, end_page, output_path):
+    # Open the original PDF
+    pdf_document = fitz.open(pdf_path)
+
+    # Check if the page numbers are within the range
+    num_pages = pdf_document.page_count
+    if start_page < 1 or end_page > num_pages or start_page > end_page:
+        print(f"Invalid page range. The PDF has {num_pages} pages.")
+        return
+
+    # Create a new PDF to save the extracted pages
+    new_pdf_document = fitz.open()
+
+    # Extract pages from start_page to end_page (inclusive)
+    for page_num in range(start_page - 1, end_page):
+        page = pdf_document.load_page(page_num)
+        new_pdf_document.insert_pdf(pdf_document, from_page=page_num, to_page=page_num)
+
+    # Save the new PDF
+    new_pdf_document.save(output_path)
+    new_pdf_document.close()
+    pdf_document.close()
+
+    print(f"Extracted pages {start_page} to {end_page} and saved to '{output_path}'.")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 5:
+        print("Usage: python script.py <pdf_path> <start_page> <end_page> <output_path>")
+        sys.exit(1)
+
+    pdf_path = sys.argv[1]
+    start_page = int(sys.argv[2])
+    end_page = int(sys.argv[3])
+    output_path = sys.argv[4]
+
+    extract_pages(pdf_path, start_page, end_page, output_path)
+
+
+
+
+import fitz  # PyMuPDF
+import os
+
+def images_to_pdf(images_path, output_pdf_path):
+    # Create a new PDF document
+    pdf_document = fitz.open()
+
+    # List all image files in the directory
+    image_files = [f for f in os.listdir(images_path) if f.lower().endswith(('png', 'jpg', 'jpeg', 'bmp', 'tiff'))]
+    image_files.sort()  # Optional: sort files by name to ensure order
+
+    if not image_files:
+        print("No images found in the directory.")
+        return
+
+    for image_file in image_files:
+        image_path = os.path.join(images_path, image_file)
+        # Open the image file
+        img_document = fitz.open(image_path)
+        # Get the first page of the image document
+        img_page = img_document.load_page(0)
+        # Create a new PDF page with the same dimensions as the image
+        pdf_page = pdf_document.new_page(width=img_page.rect.width, height=img_page.rect.height)
+        # Insert the image into the PDF page
+        pdf_page.insert_image(pdf_page.rect, filename=image_path)
+        img_document.close()
+
+    # Save the PDF
+    pdf_document.save(output_pdf_path)
+    pdf_document.close()
+
+    print(f"Combined images into PDF and saved to '{output_pdf_path}'.")
+
+if __name__ == "__main__":
+    # Define your paths
+    images_path = r"G:\main_work\learning_imgs"
+    output_pdf_path = r"G:\main_work\combined_images.pdf"
+
+    images_to_pdf(images_path, output_pdf_path)
 
 
 
