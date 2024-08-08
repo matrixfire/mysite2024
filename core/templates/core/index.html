@@ -564,7 +564,7 @@
       
  <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
  
-
+{% comment %}
  <main id="blog-section">
   <article class="blog-section">
       <div class="content-wrapper">
@@ -579,33 +579,6 @@
       </div>
   </article>
 </main>
-
- <!-- Swiper -->
- <div class="swiper custom-swiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide custom-swiper-slide">
-      <img src="{% static 'core/images/main-Tiger I.png.jpg' %}" alt="Tiger I">
-      <div class="custom-text">
-        <h3>Tiger I</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget pulvinar nisl.</p>
-      </div>
-    </div>
-    <div class="swiper-slide custom-swiper-slide">
-      <img src="{% static 'core/images/main-Sherman.png.jpg' %}" alt="Sherman">
-      <div class="custom-text">
-        <h3>Sherman</h3>
-        <p>Curabitur vehicula eros nec lorem consectetur, a bibendum metus auctor.</p>
-      </div>
-    </div>
-    <div class="swiper-slide custom-swiper-slide">
-      <img src="{% static 'core/images/main-TOG II.jpg' %}" alt="TOG II">
-      <div class="custom-text">
-        <h3>TOG II</h3>
-        <p>Phasellus eget turpis nec felis cursus fermentum. Sed ac pharetra est.</p>
-      </div>
-    </div>
-  </div>
-</div>
 
 
   <!-- New Swiper -->
@@ -644,7 +617,60 @@
     </div>
   </div>
 
+{% endcomment %}
 
+<section>
+  <div class="container">
+    <h1 class="text-between" style="margin-top: 80px;">Our Latest Featured Products</h1>
+ <!-- Swiper -->
+ <div class="swiper custom-swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide custom-swiper-slide">
+      <img src="{% static 'core/images/main-Sherman.png.jpg' %}" alt="Sherman">
+      <div class="custom-text">
+        <h3 style="font-size: 24px; font-weight: bold; color: #2E8B57; text-shadow: 2px 2px 4px #000000; padding: 10px; border-radius: 8px; display: inline-block;">
+          New IP Set: <span style="color: #FF4500;">M4A3E8 Sherman Tank</span> from <span style="font-style: italic; color: #00BFFF;">World of Tanks</span>
+      </h3>
+      
+      
+        </h3>
+        <p>
+          Experience military history with our IP-authorized M4A3E8 Sherman Tank. This 1:30 scale model boasts realistic details like smooth tracks, a rotatable turret, and an openable hatch. Made from high-quality, eco-friendly materials, it features 836 pieces for an engaging build. Perfect for ages 14 and up, this set includes exclusive bonus content and collectible items. Elevate your collection with this detailed and functional tank model, available now at Reobrix.
+        </p>
+        <div class="col-12 offset-top-66"><a class="btn btn-primary btn-ellipse" href="{% url 'core:join_us' %}">Learn More</a></div>
+      </div>
+    </div>
+    <div class="swiper-slide custom-swiper-slide">
+      <img src="{% static 'core/images/main-Tiger I.png.jpg' %}" alt="Tiger I">
+      <div class="custom-text">
+        <h3 style="font-size: 24px; font-weight: bold; color: #2E8B57; text-shadow: 2px 2px 4px #000000; padding: 10px; border-radius: 8px; display: inline-block;">
+          New IP Set: <span style="color: #FF4500;">Tiger I Tank</span> from <span style="font-style: italic; color: #00BFFF;">World of Tanks</span>
+      </h3>
+      
+
+        <p>Experience military history with our IP-authorized Sherman Tank. This 1:30 scale model boasts realistic details like smooth tracks, a rotatable turret, and an openable hatch. Made from high-quality, eco-friendly materials, it features 836 pieces for an engaging build. Perfect for ages 14 and up, this set includes exclusive bonus content and collectible items. Elevate your collection with this detailed and functional tank model, available now at Reobrix.
+
+        </p>
+        <div class="col-12 offset-top-66"><a class="btn btn-primary btn-ellipse" href="{% url 'core:join_us' %}">Learn More</a></div>
+      </div>
+    </div>
+    <div class="swiper-slide custom-swiper-slide">
+      <img src="{% static 'core/images/main-TOG II.jpg' %}" alt="TOG II">
+      <div class="custom-text">
+        <h3 style="font-size: 24px; font-weight: bold; color: #2E8B57; text-shadow: 2px 2px 4px #000000; padding: 10px; border-radius: 8px; display: inline-block;">
+          New IP Set: <span style="color: #FF4500;">TOG II Tank</span> from <span style="font-style: italic; color: #00BFFF;">World of Tanks</span>
+      </h3>
+        <p>Experience military history with our IP-authorized TOG II Tank. This 1:30 scale model boasts realistic details like smooth tracks, a rotatable turret, and an openable hatch. Made from high-quality, eco-friendly materials, it features 836 pieces for an engaging build. Perfect for ages 14 and up, this set includes exclusive bonus content and collectible items. Elevate your collection with this detailed and functional tank model, available now at Reobrix.
+
+        </p>
+        <div class="col-12 offset-top-66"><a class="btn btn-primary btn-ellipse" href="{% url 'core:join_us' %}">Learn More</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
 
 
 <!-- Our Shop-->
