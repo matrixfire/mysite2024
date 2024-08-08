@@ -8884,26 +8884,27 @@ button:hover {
 @media (min-width: 320px) {
   .text-between {
     position: relative;
-    display: inline-block;
-    padding: 0 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
   }
+
   .text-between:before, .text-between:after {
     content: "";
-    position: absolute;
-    top: 50%;
     height: 1px;
-    width: 100px;
-    margin-top: 5px;
-    background: #cbcbcb;
-    transform: translateY(-50%);
+    background: #ff0000; /* Color of the lines */
+    flex: 1; /* Allows lines to take up available space */
+    margin: 0 10px; /* Space between text and lines */
   }
+
   .text-between:before {
-    content: "";
-    left: 0;
+    margin-right: 10px; /* Space between text and left line */
   }
+
   .text-between:after {
-    content: "";
-    right: 0;
+    margin-left: 10px; /* Space between text and right line */
   }
 }
 
