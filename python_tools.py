@@ -1039,7 +1039,7 @@ def images_to_pdf(images_path, output_pdf_path):
     pdf_document = fitz.open()
 
     # List all image files in the directory
-    image_files = [f for f in os.listdir(images_path) if f.lower().endswith(('png', 'jpg', 'jpeg', 'bmp', 'tiff'))]
+    image_files = [f for f in os.listdir(images_path) if f.lower().endswith(('png', 'jpg', 'jpeg', 'bmp', 'tiff', 'webp'))]
     image_files.sort()  # Optional: sort files by name to ensure order
 
     if not image_files:
@@ -1066,8 +1066,8 @@ def images_to_pdf(images_path, output_pdf_path):
 
 if __name__ == "__main__":
     # Define your paths
-    images_path = r"G:\main_work\learning_imgs"
-    output_pdf_path = r"G:\main_work\combined_images.pdf"
+    images_path = r"C:\Users\Administrator\Desktop\work2024\myauto\myscripts\x"
+    output_pdf_path = r"C:\Users\Administrator\Desktop\work2024\myauto\myscripts\x\combined_images.pdf"
 
     images_to_pdf(images_path, output_pdf_path)
 
